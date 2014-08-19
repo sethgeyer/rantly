@@ -13,11 +13,13 @@
         <a href="">Login</a>
       </div>
       <div class="join">
-        <a href="">Join</a>
+        <%=link_to "Join", new_user_path%>
       </div>
     </div>
 
   </div>
+
+  <%=flash[:notice] if flash[:notice]%>
 
   <div class="home-body" >
   <h1>Rantly</h1>

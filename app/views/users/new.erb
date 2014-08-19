@@ -1,0 +1,38 @@
+<div id="new_users">
+
+  <%=form_for @user do |f|%>
+    <div>
+      <%=f.label :username%>
+      <%=f.text_field :username%>
+      <%=f.label :password%>
+      <%=f.text_field :password, type: "password"%>
+    </div>
+    <div>
+      <%=f.label :first_name%>
+      <%=f.text_field :first_name%>
+      <%=f.label :last_name%>
+      <%=f.text_field :last_name%>
+    </div>
+    <div>
+      <%=f.label :bio%>
+      <%=f.text_area :bio%>
+    </div>
+
+    <div>
+      <p> How Often Do You Rant?</p>
+      <%=f.radio_button :rant_frequency, "Daily"%>
+      <%=f.label :rant_frequency, "Daily", value:"Daily"%>
+
+      <%=f.radio_button :rant_frequency, "Weekly"%>
+      <%=f.label :rant_frequency, "Weekly", value:"Weekly"%>
+
+      <%=f.radio_button :rant_frequency, "Monthly"%>
+      <%=f.label :rant_frequency, "Monthly", value:"Monthly"%>
+    </div>
+
+    <%=f.submit "Register"%>
+
+  <%end%>
+
+
+</div>
