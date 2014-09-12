@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy", as: "logout"
   get "/login", to: "sessions#new", as: "login"
 
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :edit, :update] do
+    resources :rants, only: [:create, :destroy]
+  end
 
   resource :dashboard, only: [:show]
   resource :profile, only: [:edit]
+
 
 
 

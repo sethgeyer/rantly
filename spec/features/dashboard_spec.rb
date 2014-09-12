@@ -12,7 +12,7 @@ feature "Dashboard Page" do
   end
 
   scenario "As a user, I can post my rants" do
-    expect(page).to have_css(".rants-form")
+    expect(page).to have_css(".rant-form")
   end
 
 
