@@ -1,9 +1,11 @@
 feature "Dashboard Page" do
   before(:each) do
-    create_rant(1, {user_id: 99})
-    create_rant(2, {user_id: 99})
-    @user = create_user
-    create_rant(3, {user_id: @user.id})
+    @user1 = create_user({first_name: "Adam", username: "adam"})
+    create_rant(1, {user_id: @user1.id})
+    @user2 = create_user({first_name: "Leah", username: "leah"})
+    create_rant(2, {user_id: @user2.id})
+    @user3 = create_user
+    create_rant(3, {user_id: @user3.id})
     visit_login_page_and_fill_in_form('seth', 'password')
     click_on "Login"
   end
@@ -25,6 +27,9 @@ feature "Dashboard Page" do
   end
 
   scenario "As a user, I can view others rants" do
+    expect(page.find(".others-rants")).to have_content("Adam")
+    expect(page.find(".others-rants")).to have_link("Follow")
+
     expect(page.find(".others-rants")).to have_content("I've got rants in my pants #1")
     expect(page.find(".others-rants")).to have_content("I've got rants in my pants #2")
     expect(page.find(".others-rants")).not_to have_content("I've got rants in my pants #3")

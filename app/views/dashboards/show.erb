@@ -28,6 +28,7 @@
     <h4>Latest Rants</h4>
     <% @others_rants.each do |rant| %>
       <div>
+        <%= rant.user.first_name%>
         <%= rant.details %>
       </div>
     <%end%>
