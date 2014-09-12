@@ -2,6 +2,7 @@
 
 <% @interesting_ranters.each do |interesting_ranter| %>
   <%=User.find(interesting_ranter.person_id).first_name%>
+    <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
 
 <%end%>
 

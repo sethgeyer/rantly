@@ -14,6 +14,6 @@ class InterestingRantersController < ApplicationController
   def destroy
     interesting_ranter = InterestingRanter.find(params[:id])
     interesting_ranter.destroy
-    redirect_to dashboard_path
+    redirect_to :back
   end
 end

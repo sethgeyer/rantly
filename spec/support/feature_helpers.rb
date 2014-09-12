@@ -25,3 +25,10 @@ def create_rant(number = 1, modified_attributes ={})
 
   Rant.create!(attributes)
 end
+
+
+def create_interesting_ranter(modified_attributes ={})
+  default_attributes = {}
+  attributes = default_attributes.merge(modified_attributes)
+  InterestingRanter.create!(attributes)
+end
