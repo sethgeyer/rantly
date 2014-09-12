@@ -76,3 +76,10 @@ RSpec.configure do |config|
   end
 =end
 end
+
+def visit_login_page_and_fill_in_form(username, password)
+  visit "/sessions/new"
+  expect(page).to have_css("#new-sessions")
+  fill_in "Username", with: "#{username}"
+  fill_in "Password", with: "#{password}"
+end

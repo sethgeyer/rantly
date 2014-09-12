@@ -17,12 +17,19 @@
 
   <div class="navbar-right">
 
-    <div class="login">
-      <%= link_to "Login", new_session_path %>
-    </div>
-    <div class="join">
-      <%=link_to "Join", new_user_path%>
-    </div>
+    <% if !kenny_loggins %>
+      <div class="login">
+        <%= link_to "Login", login_path %>
+      </div>
+      <div class="join">
+        <%= link_to "Join", new_user_path%>
+      </div>
+    <% else %>
+      <div class="join">
+        <%= link_to "Logout", logout_path%>
+      </div>
+    <% end %>
+
   </div>
 
 </div>
