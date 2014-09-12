@@ -14,9 +14,9 @@ feature "Edit Profile" do
     fill_in "Username", with: "sethy"
     fill_in "Password", with: "passwordy"
     fill_in "Bio", with: "Handsome Programmery"
-    within(page.find("#edit-profiles")) { choose "Weekly" }
+    within(page.find("#edit-profile")) { choose "Weekly" }
     click_on "Update User"
-    expect(page).to have_css("#home")
+    expect(page).to have_css("#show-dashboard")
     expect(page).to have_link("Sethy Geyery")
   end
 

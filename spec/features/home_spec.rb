@@ -38,7 +38,11 @@ feature "Home Page" do
     scenario "I can link to edit my profile" do
       expect(page).to have_content "Seth Geyer"
       click_on "Seth Geyer"
-      expect(page).to have_css("#edit-profiles")
+      expect(page).to have_css("#edit-profile")
+    end
+
+    scenario "I can see a dashboard link" do
+      expect(page).to have_link "Dashboard"
     end
 
 

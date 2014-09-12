@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:notice] = "Welcome #{user.first_name}"
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       render :new
     end

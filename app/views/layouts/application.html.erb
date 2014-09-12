@@ -25,10 +25,18 @@
         <%= link_to "Join", new_user_path%>
       </div>
     <% else %>
+
       <div class="join">
         <%= link_to "Logout", logout_path%>
       </div>
+
+      <div>
+        <%= link_to "Dashboard", dashboard_path%>
+      </div>
+
     <% end %>
+
+
 
   </div>
 
