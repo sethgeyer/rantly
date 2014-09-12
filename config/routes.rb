@@ -7,8 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
 
-    resource :dashboard, only: [:show]
-
+  resource :dashboard, only: [:show]
   resource :profile, only: [:edit]
 
 
