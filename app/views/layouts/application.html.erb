@@ -8,6 +8,25 @@
 </head>
 <body>
 
+<div class="navbar">
+  <!--<div>-->
+  <div class="brand">
+    Rant.ly
+  </div>
+  <!--</div>-->
+
+  <div class="navbar-right">
+
+    <div class="login">
+      <%= link_to "Login", new_session_path %>
+    </div>
+    <div class="join">
+      <%=link_to "Join", new_user_path%>
+    </div>
+  </div>
+
+</div>
+
 <%= yield %>
 
 </body>
