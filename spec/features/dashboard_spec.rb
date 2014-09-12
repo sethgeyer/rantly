@@ -29,10 +29,16 @@ feature "Dashboard Page" do
   scenario "As a user, I can view others rants" do
     expect(page.find(".others-rants")).to have_content("Adam")
     expect(page.find(".others-rants")).to have_link("Follow")
-
     expect(page.find(".others-rants")).to have_content("I've got rants in my pants #1")
     expect(page.find(".others-rants")).to have_content("I've got rants in my pants #2")
     expect(page.find(".others-rants")).not_to have_content("I've got rants in my pants #3")
+
+  end
+
+  scenario "As a user, I can click on another user to follow them" do
+    expect(page.find(".others-rants")).to have_content("Adam")
+    first('.other-details').click_link("Follow")
+    expect(page.find(".others-rants")).to have_link("Unfollow")
 
   end
 

@@ -27,9 +27,16 @@
   <div class="others-rants">
     <h4>Latest Rants</h4>
     <% @others_rants.each do |rant| %>
-      <div>
+      <div class="other-details">
         <%= rant.user.first_name%>
+        <%interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first%>
+        <% if interesting_ranter%>
+          <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+      <% else %>
+          <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: rant.user_id), method: :POST %>
+      <% end %>
         <%= rant.details %>
+
       </div>
     <%end%>
 

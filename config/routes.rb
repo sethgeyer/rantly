@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   resource :profile, only: [:edit]
 
 
+  resource :user do
+    resources :interesting_ranters, only: [:index, :create, :destroy]
+
+  end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
