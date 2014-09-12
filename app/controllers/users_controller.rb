@@ -24,6 +24,15 @@ class UsersController < ApplicationController
   end
 
 
+  def update
+    @user = User.find_by(username: kenny_loggins.username)
+    @user.update(allowed_params)
+    @user.save!
+    redirect_to root_path
+  end
+
+  private
+
   def allowed_params
     params.require(:user).permit(
       :username,

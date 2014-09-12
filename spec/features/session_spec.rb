@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 
 feature "user login and logout" do
 
@@ -8,7 +6,7 @@ feature "user login and logout" do
     visit_login_page_and_fill_in_form("seth", "password")
     click_on "Login"
     expect(page).to have_css("#home")
-    expect(page).to have_content("Welcome Seth Geyer")
+    expect(page).to have_content("Welcome Seth")
   end
 
   scenario "As a logged in user, I can logout" do

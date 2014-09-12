@@ -1,4 +1,3 @@
-require 'rails_helper'
 
 feature "Home Page" do
   before(:each) do
@@ -22,15 +21,32 @@ feature "Home Page" do
     expect(page).to have_css("#new-sessions")
   end
 
-  scenario "As a logged in user, I can see a Logout button" do
-    create_user
-    visit_login_page_and_fill_in_form("seth", "password")
-    click_on "Login"
-    expect(page).not_to have_link("Login")
-    expect(page).not_to have_link("Join")
-    expect(page).to have_link("Logout")
+  context "As a successfully logged in user" do
+
+    before(:each) do
+      create_user
+      visit_login_page_and_fill_in_form("seth", "password")
+      click_on "Login"
+    end
+
+    scenario "I can logout" do
+      expect(page).not_to have_link("Login")
+      expect(page).not_to have_link("Join")
+      expect(page).to have_link("Logout")
+    end
+
+    scenario "I can link to edit my profile" do
+      expect(page).to have_content "Seth Geyer"
+      click_on "Seth Geyer"
+      expect(page).to have_css("#edit-profiles")
+    end
+
+
+
 
 
   end
+
+
 
 end
