@@ -10,11 +10,19 @@ feature "followers_page" do
     click_on "Login"
   end
 
-  scenario "A user can see the ranters they're following" do
+  scenario "A user can see the ranters they're following and won't see the ranters they're not following" do
     expect(page.find(".others-rants")).to have_content("Adam")
     first('.other-details').click_link("Follow")
     click_on "Following"
     expect(page).to have_css("#index-interesting_ranters")
     expect(page).to have_content("Adam")
+    click_on "Dashboard"
+    expect(page.find(".others-rants")).to have_content("Adam")
+    first('.other-details').click_link("Unfollow")
+    click_on "Following"
+    expect(page).to have_css("#index-interesting_ranters")
+    expect(page).not_to have_content("Adam")
+
+
   end
 end

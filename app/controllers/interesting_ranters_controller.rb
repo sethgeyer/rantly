@@ -11,5 +11,9 @@ class InterestingRantersController < ApplicationController
     @interesting_ranters = kenny_loggins.interesting_ranters
   end
 
-
+  def destroy
+    interesting_ranter = InterestingRanter.find(params[:id])
+    interesting_ranter.destroy
+    redirect_to dashboard_path
+  end
 end
