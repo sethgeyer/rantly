@@ -35,7 +35,7 @@
       <% else %>
           <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: rant.user_id), method: :POST %>
       <% end %>
-        <%= rant.details %>
+        <%= link_to "#{rant.details}", rant_path(rant), class:"rant-link"%>
 
       </div>
     <%end%>

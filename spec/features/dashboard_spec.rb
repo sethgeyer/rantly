@@ -41,6 +41,12 @@ feature "Dashboard Page" do
 
   end
 
+  scenario "As a user, I can click on another user's rants to see the show page for the rant" do
+    find(".rant-link").click
+    expect(page).to have_css("#show-rants")
+    expect(page).to have_content("My Pants")
+  end
+
 
 
 

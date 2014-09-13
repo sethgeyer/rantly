@@ -35,8 +35,6 @@ feature "Home Page" do
       expect(page).to have_link("Logout")
     end
 
-
-
     scenario "I can see a dashboard link" do
       expect(page).to have_link "Dashboard"
     end

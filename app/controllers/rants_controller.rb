@@ -11,6 +11,10 @@ class RantsController < ApplicationController
     redirect_to user_dashboard_path
   end
 
+  def show
+    @rant = Rant.find(params[:id])
+  end
+
 
 
 private
