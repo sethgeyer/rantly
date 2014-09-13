@@ -1,7 +1,7 @@
 <div id="show-dashboard">
 
 
-    <div><%= link_to "#{kenny_loggins.first_name} #{kenny_loggins.last_name}", edit_profile_path  %></div>
+    <div><%= link_to "#{kenny_loggins.first_name} #{kenny_loggins.last_name}", edit_user_profile_path  %></div>
 
 
     <div class="rant-form">
@@ -51,7 +51,7 @@
       <% @my_rants.each do |rant| %>
       <div>
         <%= rant.details %>
-        <%= link_to "Delete", user_rant_path(kenny_loggins, rant), method: :delete%>
+        <%= link_to "Delete", user_rant_path(rant), method: :delete%>
      </div>
       <%end%>
 

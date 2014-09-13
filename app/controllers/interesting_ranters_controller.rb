@@ -4,7 +4,7 @@ class InterestingRantersController < ApplicationController
     interesting_ranter.user_id = kenny_loggins.id
     interesting_ranter.person_id = params[:interesting_ranter_id]
     interesting_ranter.save!
-    redirect_to dashboard_path
+    redirect_to user_dashboard_path
   end
 
   def index

@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
   root "sessions#index"
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:create, :index]
   get "/logout", to: "sessions#destroy", as: "logout"
   get "/login", to: "sessions#new", as: "login"
 
-  resources :users, only: [:new, :create, :edit, :update] do
-    resources :rants, only: [:create, :destroy]
+  resources :users, only: [:new, :create] do
+
   end
 
-  resource :dashboard, only: [:show]
-  resource :profile, only: [:edit]
+  resources :things
 
 
-  resource :user do
+
+  resource :user, only: [:edit, :update] do
     resources :interesting_ranters, only: [:index, :create, :destroy]
+    resource :dashboard, only: [:show]
+    resource :profile, only: [:edit]
+    resources :rants, only: [:create, :destroy]
+
 
   end
 

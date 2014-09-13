@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     render :new unless @user.save
     # session[:user_id] = @user.id
     flash[:notice] = "Thank you for registering #{@user.username}!"
-    redirect_to dashboard_path
+    redirect_to user_dashboard_path
 
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: kenny_loggins.username)
     @user.update(allowed_params)
     @user.save!
-    redirect_to dashboard_path
+    redirect_to user_dashboard_path
   end
 
   private
