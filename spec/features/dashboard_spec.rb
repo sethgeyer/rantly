@@ -72,9 +72,8 @@ feature "Dashboard Page" do
     click_on "Favorites"
     expect(page).to have_css("#index-favorites")
     expect(page).not_to have_content("Adam")
-
-
   end
+
 
 
 

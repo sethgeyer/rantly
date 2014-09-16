@@ -19,10 +19,17 @@
 
 <h3>Rants</h3>
 
-<% @user.rants.each do |rant| %>
+<div class="rants-list">
 
+<% user_rants = @user.rants %>
+ <%Rant.sort_by_most_favorited(user_rants).each do |rant| %>
+
+  <div class="rant">
   <div><%= rant.topic %></div>
   <div><%= rant.details %></div>
-  <br/>
+  </div>
+    <br/>
 
 <% end %>
+
+</div>

@@ -32,3 +32,7 @@ def create_interesting_ranter(modified_attributes ={})
   attributes = default_attributes.merge(modified_attributes)
   InterestingRanter.create!(attributes)
 end
+
+def create_favorite_rant(user_id, rant_id)
+  Favorite.create(user_id: user_id, rant_id: rant_id)
+end
