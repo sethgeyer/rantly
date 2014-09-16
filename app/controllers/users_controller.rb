@@ -7,20 +7,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(allowed_params)
-    # if @user.save
-    #   session[:user_id] = @user.id
-    #   flash[:notice] = "Thank you for registering #{@user.username}!"
-    #   redirect_to root_path
-    # else
-    #   render :new
-    # end
 
-
-    render :new unless @user.save
-    # session[:user_id] = @user.id
-    flash[:notice] = "Thank you for registering #{@user.username}!"
-    redirect_to user_dashboard_path
-
+    if @user.save
+      flash[:notice] = "Thank you for registering #{@user.username}!"
+      redirect_to user_dashboard_path
+    else
+      render :new
+    end
   end
 
   def show

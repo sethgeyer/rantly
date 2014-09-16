@@ -1,5 +1,10 @@
 
 
+<% if @user.errors.full_messages.any? %>
+  <%@user.errors.full_messages.each do |message| %>
+    <div><%=message%></div>
+  <%end%>
+<% end%>
 
 <%=form_for @user do |f|%>
   <div>
