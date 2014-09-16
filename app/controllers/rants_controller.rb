@@ -1,8 +1,14 @@
 class RantsController < ApplicationController
   def create
     @rant = Rant.new(allowed_params.merge(user_id: kenny_loggins.id))
-    @rant.save!
-    redirect_to user_dashboard_path
+    if @rant.save
+      redirect_to user_dashboard_path
+    else
+      @my_rants = kenny_loggins.rants
+      @others_rants = Rant.where('user_id != ?', kenny_loggins.id)
+      render 'dashboards/show'
+    end
+
   end
 
   def destroy

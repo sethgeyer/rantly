@@ -21,8 +21,8 @@ feature "User Show Page" do
     visit "/users/#{@user1.id}"
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")
-    expect(page).to have_content("I've got rants in my pants #1")
-    expect(page).to have_content("I've got rants in my pants #3")
+    expect(page).to have_content("#{'d' * 141}1")
+    expect(page).to have_content("#{'d' * 141}3")
   end
 
   scenario "A user can choose to follow an interesting ranter from the interesting ranter's profile page." do

@@ -6,14 +6,19 @@
 
     <div class="rant-form">
 
+
+
        <%= form_for [kenny_loggins, @rant]  do |f| %>
         <div>
         <%=f.label :topic, "A rant about"%>
         <%=f.text_field :topic%>
+        <%=@rant.errors[:topic].first %>
         </div>
         <div>
           <%=f.label :details, "Rant" %>
           <%=f.text_area :details %>
+          <%=@rant.errors[:details].first %>
+
         </div>
 
         <div>

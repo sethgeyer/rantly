@@ -21,14 +21,14 @@ feature "Dashboard Page" do
 
   scenario "As a user, I can view my rants" do
     expect(page).to have_css(".my-rants")
-    expect(page.find(".my-rants")).to have_content("I've got rants in my pants #2")
+    expect(page.find(".my-rants")).to have_content("#{'d' * 141}2")
   end
 
   scenario "As a user, I can view others rants" do
     expect(page.find(".others-rants")).to have_content("Adam")
     expect(page.find(".others-rants")).to have_link("Follow")
-    expect(page.find(".others-rants")).to have_content("I've got rants in my pants #1")
-    expect(page.find(".others-rants")).not_to have_content("I've got rants in my pants #2")
+    expect(page.find(".others-rants")).to have_content("#{'d' * 141}1")
+    expect(page.find(".others-rants")).not_to have_content("#{'d' * 141}2")
 
   end
 
