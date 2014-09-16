@@ -1,5 +1,6 @@
 <div id="show-rants">
 
+  <%= link_to "#{@rant.user.first_name}", user_path(@rant.user), class: "profile-link"%>
   <div><%= @rant.topic %></div>
   <div><%= @rant.details %></div>
 

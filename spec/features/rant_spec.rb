@@ -1,5 +1,6 @@
 feature "rant" do
   before(:each) do
+
     @user = create_user
     visit_login_page_and_fill_in_form('seth', 'password')
     click_on "Login"
@@ -21,8 +22,16 @@ feature "rant" do
     click_on "Delete"
     expect(page).to have_css("#show-dashboard")
     expect(page.find(".my-rants")).not_to have_content("I've got rants in my pants #1")
-
   end
 
+  scenario "As a user, if I'm viewing a specific rant, I can click on the user's name to view their profile" do
+    @user2 = create_user({first_name: "Adam", username: "adam"})
+    @rant = create_rant(2, {user_id: @user2.id})
+    visit rant_path(@rant.id)
+    find(".profile-link").click
+    expect(page).to have_css("#show-users")
+    expect(page).to have_content("Adam")
+    expect(page).to have_content("Handsome Programmer")
+  end
 
 end
