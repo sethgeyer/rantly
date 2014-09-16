@@ -3,6 +3,15 @@
 <div>
 <%= @user.first_name %>
 </div>
+<div>
+  <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
+  <% if interesting_ranter %>
+    <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+  <% else %>
+    <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST %>
+  <% end %>
+</div>
+
   <div>
     <%= @user.bio %>
   </div>

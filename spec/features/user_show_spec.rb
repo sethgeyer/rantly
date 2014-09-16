@@ -23,7 +23,16 @@ feature "User Show Page" do
     expect(page).to have_content("Handsome Programmer")
     expect(page).to have_content("I've got rants in my pants #1")
     expect(page).to have_content("I've got rants in my pants #3")
+  end
 
+  scenario "A user can choose to follow an interesting ranter from the interesting ranter's profile page." do
+    visit "/users/#{@user1.id}"
+    expect(page).to have_content("Adam")
+    expect(page).to have_link "Follow"
+    click_on "Follow"
+    expect(page).to have_link "Unfollow"
+    click_on "Unfollow"
+    expect(page).to have_link "Follow"
   end
 
 end
