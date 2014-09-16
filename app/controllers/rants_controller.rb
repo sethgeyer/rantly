@@ -22,6 +22,15 @@ class RantsController < ApplicationController
   end
 
 
+  def index
+    if params[:search]
+      @users = User.where(last_name: params[:search])
+      @rants = []
+    else
+      @rants = []
+    end
+  end
+
 
 private
   def allowed_params

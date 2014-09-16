@@ -74,7 +74,10 @@ feature "Dashboard Page" do
     expect(page).not_to have_content("Adam")
   end
 
-
+  scenario "As a user, I can link to the search form" do
+    click_on "Search"
+    expect(page).to have_css("#index-rants")
+  end
 
 
 

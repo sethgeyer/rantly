@@ -1,0 +1,22 @@
+<div id="index-rants">
+
+<%= form_tag rants_path, method: :get do %>
+
+  <%= text_field_tag :search %>
+  <%= submit_tag ("Search by Last Name")%>
+<% end %>
+</div>
+
+<% if @rants %>
+
+<% @rants.each do |rant| %>
+
+  <div>
+<%=rant.topic %>
+
+  </div>
+
+<%end%>
+
+
+<% end %>

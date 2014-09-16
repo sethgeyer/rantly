@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update] do
   end
 
+  get "/rants/search/new", to: "rants#search", as: "new_rants_search"
 
-  resources :rants, only: [:show]
+
+  resources :rants, only: [:show, :index]
+
 
 
 
