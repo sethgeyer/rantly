@@ -6,5 +6,14 @@
   <div>
     <%= @user.bio %>
   </div>
-
 </div>
+
+<h3>Rants</h3>
+
+<% @user.rants.each do |rant| %>
+
+  <div><%= rant.topic %></div>
+  <div><%= rant.details %></div>
+  <br/>
+
+<% end %>
