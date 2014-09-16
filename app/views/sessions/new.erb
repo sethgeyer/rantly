@@ -1,5 +1,7 @@
 <div id="new-sessions">
 
+  <%=flash[:notice] %>
+
   <%=form_for :session, url: sessions_path do |f|%>
     <div>
       <%=f.label :username%>

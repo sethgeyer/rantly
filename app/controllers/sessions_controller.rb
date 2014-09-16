@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome #{user.first_name}"
       redirect_to user_dashboard_path
     else
+      flash.now[:notice] = "Login failed"
       render :new
     end
   end
