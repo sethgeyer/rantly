@@ -1,0 +1,11 @@
+<div id="index-favorites">
+
+<% @favorites.each do |favorite| %>
+
+  <%= favorite.rant.user.first_name%><br/>
+    <%= favorite.rant.topic %><br/>
+    <%=favorite.rant.details %><br/>
+
+
+<% end %>
+</div>

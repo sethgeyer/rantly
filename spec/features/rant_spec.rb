@@ -45,4 +45,29 @@ feature "rant" do
     expect(page).to have_content("Handsome Programmer")
   end
 
+
+  scenario "As a user, if I'm viewing a specific rant, I can make a rant a 'favorite" do
+    @user2 = create_user({first_name: "Adam", username: "adam"})
+    @rant = create_rant(2, {user_id: @user2.id})
+    visit rant_path(@rant.id)
+    within("#show-rants") { click_on "Favorite" }
+    expect(page).to have_css("#show-rants")
+    click_on "Favorites"
+    expect(page).to have_css("#index-favorites")
+    expect(page).to have_content("Adam")
+    visit rant_path(@rant.id)
+
+    within("#show-rants") { click_on "Unfavorite" }
+    expect(page).to have_css("#show-rants")
+    click_on "Favorites"
+    expect(page).to have_css("#index-favorites")
+    expect(page).not_to have_content("Adam")
+
+
+  end
+
+
+
+
+
 end

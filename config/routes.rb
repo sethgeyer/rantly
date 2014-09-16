@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show]
     resource :profile, only: [:edit]
     resources :rants, only: [:create, :destroy]
-
+    resources :favorites
 
   end
 

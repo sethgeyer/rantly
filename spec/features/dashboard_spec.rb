@@ -55,6 +55,10 @@ feature "Dashboard Page" do
 
   end
 
+  scenario "As a user, I cna link to my favorites from the hoempage" do
+    click_on "Favorites"
+    expect(page).to have_css("#index-favorites")
+  end
 
 
 
