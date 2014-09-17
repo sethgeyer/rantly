@@ -23,12 +23,8 @@ class RantsController < ApplicationController
 
 
   def index
-    # if params[:search]
-      @rants = Rant.joins(:user).where(users: {last_name: params[:search]})
-
-    # else
-    #   @rants = []
-    # end
+      @all_searches = Rant.joins(:user).where(users: {last_name: params[:search]}) + Rant.joins(:user).where(users: {first_name: params[:search]}) + Rant.joins(:user).where(users: {username: params[:search]})
+      @rants = @all_searches.uniq
   end
 
 
