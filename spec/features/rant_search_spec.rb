@@ -12,10 +12,10 @@ feature "search rants" do
     end
 
   scenario "As a user, I should be able to search rants by the user's last name" do
-    fill_in "search", with: "Geyer"
+    fill_in "search", with: "Smith"
     click_on "Search by Last Name"
-    expect(page).to have_content("Rants in my Pants #1")
-    expect(page).to have_content("Rants in my Pants #3")
+    expect(page).to have_content("My Pants #1")
+    expect(page).to have_content("My Pants #3")
 
   end
 
