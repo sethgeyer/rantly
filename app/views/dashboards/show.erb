@@ -1,35 +1,32 @@
 <div id="show-dashboard">
 
+  <article>
 
     <div><%= link_to "#{kenny_loggins.first_name} #{kenny_loggins.last_name}", edit_user_profile_path  %></div>
 
 
-    <div class="rant-form">
+  <section class="rant-form">
+    <%= form_for [kenny_loggins, @rant] do |f| %>
+      <div>
+        <%= f.label :topic, "A rant about" %>
+        <%= f.text_field :topic %>
+        <%= @rant.errors[:topic].first %>
+      </div>
+      <div>
+        <%= f.label :details, "Rant" %>
+        <%= f.text_area :details %>
+        <%= @rant.errors[:details].first %>
+
+      </div>
+
+      <div>
+        <%= f.submit "Rant" %>
+      </div>
+    <% end %>
+  </section>
 
 
-
-       <%= form_for [kenny_loggins, @rant]  do |f| %>
-        <div>
-        <%=f.label :topic, "A rant about"%>
-        <%=f.text_field :topic%>
-        <%=@rant.errors[:topic].first %>
-        </div>
-        <div>
-          <%=f.label :details, "Rant" %>
-          <%=f.text_area :details %>
-          <%=@rant.errors[:details].first %>
-
-        </div>
-
-        <div>
-          <%=f.submit "Rant"%>
-        </div>
-      <% end%>
-
-
-    </div>
-
-  <div class="others-rants">
+  <section class="others-rants">
     <h4>Latest Rants</h4>
     <% @others_rants.each do |rant| %>
       <div class="other-details">
@@ -51,13 +48,13 @@
       <% end %>
     <%end%>
 
-  </div>
+  </section>
 
 
 
 
 
-    <div class="my-rants">
+    <section class="my-rants">
       <h4>My Rants</h4>
       <% @my_rants.each do |rant| %>
       <div>
@@ -66,6 +63,6 @@
      </div>
       <%end%>
 
-    </div>
-
+    </section>
+  </article>
 </div>

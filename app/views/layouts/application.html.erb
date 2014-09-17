@@ -18,15 +18,15 @@
   <div class="navbar-right">
 
     <% if !kenny_loggins %>
-      <div class="login">
+      <div>
         <%= link_to "Login", login_path %>
       </div>
-      <div class="join">
+      <div class="nav-button">
         <%= link_to "Join", new_user_path%>
       </div>
     <% else %>
 
-      <div class="join">
+      <div class="nav-button">
         <%= link_to "Logout", logout_path%>
       </div>
 

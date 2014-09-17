@@ -31,28 +31,54 @@
 .navbar-right {
     float: right;
     border:1px black solid;
-    margin-top:10px;
+    margin-top:12px;
     margin-right: 10px;
+    border: 1px solid white
+}
+
+.navbar-right div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+    display:inline-block;
 }
 
 .navbar-right a {
-    text-decoration: none;
-    color:white
+text-decoration: none;
+color:white;
 }
 
-.join {
-    display:inline-block;
-    border:1px black solid;
-    margin-left: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left:20px;
-    padding-right:20px;
-    background-color: darkgreen;
+.nav-button {
+border:1px black solid;
+padding-left:20px;
+padding-right:20px;
+background-color: darkgreen;
+float: right
 }
 
-.login {
-    display:inline-block;
+.rant-form {
+    width: 25%;
+    border: 1px solid black;
+    float: left;
+    height: 800px   
+}
+
+.others-rants {
+    width: 73%;
+    float: right;
+}
+
+.my-rants {
+    width: 73%;
+    float: right;
+}
+
+article {
+    border: 1px solid black;
+}
+
+section {
+    border: 1px solid black
 }
 
 .home-body {
