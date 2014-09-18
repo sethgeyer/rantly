@@ -23,8 +23,14 @@ class RantsController < ApplicationController
 
 
   def index
-      @all_searches = Rant.joins(:user).where(users: {last_name: params[:search]}) + Rant.joins(:user).where(users: {first_name: params[:search]}) + Rant.joins(:user).where(users: {username: params[:search]})
-      @rants = @all_searches.uniq
+      user_searches = Rant.joins(:user).where(users: {last_name: params[:search]}) + Rant.joins(:user).where(users: {first_name: params[:search]}) + Rant.joins(:user).where(users: {username: params[:search]})
+
+
+      search_text = params[:search]
+      rant_searches = (Rant.where("topic ilike ?", "%#{search_text}%") + Rant.where("details ilike ?", "%#{search_text}%"))
+
+
+      @rants = user_searches.uniq + rant_searches.uniq
   end
 
 

@@ -33,9 +33,25 @@ feature "search rants" do
     within("#index-rants") { click_on "Search" }
     expect(page).to have_content("My Pants #1")
     expect(page).to have_content("My Pants #3")
-
-
   end
+
+  scenario "As a user, I should be able to search rants by the rants topic" do
+    fill_in "search", with: "Pants"
+    within("#index-rants") { click_on "Search" }
+    expect(page).to have_content("My Pants #1")
+    expect(page).to have_content("My Pants #3")
+    expect(page).to have_content("My Pants #4")
+  end
+
+  scenario "As a user, I should be able to search rants by the rants topic" do
+    fill_in "search", with: "ddd"
+    within("#index-rants") { click_on "Search" }
+    expect(page).to have_content("My Pants #1")
+    expect(page).to have_content("My Pants #3")
+    expect(page).to have_content("My Pants #4")
+  end
+
+
 
 
 end

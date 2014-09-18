@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :username, :bio, :rant_frequency, :image, presence: true
   validates :username, :uniqueness => true
-  validates :password, length: {minimum: 8, message: "must be 8 characters in length"}
+  validates :password, length: {minimum: 8, message: "must be 8 characters in length", :allow_blank => true}
 end
