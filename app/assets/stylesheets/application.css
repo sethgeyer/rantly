@@ -56,6 +56,14 @@ background-color: darkgreen;
 float: right
 }
 
+
+img {
+    height: 40px;
+    width: 40px;
+}
+
+
+
 .rant-form {
     width: 25%;
     border: 1px solid black;

@@ -5,7 +5,8 @@ def create_user(modified_attributes ={})
     first_name: 'Seth',
     last_name: 'Geyer',
     bio: 'Handsome Programmer',
-    rant_frequency: 'daily'
+    rant_frequency: 'daily',
+    image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
   }
 
   attributes = default_attributes.merge(modified_attributes)

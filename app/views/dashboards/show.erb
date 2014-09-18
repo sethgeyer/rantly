@@ -2,6 +2,8 @@
 
   <article>
 
+    <img src=<%=kenny_loggins.image%> />
+
     <div><%= link_to "#{kenny_loggins.first_name} #{kenny_loggins.last_name}", edit_user_profile_path  %></div>
 
 
@@ -64,7 +66,7 @@
 
 
     <section class="mentioned-rants rants">
-      <% if @mentioned_rants != [] %>
+      <% if @mentioned_rants != [] && @mentioned_rants != nil %>
       <h4>Mentioned Rants</h4>
       <% @mentioned_rants.each do |rant| %>
         <div>
@@ -73,8 +75,8 @@
         <br/>
       <%end%>
 
-      <% end %>
     </section>
+    <% end %>
 
 
 
