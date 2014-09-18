@@ -63,16 +63,10 @@ float: right
     height: 800px   
 }
 
-.others-rants {
+.rants {
     width: 73%;
     float: right;
 }
-
-.my-rants {
-    width: 73%;
-    float: right;
-}
-
 article {
     border: 1px solid black;
 }

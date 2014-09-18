@@ -26,8 +26,8 @@
   </section>
 
 
-  <section class="others-rants">
-    <h4>Latest Rants</h4>
+  <section class="others-rants rants">
+    <h4>Others Rants</h4>
     <% @others_rants.each do |rant| %>
       <div class="other-details">
         <%= link_to "#{rant.user.first_name}", user_path(rant.user), class:"profile-link" %>
@@ -50,19 +50,33 @@
 
   </section>
 
-
-
-
-
-    <section class="my-rants">
+    <section class="my-rants rants">
       <h4>My Rants</h4>
       <% @my_rants.each do |rant| %>
       <div>
         <%= rant.details %>
         <%= link_to "Delete", user_rant_path(rant), method: :delete%>
      </div>
+        <br/>
       <%end%>
 
     </section>
+
+
+    <section class="mentioned-rants rants">
+      <% if @mentioned_rants != [] %>
+      <h4>Mentioned Rants</h4>
+      <% @mentioned_rants.each do |rant| %>
+        <div>
+          <%= rant.details %>
+        </div>
+        <br/>
+      <%end%>
+
+      <% end %>
+    </section>
+
+
+
   </article>
 </div>

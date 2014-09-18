@@ -55,7 +55,7 @@ feature "Dashboard Page" do
 
   end
 
-  scenario "As a user, I cna link to my favorites from the hoempage" do
+  scenario "As a user, I can link to my favorites from the hoempage" do
     click_on "Favorites"
     expect(page).to have_css("#index-favorites")
   end
@@ -78,6 +78,23 @@ feature "Dashboard Page" do
     click_on "Search"
     expect(page).to have_css("#index-rants")
   end
+
+  scenario "As a user, I can see a 'mentioned section' if I've been mentioned in the details of a rant" do
+    expect(page).not_to have_content("Mentioned")
+    create_rant(4, {user_id: @user1.id, details: "@#{@user2.username} stinks  #{'d' * 141}4"})
+    click_on "Dashboard"
+    expect(page).to have_content("Mentioned")
+    expect(page.find(".mentioned-rants")).to have_content("@seth stinks")
+  end
+
+  scenario "As a user, I can see a 'mentioned section' if I've been mentioned in the topic of a rant" do
+    expect(page).not_to have_content("Mentioned")
+    create_rant(5, {user_id: @user1.id, topic: "@#{@user2.username} stinks", details: "#{'stinky' * 30}5"    })
+    click_on "Dashboard"
+    expect(page).to have_content("Mentioned")
+    expect(page.find(".mentioned-rants")).to have_content("stinky")
+  end
+
 
 
 
