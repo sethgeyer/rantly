@@ -32,7 +32,7 @@ feature "rant" do
     expect(page.find(".my-rants")).to have_content("#{'d' * 141}1")
     click_on "Delete"
     expect(page).to have_css("#show-dashboard")
-    expect(page.find(".my-rants")).not_to have_content("#{'d' * 141}1")
+    expect(page).not_to have_content("#{'d' * 141}1")
   end
 
   scenario "As a user, if I'm viewing a specific rant, I can click on the user's name to view their profile" do

@@ -1,84 +1,117 @@
 <div id="show-dashboard">
 
-  <article>
+  <article class="flex-container">
+    <section class="qtr-wide rant-form ">
+      <%= render "users/user_profile_block" %>
+      <hr/>
 
+      <%= form_for [kenny_loggins, @rant] do |f| %>
 
-
-<%= render "users/user_profile_block" %>
-
-
-  <section class="rant-form">
-    <%= form_for [kenny_loggins, @rant] do |f| %>
-      <div>
-        <%= f.label :topic, "A rant about" %>
-        <%= f.text_field :topic %>
+        <%= f.label :topic, "A rant about" %><br/>
+        <%= f.text_field :topic, class:"wide-input"%>
         <%= @rant.errors[:topic].first %>
-      </div>
-      <div>
-        <%= f.label :details, "Rant" %>
-        <%= f.text_area :details %>
+        <br/>
+        <%= f.label :details, "Rant" %><br/>
+        <%= f.text_area :details, class:"wide-text-area" %>
         <%= @rant.errors[:details].first %>
 
-      </div>
+        <%= f.submit "Rant", class: "wide-button" %>
 
-      <div>
-        <%= f.submit "Rant" %>
-      </div>
-    <% end %>
-  </section>
-
-
-  <section class="others-rants rants">
-    <h4>Others Rants</h4>
-    <% @others_rants.each do |rant| %>
-      <div class="other-details">
-        <%= link_to "#{rant.user.first_name}", user_path(rant.user), class:"profile-link" %>
-        <%interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first%>
-        <% if interesting_ranter%>
-          <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
-      <% else %>
-          <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: rant.user_id), method: :POST %>
       <% end %>
-        <%= link_to "#{rant.details}", rant_path(rant), class:"rant-link"%>
-
-      </div>
-      <% favorite = Favorite.where(rant_id: rant.id, user_id: kenny_loggins.id).first %>
-      <% if !favorite %>
-        <%= link_to "Favorite", user_favorites_path(rant_id: rant.id), method: :POST %>
-      <% else %>
-        <%= link_to "Unfavorite", user_favorite_path(favorite.id), method: :DELETE %>
-      <% end %>
-    <%end%>
-
-  </section>
-
-    <section class="my-rants rants">
-      <h4>My Rants</h4>
-      <% @my_rants.each do |rant| %>
-      <div>
-        <%= rant.details %>
-        <%= link_to "Delete", user_rant_path(rant), method: :delete%>
-     </div>
-        <br/>
-      <%end%>
-
     </section>
 
+    <section class="three-qtr-wide rants">
+      <div style="text-align: center">
+        <h1>Others Rants</h1>
+        <hr/>
+      </div>
 
-    <section class="mentioned-rants rants">
-      <% if @mentioned_rants != [] && @mentioned_rants != nil %>
-      <h4>Mentioned Rants</h4>
-      <% @mentioned_rants.each do |rant| %>
-        <div>
-          <%= rant.details %>
+      <% @others_rants.each do |rant| %>
+        <div class="flex-container others-rants">
+
+          <div class="fifteen-wide other-details">
+            <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %> <br/>
+            <img class="ranter-image" src=<%= rant.user.image %>/>
+            <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first %>
+            <% if interesting_ranter %>
+              <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+            <% else %>
+              <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: rant.user_id), method: :POST %>
+            <% end %>
+          </div>
+
+          <div class="eighty-five-wide">
+            <%= link_to "#{rant.details}", rant_path(rant), class: "rant-link" %>
+            <% favorite = Favorite.where(rant_id: rant.id, user_id: kenny_loggins.id).first %>
+            <% if !favorite %>
+              <%= link_to "Favorite", user_favorites_path(rant_id: rant.id), method: :POST %>
+            <% else %>
+              <%= link_to "Unfavorite", user_favorite_path(favorite.id), method: :DELETE %>
+            <% end %>
+          </div>
+
         </div>
         <br/>
-      <%end%>
+        <div class="mini-spacer-border"></div>
+        <br/>
+      <% end %>
 
+
+      <div style="text-align: center">
+        <h1>My Rants</h1>
+        <hr/>
+      </div>
+      <% @my_rants.each do |rant| %>
+        <div class="flex-container my-rants">
+          <div class="fifteen-wide">
+            <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %>
+            <img class="ranter-image" src=<%= kenny_loggins.image %>/>
+          </div>
+          <div class="eighty-five-wide">
+            <%= rant.details %>
+            <%= link_to "Delete", user_rant_path(rant), method: :delete %>
+          </div>
+        </div>
+        <br/>
+        <div class="mini-spacer-border"></div>
+        <br/>
+      <% end %>
+
+      <div class="mentioned-rants">
+        <% if @mentioned_rants != [] && @mentioned_rants != nil %>
+          <div style="text-align: center">
+            <h1>Mentioned Rants</h1>
+            <hr/>
+          </div>
+
+          <% @mentioned_rants.each do |rant| %>
+            <div class="flex-container my-rants">
+
+              <div class="fifteen-wide">
+                <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %>
+                <img class="ranter-image" src=<%= rant.user.image %>/>
+                <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first %>
+                <% if interesting_ranter %>
+                  <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+                <% else %>
+                  <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: rant.user_id), method: :POST %>
+                <% end %>
+              </div>
+
+              <div class="eighty-five-wide">
+                <%= rant.details %>
+                <%= link_to "Delete", user_rant_path(rant), method: :delete %>
+              </div>
+
+            </div>
+
+            <br/>
+
+            <div class="mini-spacer-border"></div>
+            <br/>
+          <% end %>
+        <% end %>
+      </div>
     </section>
-    <% end %>
-
-
-
   </article>
 </div>
