@@ -2,18 +2,19 @@
 <html>
 <head>
   <title>Rantly</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="navbar">
-  <!--<div>-->
-  <div class="brand">
-    Rant.ly
+<article class="navbar">
+
+  <div class="navbar-left">
+    <div class="brand">
+      <%= link_to "Rant.ly", root_path %>
+    </div>
   </div>
-  <!--</div>-->
 
   <div class="navbar-right">
 
@@ -22,40 +23,35 @@
         <%= link_to "Login", login_path %>
       </div>
       <div class="nav-button">
-        <%= link_to "Join", new_user_path%>
+        <%= link_to "Join", new_user_path %>
       </div>
     <% else %>
 
+      <div>
+        <%= link_to "Dashboard", user_dashboard_path %>
+      </div>
+      <div>
+        <%= link_to "Following", user_interesting_ranters_path %>
+      </div>
+      <div>
+        <%= link_to "Favorites", user_favorites_path %>
+      </div>
+      <div>
+        <%= link_to "Search", rants_path %>
+      </div>
       <div class="nav-button">
-        <%= link_to "Logout", logout_path%>
+        <%= link_to "Logout", logout_path %>
       </div>
-
-      <div>
-        <%= link_to "Dashboard", user_dashboard_path%>
-      </div>
-
-      <div>
-        <%= link_to "Following", user_interesting_ranters_path%>
-      </div>
-
-      <div>
-        <%= link_to "Favorites", user_favorites_path%>
-      </div>
-
-      <div>
-        <%= link_to "Search", rants_path%>
-      </div>
-
-
     <% end %>
-
-
 
   </div>
 
+</article>
+
+<div>
+  <%= yield %>
 </div>
 
-<%= yield %>
-
 </body>
+
 </html>

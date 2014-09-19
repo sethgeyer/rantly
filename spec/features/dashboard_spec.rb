@@ -5,7 +5,7 @@ feature "Dashboard Page" do
     @user2 = create_user
     create_rant(2, {user_id: @user2.id})
     visit_login_page_and_fill_in_form('seth', 'password')
-    click_on "Login"
+    within("#new-sessions") {click_on "Login"}
   end
 
   scenario "As a user, I can link to edit my profile" do

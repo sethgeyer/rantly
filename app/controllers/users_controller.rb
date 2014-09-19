@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :ensure_current_user, only: [:new, :create]
+  skip_before_action :ensure_current_user, only: [:new, :create, :flexy]
 
   def new
     @user = User.new
@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     @user.save!
     redirect_to user_dashboard_path
   end
+
+  def flexy
+    @users = User.all
+  end
+
 
   private
 

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    render :new, layout: false
+    render :new
   end
 
   def create

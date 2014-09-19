@@ -4,7 +4,7 @@ feature "Edit Profile" do
   scenario "As a user, I can edit my profile" do
     create_user
     visit_login_page_and_fill_in_form('seth', 'password')
-    click_on "Login"
+    within("#new-sessions") {click_on "Login"}
     visit edit_user_profile_path
     expect(page.find_field("Username").value).to eq("seth")
     expect(page.find_field("Last name").value).to eq("Geyer")

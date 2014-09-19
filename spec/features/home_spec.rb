@@ -17,7 +17,7 @@ feature "Home Page" do
   end
 
   scenario "As a visitor, I can access the login page, via the link" do
-    click_on("Login")
+    click_on "Login"
     expect(page).to have_css("#new-sessions")
   end
 
@@ -26,7 +26,7 @@ feature "Home Page" do
     before(:each) do
       create_user
       visit_login_page_and_fill_in_form("seth", "password")
-      click_on "Login"
+      within("#new-sessions") {click_on "Login"}
     end
 
     scenario "I can logout" do
