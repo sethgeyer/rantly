@@ -122,7 +122,7 @@ vertical-align: middle;
 
 .wide-text-area {
     width: 100%;
-    height: 120px;
+    height: 360px;
     font-size: 15px;
 }
 
@@ -172,6 +172,7 @@ vertical-align: middle;
 .qtr-wide {
     width: 25%;
     margin: 15px;
+
 }
 
 .three-qtr-wide {
@@ -182,11 +183,14 @@ vertical-align: middle;
 .fifteen-wide {
     width: 15%;
     text-align: center;
+    border: solid 1px black;
+    min-width: 150px;
 }
 
 .eighty-five-wide {
     width: 85%;
     padding-top: 10px;
+    padding-left: 15px;
 }
 
 .rant-link {
@@ -200,18 +204,34 @@ padding: 20px;
 
 }
 
+.photo-name {
+    text-align: center;
+}
+
+.photo-name a {
+    text-decoration: none;
+    color: black;
+    width: 100%
+
+}
+
+.photo-name img.resize {
+    width: 100%;
+    height: auto
+}
 
 .profile-link {
-    display: inline;
+    /*display: inline;*/
     font-size: 25px;
     text-decoration: none;
-    color: black
+    color: black;
+    width: 100%;
 }
 
-.ranter-image {
-    height: 80px;
-    width: 80px;
-}
+/*.ranter-image {*/
+    /*height: 80px;*/
+    /*width: 80px;*/
+/*}*/
 
 
 img {

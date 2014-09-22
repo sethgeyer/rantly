@@ -48,7 +48,7 @@ feature "Dashboard Page" do
   end
 
   scenario "As a user, I can click on another user's name to see their profile" do
-    find(".profile-link").click
+    find(".other-details > .profile-link").click
     expect(page).to have_css("#show-users")
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")
