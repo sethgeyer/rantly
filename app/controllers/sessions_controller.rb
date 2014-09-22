@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
   skip_before_action :ensure_current_user, only: [:index, :new, :create]
 
   def index
-
+    render :index, layout: "/layouts/not_logged_in_user"
   end
 
   def new
-    render :new
+    render :new, layout: "/layouts/not_logged_in_user"
   end
 
   def create
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       redirect_to user_dashboard_path
     else
       flash.now[:notice] = "Login failed"
-      render :new
+      render :new, layout: "/layouts/not_logged_in_user"
     end
   end
 

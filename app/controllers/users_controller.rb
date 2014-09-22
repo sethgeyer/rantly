@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render :new, layout: "/layouts/not_logged_in_user"
   end
 
   def create
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Thank you for registering #{@user.username}!"
       redirect_to user_dashboard_path
     else
-      render :new
+      render :new, layout: "/layouts/not_logged_in_user"
     end
   end
 
@@ -28,11 +29,6 @@ class UsersController < ApplicationController
     @user.save!
     redirect_to user_dashboard_path
   end
-
-  def flexy
-    @users = User.all
-  end
-
 
   private
 
