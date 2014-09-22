@@ -1,24 +1,8 @@
 <div id="show-dashboard">
 
   <article class="flex-container">
-    <section class="qtr-wide rant-form ">
-      <%= render "users/user_profile_block" %>
-      <hr/>
 
-      <%= form_for [kenny_loggins, @rant] do |f| %>
-
-        <%= f.label :topic, "A rant about" %><br/>
-        <%= f.text_field :topic, class:"wide-input"%>
-        <%= @rant.errors[:topic].first %>
-        <br/>
-        <%= f.label :details, "Rant" %><br/>
-        <%= f.text_area :details, class:"wide-text-area" %>
-        <%= @rant.errors[:details].first %>
-
-        <%= f.submit "Rant", class: "wide-button" %>
-
-      <% end %>
-    </section>
+    <%= render "/rants/form" %>
 
     <section class="three-qtr-wide rants">
       <div style="text-align: center">
@@ -31,7 +15,7 @@
 
           <div class="fifteen-wide other-details">
             <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %> <br/>
-            <img class="ranter-image" src=<%= rant.user.image %>/>
+            <img class="ranter-image" src=<%= rant.user.image %>>
             <br/>
             <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first %>
             <% if interesting_ranter %>
@@ -66,7 +50,7 @@
         <div class="flex-container my-rants">
           <div class="fifteen-wide">
             <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %><br/>
-            <img class="ranter-image" src=<%= kenny_loggins.image %>/>
+            <img class="ranter-image" src=<%= kenny_loggins.image %>>
           </div>
           <div class="eighty-five-wide">
             <%= rant.details %>
@@ -90,7 +74,7 @@
 
               <div class="fifteen-wide">
                 <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %><br/>
-                <img class="ranter-image" src=<%= rant.user.image %>/><br/>
+                <img class="ranter-image" src=<%= rant.user.image %>><br/>
                 <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first %>
                 <% if interesting_ranter %>
                   <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
