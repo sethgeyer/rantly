@@ -1,35 +1,56 @@
 <div id="show-users">
 
-<div>
-<%= @user.first_name %>
-</div>
-<div>
-  <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
-  <% if interesting_ranter %>
-    <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
-  <% else %>
-    <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST %>
-  <% end %>
-</div>
 
-  <div>
-    <%= @user.bio %>
-  </div>
-</div>
+  <article class="flex-container">
 
-<h3>Rants</h3>
+    <%= render "/rants/form" %>
 
-<div class="rants-list">
+    <section class="three-qtr-wide rants">
+      <div style="text-align: center">
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
-<% user_rants = @user.rants %>
- <%Rant.sort_by_most_favorited(user_rants).each do |rant| %>
+        <div>
+          <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
+          <% if interesting_ranter %>
+            <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+          <% else %>
+            <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST %>
+          <% end %>
+        </div>
+        <hr/>
+      </div>
+      <div>
+        <div class=flex-container style="border: 1px solid red">
+          <img class="ranter-image" style="width:30%" src=<%= @user.image %>>
 
-  <div class="rant">
-  <div><%= rant.topic %></div>
-  <div><%= rant.details %></div>
-  </div>
-    <br/>
+          <div style="width:70%; text-align: center; padding-top: 25px;">Yo</div>
+        </div>
+      </div>
 
-<% end %>
+      <br/>
+
+      <div>
+        <%= @user.bio %>
+      </div>
+
+      <br/>
+
+      <div class="rants-list">
+
+        <% user_rants = @user.rants %>
+        <% Rant.sort_by_most_favorited(user_rants).each do |rant| %>
+
+          <div class="rant">
+            <div><%= rant.topic %></div>
+            <div><%= rant.details %></div>
+          </div>
+          <br/>
+
+        <% end %>
+
+      </div>
+
+    </section>
+  </article>
 
 </div>

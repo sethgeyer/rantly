@@ -1,21 +1,62 @@
 <div id="index-rants">
 
-<%= form_tag rants_path, method: :get do %>
 
-  <%= text_field_tag :search %>
-  <%= submit_tag ("Search")%>
-<% end %>
+  <article class="flex-container">
+
+    <%= render "/rants/form" %>
+
+    <section class="three-qtr-wide rants">
+      <div style="text-align: center">
+        <h1>Search</h1>
+        <hr/>
+      </div>
+
+      <%= form_tag rants_path, method: :get, class: "flex-container horizontal-form" do %>
+        <%= text_field_tag :search, nil, class: "horizontal-form-input" %>
+        <%= submit_tag "Search", class: "horizontal-form-button" %>
+      <% end %>
+
+      <br/>
+      <br/>
+
+      <% if @rants %>
+        <% @rants.each do |rant| %>
+          <div class="flex-container">
+
+            <div class="fifteen-wide">
+              <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %> <br/>
+              <img class="ranter-image" src=<%= rant.user.image %>>
+              <br/>
+              <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first %>
+              <% if interesting_ranter %>
+                <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+              <% else %>
+                <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: rant.user_id), method: :POST %>
+              <% end %>
+            </div>
+            <div class="eighty-five-wide">
+              <%= rant.topic %> </b><br/>
+              <%= rant.details %>
+            </div>
+          </div>
+          <br/>
+        <% end %>
+
+
+      <% end %>
+
+
+    </section>
+
+
+  </article>
+
 </div>
 
-<% if @rants %>
-
-<% @rants.each do |rant| %>
-
-  <div>
-    <b><%=rant.user.username %> | <%=rant.topic %> </b><br/> <%=rant.details %>
-  </div>
-
-<%end%>
 
 
-<% end %>
+
+
+
+
+

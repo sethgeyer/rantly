@@ -1,13 +1,33 @@
 <div id="show-rants">
 
-  <%= link_to "#{@rant.user.first_name}", user_path(@rant.user), class: "profile-link"%>
-  <div><%= @rant.topic %></div>
-  <div><%= @rant.details %></div>
-  <% favorite = Favorite.where(rant_id: @rant.id, user_id: kenny_loggins.id).first %>
-  <% if !favorite %>
-  <%= link_to "Favorite", user_favorites_path(rant_id: @rant.id), method: :POST %>
-  <% else %>
-    <%= link_to "Unfavorite", user_favorite_path(favorite.id), method: :DELETE %>
-  <% end %>
+  <article class="flex-container">
+
+    <%= render "/rants/form" %>
+
+    <section class="three-qtr-wide rants">
+
+      <div style="text-align: center">
+        <h1><%= @shown_rant.topic %></h1>
+        <hr/>
+      </div>
+
+      <div class="shown-rant" style="display: inline-block; border: 1px solid black; float:left; margin-right: 20px; margin-bottom: 10px;">
+      <%= link_to "#{@shown_rant.user.first_name}", user_path(@shown_rant.user), class: "profile-link" %><br/>
+      <img class="ranter-image" src=<%= @shown_rant.user.image %>>
+      </div>
+
+
+        <div style="display: inline"><%= @shown_rant.details %></div>
+        <% favorite = Favorite.where(rant_id: @shown_rant.id, user_id: kenny_loggins.id).first %>
+        <% if !favorite %>
+          <%= link_to "Favorite", user_favorites_path(rant_id: @shown_rant.id), method: :POST %>
+        <% else %>
+          <%= link_to "Unfavorite", user_favorite_path(favorite.id), method: :DELETE %>
+        <% end %>
+
+
+    </section>
+
+  </article>
 
 </div>

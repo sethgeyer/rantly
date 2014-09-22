@@ -140,6 +140,27 @@ vertical-align: middle;
     font-size: 15px;
 }
 
+.horizontal-form {
+    height: 30px;
+}
+
+.horizontal-form-input {
+    width: 80%;
+    margin:0px;
+}
+
+.horizontal-form-button {
+    min-width: 40px;
+    width: 20%;
+    border: 1px solid darkgreen;
+    background-color: darkgreen;
+    font-size: 20px;
+    color: white;
+    margin: 0px;
+}
+
+
+
 .wide-button {
     width: 100%;
     background-color: darkgreen;

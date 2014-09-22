@@ -18,7 +18,8 @@ class RantsController < ApplicationController
   end
 
   def show
-    @rant = Rant.find(params[:id])
+    @shown_rant = Rant.find(params[:id])
+    @rant = Rant.new
   end
 
 
@@ -31,6 +32,7 @@ class RantsController < ApplicationController
 
 
       @rants = user_searches.uniq + rant_searches.uniq
+      @rant = Rant.new
   end
 
 

@@ -1,11 +1,47 @@
 <div id="index-favorites">
 
-<% @favorites.each do |favorite| %>
 
-  <%= favorite.rant.user.first_name%><br/>
+  <article class="flex-container">
+
+    <%= render "/rants/form" %>
+
+    <section class="three-qtr-wide rants">
+      <div style="text-align: center">
+        <h1>Favorites</h1>
+        <hr/>
+      </div>
+
+
+
+<% @favorites.each do |favorite| %>
+        <div class="flex-container">
+
+        <div class="fifteen-wide">
+          <%= link_to "#{favorite.rant.user.first_name}", user_path(favorite.rant.user), class: "profile-link" %> <br/>
+          <img class="ranter-image" src=<%= favorite.rant.user.image %>>
+          <br/>
+          <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: favorite.rant.user_id).first %>
+          <% if interesting_ranter %>
+            <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+          <% else %>
+            <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: favorite.rant.user_id), method: :POST %>
+          <% end %>
+        </div>
+          <div class="eighty-five-wide">
+
+
+
+
+
+
     <%= favorite.rant.topic %><br/>
     <%=favorite.rant.details %><br/>
-
-
+    </div>
+  </div>
 <% end %>
+
+
+    </section>
+
+  </article>
 </div>

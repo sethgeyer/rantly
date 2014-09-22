@@ -11,6 +11,8 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = kenny_loggins.favorites
+    @rant = Rant.new
+
   end
 
   def destroy

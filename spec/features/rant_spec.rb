@@ -39,7 +39,7 @@ feature "rant" do
     @user2 = create_user({first_name: "Adam", username: "adam"})
     @rant = create_rant(2, {user_id: @user2.id})
     visit rant_path(@rant.id)
-    find(".profile-link").click
+    find(".shown-rant .profile-link").click
     expect(page).to have_css("#show-users")
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")
