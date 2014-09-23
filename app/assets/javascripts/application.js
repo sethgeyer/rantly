@@ -18,6 +18,8 @@
 
 $(document).ready( function() {
 
+
+
   var navButton = $(".navbar a")
 
   navButton.on("click", function() {

@@ -27,10 +27,7 @@ margin: 0%
 
 }
 
-/*NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR */
-/*NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR */
-/*NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR */
-
+/*checked*/
 .navbar {
     background-color: #31332F;
     display: -webkit-flex;
@@ -40,41 +37,33 @@ margin: 0%
     text-align: center;
     font-size: 18px;
     font-family: arial, sans-serif;
-
     position: fixed;
     z-index: 2;
-    /*margin-top: -8px;*/
-    /*margin-left: -8px;*/
 }
-
 
 .flex-container {
     display: -webkit-flex;
     display: flex;
     width: 100%;
-
 }
 
+/*checked*/
 .qtr-wide {
     width: 23%;
-    border: 1px solid green;
     padding-left: 1%;
     padding-right: 1%;
-
     position: fixed;
     top: 70px;
-
 }
 
+/*checked*/
 .three-qtr-wide {
     width: 73%;
     padding-left: 1%;
     padding-right: 1%;
     background-color: white;
-    border: 1px solid red;
-
     position: relative;
-    top: 70px;
+    top: 54px;
     left: 25%;
 
 }
@@ -94,7 +83,7 @@ margin: 0%
 }
 
 .brand {
-    width: 12%;
+    width: 13%;
     margin-right: 15%;
     min-width: 65px;
     padding-top: 12px;
@@ -252,14 +241,27 @@ margin: auto
     text-align: center;
 }
 
+/*checked*/
+.content-header {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+/*checked*/
+.right-floater {
+    margin: 12px;
+    float:right
+}
 
 
 .fifteen-wide {
     width: 15%;
     text-align: center;
-    border: solid 1px black;
     min-width: 150px;
 }
+
+
+
 
 .eighty-five-wide {
     width: 85%;
