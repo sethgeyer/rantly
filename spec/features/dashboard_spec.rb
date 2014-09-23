@@ -43,13 +43,13 @@ feature "Dashboard Page" do
 
   scenario "As a user, I can click on another user's rants to see the show page for the rant" do
     find(".rant-link").click
-    expect(page).to have_css("#show-rants")
+    expect(page).to have_css(".rants")
     expect(page).to have_content("My Pants")
   end
 
   scenario "As a user, I can click on another user's name to see their profile" do
     find(".other-details > .profile-link").click
-    expect(page).to have_css("#show-users")
+    expect(page).to have_css(".rants")
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")
 

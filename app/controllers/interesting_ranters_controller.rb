@@ -9,7 +9,6 @@ class InterestingRantersController < ApplicationController
 
   def index
     @interesting_ranters = kenny_loggins.interesting_ranters
-    @rant = Rant.new
   end
 
   def destroy

@@ -40,7 +40,7 @@ feature "rant" do
     @rant = create_rant(2, {user_id: @user2.id})
     visit rant_path(@rant.id)
     find(".shown-rant .profile-link").click
-    expect(page).to have_css("#show-users")
+    expect(page).to have_css(".rants")
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")
   end
@@ -50,15 +50,15 @@ feature "rant" do
     @user2 = create_user({first_name: "Adam", username: "adam"})
     @rant = create_rant(2, {user_id: @user2.id})
     visit rant_path(@rant.id)
-    within("#show-rants") { click_on "Favorite" }
-    expect(page).to have_css("#show-rants")
+    within(".rants") { click_on "Favorite" }
+    expect(page).to have_css(".rants")
     click_on "Favorites"
     expect(page).to have_content("Favorites")
     expect(page).to have_content("Adam")
     visit rant_path(@rant.id)
 
-    within("#show-rants") { click_on "Unfavorite" }
-    expect(page).to have_css("#show-rants")
+    within(".rants") { click_on "Unfavorite" }
+    expect(page).to have_css(".rants")
     click_on "Favorites"
     expect(page).to have_content("Favorites")
     expect(page).not_to have_content("Adam")
