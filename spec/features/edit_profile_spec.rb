@@ -16,7 +16,7 @@ feature "Edit Profile" do
     fill_in "Bio", with: "Handsome Programmery"
     within(page.find("#edit-profile")) { choose "Weekly" }
     click_on "Update User"
-    expect(page).to have_css("#show-dashboard")
+    expect(page).to have_content("Others Rants")
     expect(page).to have_link("Sethy Geyery")
   end
 

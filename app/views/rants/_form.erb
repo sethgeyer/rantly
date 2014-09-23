@@ -3,6 +3,7 @@
   <%= render "users/user_profile_block" %>
   <hr/>
 
+  <%@rant ||= Rant.new%>
   <%= form_for [kenny_loggins, @rant] do |f| %>
 
     <%= f.label :topic, "A rant about" %><br/>
