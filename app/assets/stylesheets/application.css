@@ -29,8 +29,8 @@ background-color: lightgrey;
 /*NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR */
 
 .navbar {
-    /*position: fixed;*/
-    /*z-index: 1;*/
+    position: fixed;
+    z-index: 1;
     background-color: #31332F;
     display: -webkit-flex;
     display: flex;
@@ -55,13 +55,16 @@ background-color: lightgrey;
     padding: 15px;
     /*position: fixed;*/
     /*top: 50px;*/
+    border: 1px solid red
 }
 
 .three-qtr-wide {
     width: 75%;
     /*position: relative;*/
     /*top: 50px;*/
-    /*left: 28%*/
+    /*left: 28%;*/
+    border: 1px solid red
+
 }
 
 .nav-divider {
