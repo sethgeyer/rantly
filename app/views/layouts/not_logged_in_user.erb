@@ -10,31 +10,21 @@
 
 <article class="navbar">
 
-  <div class="navbar-left">
-    <div class="brand">
-      <%= link_to "Rant.ly", root_path %>
+  <div class="brand">
+    <%= link_to "Rant.ly", root_path %>
+  </div>
+
+  <div class="navbar-right" style="width:80%">
+
+    <div>
+      <%= link_to "Login", login_path %>
     </div>
-  </div>
 
-  <div class="navbar-right">
-
-
-      <div>
-        <%= link_to "Login", login_path %>
-      </div>
-      <div class="nav-button">
-        <%= link_to "Join", new_user_path %>
-      </div>
+    <div class="nav-button">
+      <%= link_to "Join", new_user_path %>
+    </div>
 
   </div>
-
-
-
-
-
-
-
-
 
 </article>
 

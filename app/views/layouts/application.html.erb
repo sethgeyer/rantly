@@ -10,31 +10,41 @@
 
 <article class="navbar">
 
-  <div class="navbar-left">
-    <div class="brand">
-      <%= link_to "Rant.ly", root_path %>
+  <div class="brand">
+    <%= link_to "Rant.ly", root_path %>
+  </div>
+
+  <div class="navbar-middle">
+
+    <div>
+      <%= link_to "Dashboard", user_dashboard_path %>
     </div>
+
+    <div class="nav-divider">|</div>
+
+    <div>
+      <%= link_to "Following", user_interesting_ranters_path %>
+    </div>
+
+    <div class="nav-divider">|</div>
+
+    <div>
+      <%= link_to "Favorites", user_favorites_path %>
+    </div>
+
+    <div class="nav-divider">|</div>
+
+    <div>
+      <%= link_to "Search", rants_path %>
+    </div>
+
   </div>
 
   <div class="navbar-right">
 
-
-
-      <div>
-        <%= link_to "Dashboard", user_dashboard_path %>
-      </div>
-      <div>
-        <%= link_to "Following", user_interesting_ranters_path %>
-      </div>
-      <div>
-        <%= link_to "Favorites", user_favorites_path %>
-      </div>
-      <div>
-        <%= link_to "Search", rants_path %>
-      </div>
-      <div class="nav-button">
-        <%= link_to "Logout", logout_path %>
-      </div>
+    <div class="nav-button">
+      <%= link_to "Logout", logout_path %>
+    </div>
 
   </div>
 

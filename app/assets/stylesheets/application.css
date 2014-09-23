@@ -64,25 +64,44 @@ background-color: lightgrey;
     /*left: 28%*/
 }
 
+.nav-divider {
+    color: darkgreen;
+}
 
 .navbar a {
     text-decoration: none;
     color:white;
 }
 
-.navbar-left {
-width: 20%;
-border-right: thin solid darkgreen;
+.selected-link {
+    text-decoration: none;
+    color:darkgreen;
 }
 
 .brand {
-margin-top: 12px;
-margin-bottom: 12px;
+    width: 12%;
+    margin-right: 15%;
+    min-width: 65px;
+    padding-top: 12px;
+    border-right: thin solid darkgreen;
+}
+
+.navbar-middle {
+    width: 55%;
+}
+
+.navbar-middle div {
+    display:inline-block;
+    margin-right: 10px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    float: left;
 }
 
 .navbar-right {
-width: 80%;
-text-align: right;
+    width: 20%;
+    min-width: 100px;
+    text-align: right;
 }
 
 .navbar-right div {

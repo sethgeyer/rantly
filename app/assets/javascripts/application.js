@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready( function() {
+
+  var navButton = $(".navbar a")
+
+  navButton.on("click", function() {
+    console.log($(this))
+
+    })
+
+
+});
