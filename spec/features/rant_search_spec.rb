@@ -14,14 +14,16 @@ feature "search rants" do
 
   scenario "As a user, I should be able to search rants by the user's last name" do
     fill_in "search", with: "Smith"
-    within("#index-rants") { click_on "Search" }
+    within(".horizontal-form") { click_on "Search" }
+
     expect(page).to have_content("My Pants #1")
     expect(page).to have_content("My Pants #3")
   end
 
   scenario "As a user, I should be able to search rants by the user's first name" do
     fill_in "search", with: "Steve"
-    within("#index-rants") { click_on "Search" }
+    within(".horizontal-form") { click_on "Search" }
+
     expect(page).to have_content("My Pants #1")
     expect(page).to have_content("My Pants #3")
     expect(page).to have_content("My Pants #4")
@@ -30,14 +32,16 @@ feature "search rants" do
 
   scenario "As a user, I should be able to search rants by the user's username" do
     fill_in "search", with: "steve"
-    within("#index-rants") { click_on "Search" }
+    within(".horizontal-form") { click_on "Search" }
+
     expect(page).to have_content("My Pants #1")
+
     expect(page).to have_content("My Pants #3")
   end
 
   scenario "As a user, I should be able to search rants by the rants topic" do
     fill_in "search", with: "Pants"
-    within("#index-rants") { click_on "Search" }
+    within(".horizontal-form") { click_on "Search" }
     expect(page).to have_content("My Pants #1")
     expect(page).to have_content("My Pants #3")
     expect(page).to have_content("My Pants #4")
@@ -45,7 +49,7 @@ feature "search rants" do
 
   scenario "As a user, I should be able to search rants by the rants topic" do
     fill_in "search", with: "ddd"
-    within("#index-rants") { click_on "Search" }
+    within(".horizontal-form") { click_on "Search" }
     expect(page).to have_content("My Pants #1")
     expect(page).to have_content("My Pants #3")
     expect(page).to have_content("My Pants #4")

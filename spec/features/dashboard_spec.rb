@@ -57,26 +57,26 @@ feature "Dashboard Page" do
 
   scenario "As a user, I can link to my favorites from the hoempage" do
     click_on "Favorites"
-    expect(page).to have_css("#index-favorites")
+    expect(page).to have_content("Favorites")
   end
 
   scenario "As a user, I can make a rant a 'favorite" do
     within(".others-rants") { click_on "Favorite" }
     expect(page).to have_content("Others Rants")
     click_on "Favorites"
-    expect(page).to have_css("#index-favorites")
+    expect(page).to have_content("Favorites")
     expect(page).to have_content("Adam")
     click_on "Dashboard"
     within(".others-rants") { click_on "Unfavorite" }
     expect(page).to have_content("Others Rants")
     click_on "Favorites"
-    expect(page).to have_css("#index-favorites")
+    expect(page).to have_content("Favorites")
     expect(page).not_to have_content("Adam")
   end
 
   scenario "As a user, I can link to the search form" do
     click_on "Search"
-    expect(page).to have_css("#index-rants")
+    expect(page).to have_content("Favorites")
   end
 
   scenario "As a user, I can see a 'mentioned section' if I've been mentioned in the details of a rant" do

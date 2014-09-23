@@ -53,14 +53,14 @@ feature "rant" do
     within("#show-rants") { click_on "Favorite" }
     expect(page).to have_css("#show-rants")
     click_on "Favorites"
-    expect(page).to have_css("#index-favorites")
+    expect(page).to have_content("Favorites")
     expect(page).to have_content("Adam")
     visit rant_path(@rant.id)
 
     within("#show-rants") { click_on "Unfavorite" }
     expect(page).to have_css("#show-rants")
     click_on "Favorites"
-    expect(page).to have_css("#index-favorites")
+    expect(page).to have_content("Favorites")
     expect(page).not_to have_content("Adam")
 
 
