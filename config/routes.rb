@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/rants/search/new", to: "rants#search", as: "new_rants_search"
 
-
+  get "/flexy", to: "dashboards#flexy"
   resources :rants, only: [:show, :index]
 
 

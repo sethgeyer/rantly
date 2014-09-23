@@ -22,6 +22,9 @@ font-family: arial, sans-serif;
 
 body {
 background-color: lightgrey;
+padding: 0%;
+margin: 0%
+
 }
 
 /*NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR */
@@ -29,8 +32,6 @@ background-color: lightgrey;
 /*NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR NAVBAR */
 
 .navbar {
-    position: fixed;
-    z-index: 1;
     background-color: #31332F;
     display: -webkit-flex;
     display: flex;
@@ -39,6 +40,11 @@ background-color: lightgrey;
     text-align: center;
     font-size: 18px;
     font-family: arial, sans-serif;
+
+    position: fixed;
+    z-index: 2;
+    /*margin-top: -8px;*/
+    /*margin-left: -8px;*/
 }
 
 
@@ -46,24 +52,30 @@ background-color: lightgrey;
     display: -webkit-flex;
     display: flex;
     width: 100%;
-    /*position: relative;*/
-    /*top: 40px;*/
+
 }
 
 .qtr-wide {
-    width: 25%;
-    padding: 15px;
-    /*position: fixed;*/
-    /*top: 50px;*/
-    border: 1px solid red
+    width: 23%;
+    border: 1px solid green;
+    padding-left: 1%;
+    padding-right: 1%;
+
+    position: fixed;
+    top: 70px;
+
 }
 
 .three-qtr-wide {
-    width: 75%;
-    /*position: relative;*/
-    /*top: 50px;*/
-    /*left: 28%;*/
-    border: 1px solid red
+    width: 73%;
+    padding-left: 1%;
+    padding-right: 1%;
+    background-color: white;
+    border: 1px solid red;
+
+    position: relative;
+    top: 70px;
+    left: 25%;
 
 }
 
@@ -170,8 +182,10 @@ margin-right: 30px;
 
 .wide-text-area {
 width: 100%;
-height: 360px;
+height: 280px;
 font-size: 15px;
+    margin: 0%;
+    padding: 0%;
 }
 
 .input-box {
@@ -186,6 +200,8 @@ padding: 0px 20px 20px 20px;
 width: 100%;
 height: 20px;
 font-size: 15px;
+    margin: 0%;
+    padding: 0%;
 }
 
 .horizontal-form {
@@ -214,6 +230,9 @@ width: 100%;
 background-color: darkgreen;
 color: white;
 font-size: 25px;
+margin: 0%;
+padding: 0%;
+
 }
 
 .spacer-border {
@@ -253,27 +272,26 @@ margin: auto
     color: black;
 }
 
-.rants {
-background-color: white;
-padding: 20px;
-
-}
-
 .photo-name {
+
     text-align: center;
+
 }
 
 .photo-name a {
+    font-size: 25px;
     text-decoration: none;
     color: black;
-    width: 100%
+}
+
+.photo-name img {
+    width: 90%;
+    max-width: 180px;
+    height: auto;
+    max-height: 180px;
 
 }
 
-.photo-name img.resize {
-    width: 100%;
-    height: auto
-}
 
 .profile-link {
     /*display: inline;*/
@@ -310,7 +328,61 @@ img {
     height: 90%
 }
 
+.flex-c {
+    display: -webkit-flex;
+    display: flex;
+    /*position: fixed;*/
+    /*z-index: 1;*/
+}
 
+
+.navvy {
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    border: 1px solid red;
+    background-color: blue;
+
+    position: fixed;
+
+}
+
+.body {
+    background-color: grey;
+    width: 100%;
+
+ }
+
+.sidebar {
+    width: 23%;
+    height: 2000px;
+    border: 1px solid red;
+    padding-left: 1%;
+    padding-right: 1%;
+
+    position: fixed;
+    top: 50px;
+}
+
+.inputty {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+
+}
+
+.contents {
+    width: 73%;
+    padding-left: 1%;
+    padding-right: 1%;
+    height: 2000px;
+    border: 1px solid red;
+
+    position: absolute;
+    left: 25%;
+    top: 50px;
+    z-index: -1;
+}
 
 /*article {*/
     /*border: 1px solid black;*/

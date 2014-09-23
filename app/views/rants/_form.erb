@@ -6,14 +6,14 @@
   <%@rant ||= Rant.new%>
   <%= form_for [kenny_loggins, @rant] do |f| %>
 
-    <%= f.label :topic, "A rant about" %><br/>
-    <%= f.text_field :topic, class:"wide-input"%>
+    <%= f.label :topic, "A rant about:" %><br/>
+    <%= f.text_field :topic, class:"wide-input flex-c"%>
     <%= @rant.errors[:topic].first %>
     <br/>
-    <%= f.label :details, "Rant" %><br/>
-    <%= f.text_area :details, class:"wide-text-area" %>
+    <%= f.label :details, "Rant:" %><br/>
+    <%= f.text_area :details, class:"wide-text-area flex-c" %>
     <%= @rant.errors[:details].first %>
-
+    <br/>
     <%= f.submit "Rant", class: "wide-button" %>
 
   <% end %>

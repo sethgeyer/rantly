@@ -6,4 +6,8 @@ class DashboardsController < ApplicationController
     @mentioned_rants = (Rant.where("details ilike ?", "%#{mention_name}%") + Rant.where("topic ilike ?", "%#{mention_name}%")).uniq
 
   end
+
+  def flexy
+  render :flexy, layout:false
+  end
 end
