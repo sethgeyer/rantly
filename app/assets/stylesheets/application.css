@@ -27,19 +27,7 @@ margin: 0%
 
 }
 
-/*checked*/
-.navbar {
-    background-color: #31332F;
-    display: -webkit-flex;
-    display: flex;
-    width: 100%;
-    min-height: 50px;
-    text-align: center;
-    font-size: 18px;
-    font-family: arial, sans-serif;
-    position: fixed;
-    z-index: 2;
-}
+
 
 .flex-container {
     display: -webkit-flex;
@@ -66,6 +54,21 @@ margin: 0%
     position: relative;
     top: 54px;
     left: 25%;
+}
+
+
+/*checked*/
+.navbar {
+    background-color: #31332F;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    min-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-family: arial, sans-serif;
+    position: fixed;
+    z-index: 2;
 }
 
 .nav-divider {
@@ -130,33 +133,41 @@ background-color: darkgreen;
 width: 100%;
 background-color: white;
 text-align: center;
-height: 200px;
 border: 1px solid grey;
+padding-top: 70px;
+padding-bottom: 70px;
 }
 
 .splash-top h1 {
-padding-top: 30px;
+font-size: 80px;
 }
 
 .splash-bottom {
 display: -webkit-flex;
 display: flex;
+flex-wrap: wrap;
+justify-content:center;
 width: 70%;
 margin:auto;
-padding-top: 60px;
-padding-bottom: 60px;
+align-items: center;
+padding-top: 40px;
+padding-bottom: 40px;
 }
 
 .splash-bottom  img {
-width: 100%;
-height: 100%;
-max-width: 120px;
-max-height: 120px;
-vertical-align: middle;
-margin-right: 20px;
-vertical-align: middle;
+    height: 150px;
+    width: 30%;
+    max-width: 120px;
+    min-width: 150px;
+    /*margin-right: 20px;*/
+
 }
 
+.splash-bottom  p {
+    width: 70%;
+    padding-left: 20px;
+
+}
 
 /*-------------------------*/
 
@@ -177,6 +188,7 @@ font-size: 15px;
     padding: 0%;
 }
 
+/*checked*/
 .bio-area {
     width: 100%;
     height: 120px;
@@ -327,6 +339,8 @@ img {
     width: 80px;
 }
 
+
+/*checked*/
 .bio-box {
     display: -webkit-flex;
     display: flex;
@@ -335,6 +349,7 @@ img {
     text-aling: center
 }
 
+/*checked/*/
 .profile-image {
     height: 200px;
     max-width: 30%;
@@ -343,6 +358,7 @@ img {
     vertical-align: middle;
 }
 
+/*checked*/
 .profile-frequency-box {
     width: 70%;
     text-align: center;
@@ -350,6 +366,7 @@ img {
     padding: 90px;
 }
 
+/*checked*/
 .med-image {
     width: 180px;
     height: auto;
