@@ -41,4 +41,12 @@ feature "User Show Page" do
     expect(first(".rant")).to have_content("My Pants #3")
   end
 
+  scenario "As a user, I can click on another user's rants to see the show page for the rant" do
+    visit "/users/#{@user1.id}"
+    first(".rant-link").click
+    expect(page).to have_css(".rants")
+    expect(page).to have_content("My Pants")
+  end
+
+
 end

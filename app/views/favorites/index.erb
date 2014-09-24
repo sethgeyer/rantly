@@ -18,7 +18,7 @@
       </div>
       <div class="eighty-five-wide">
         <div class="rant-topic"><%= favorite.rant.topic %></div>
-        <%= favorite.rant.details %>
+        <%= link_to favorite.rant.insert_paragraph_breaks(favorite.rant.details), rant_path(favorite.rant), class: "rant-link" %>
         <% favorite = Favorite.where(rant_id: favorite.rant.id, user_id: kenny_loggins.id).first %>
         <% if !favorite %>
           <%= link_to "Favorite", user_favorites_path(rant_id: favorite.rant.id), method: :POST, class:"right-floater"%>
@@ -32,3 +32,6 @@
   <% end %>
 
 </section>
+
+
+

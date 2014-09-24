@@ -13,6 +13,9 @@ class Rant < ActiveRecord::Base
     sorted_list
   end
 
+  def insert_paragraph_breaks(text)
+    (text.gsub("\n", "<br/>")).html_safe
+  end
 
 
 end

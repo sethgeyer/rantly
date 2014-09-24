@@ -1,39 +1,81 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-  <!--<title>Rantly</title>-->
-  <!--< %= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>-->
-  <!--< %= javascript_include_tag 'application', 'data-turbolinks-track' => true %>-->
-  <!--< %= csrf_meta_tags %>-->
-<!--</head>-->
-<!--<body>-->
 
-<!--<article class="navbar">-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rantly</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-  <!--<div class="brand">-->
-    <!--< %= link_to "Rant.ly", root_path %>-->
-  <!--</div>-->
+<article class="navbar">
+
+  <div class="brand">
+    <%= link_to "Rant.ly", root_path %>
+  </div>
+
+  <% if kenny_loggins %>
 
 
+    <div class="navbar-middle">
 
-  <!--<div class="navbar-right" style="width:80%">-->
+      <div>
+        <%= link_to "Dashboard", user_dashboard_path %>
+      </div>
 
-    <!--<div>-->
-      <!--< %= link_to "Login", login_path %>-->
-    <!--</div>-->
+      <div class="nav-divider">|</div>
 
-    <!--<div class="nav-button">-->
-      <!--< %= link_to "Join", new_user_path %>-->
-    <!--</div>-->
+      <div>
+        <%= link_to "Following", user_interesting_ranters_path %>
+      </div>
 
-  <!--</div>-->
+      <div class="nav-divider">|</div>
 
-<!--</article>-->
+      <div>
+        <%= link_to "Favorites", user_favorites_path %>
+      </div>
 
-<!--<div>-->
-  <!--< %= yield %>-->
-<!--</div>-->
+      <div class="nav-divider">|</div>
 
-<!--</body>-->
+      <div>
+        <%= link_to "Search", rants_path %>
+      </div>
 
-<!--</html>-->
+    </div>
+
+    <div class="navbar-right">
+
+      <div class="nav-button">
+        <%= link_to "Logout", logout_path %>
+      </div>
+
+    </div>
+
+    </article>
+
+  <%else%>
+    <div class="navbar-right" style="width:80%">
+
+      <div>
+        <%= link_to "Login", login_path %>
+      </div>
+
+      <div class="nav-button">
+        <%= link_to "Join", new_user_path %>
+      </div>
+
+    </div>
+
+    </article>
+
+  <%end%>
+
+  <div>
+  <%= yield %>
+  </div>
+
+
+  </body>
+
+</html>

@@ -12,11 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
 
 $(document).ready( function() {
+
+  var rantLink = $(".rant-link")
+
+  rantLink.on("mouseover", function() {
+    $(this).toggleClass('mouseover-color')
+  })
+
+  rantLink.on("mouseleave", function() {
+    $(this).toggleClass('mouseover-color')
+  })
 
 
 

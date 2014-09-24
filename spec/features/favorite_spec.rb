@@ -17,7 +17,7 @@ feature "Favorites Page" do
 
   scenario "As a user, I can unfavorite a rant on the favorite page" do
     within(".others-rants") { click_on "Favorite" }
-    expect(page).to have_content("Others Rants")
+    expect(page).to have_content("Latest Rants")
     click_on "Favorites"
     expect(page).to have_content("Favorites")
     expect(page).to have_content("Adam")
@@ -26,6 +26,13 @@ feature "Favorites Page" do
     expect(page).not_to have_content("Adam")
   end
 
+  scenario "As a user, I can click on another user's rants to see the show page for the rant" do
+    within(".others-rants") { click_on "Favorite" }
+    click_on "Favorites"
+    first(".rant-link").click
+    expect(page).to have_css(".rants")
+    expect(page).to have_content("My Pants")
+  end
 
 
 end

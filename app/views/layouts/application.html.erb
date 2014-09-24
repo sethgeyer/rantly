@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Rantly</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -13,6 +13,9 @@
   <div class="brand">
     <%= link_to "Rant.ly", root_path %>
   </div>
+
+  <% if kenny_loggins %>
+
 
   <div class="navbar-middle">
 
@@ -52,12 +55,32 @@
 
 <article class="flex-container">
 
-
   <%= render "/rants/form" %>
 
   <%= yield %>
 
 </article>
+
+    <%else%>
+    <div class="navbar-right" style="width:80%">
+
+      <div>
+        <%= link_to "Login", login_path %>
+      </div>
+
+      <div class="nav-button">
+        <%= link_to "Join", new_user_path %>
+      </div>
+
+    </div>
+
+    </article>
+
+    <div>
+      <%= yield %>
+    </div>
+
+    <%end%>
 
 </body>
 

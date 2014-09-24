@@ -10,7 +10,7 @@ feature "rant" do
     fill_in "A rant about", with: "My Pants"
     fill_in "Rant", with: "#{'d' * 141}"
     click_on "Rant"
-    expect(page).to have_content("Others Rants")
+    expect(page).to have_content("Latest Rants")
     expect(page.find(".my-rants")).to have_content("#{'d' * 141}")
   end
 
@@ -18,7 +18,7 @@ feature "rant" do
     fill_in "A rant about", with: ""
     fill_in "Rant", with: "I've got rants in my pants."
     click_on "Rant"
-    expect(page).to have_content("Others Rants")
+    expect(page).to have_content("Latest Rants")
     expect(page.find(".rant-form")).to have_content("can't be blank")
   end
 
@@ -31,7 +31,7 @@ feature "rant" do
     click_on "Dashboard"
     expect(page.find(".my-rants")).to have_content("#{'d' * 141}1")
     click_on "Delete"
-    expect(page).to have_content("Others Rants")
+    expect(page).to have_content("Latest Rants")
     expect(page).not_to have_content("#{'d' * 141}1")
   end
 

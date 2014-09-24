@@ -16,7 +16,7 @@ feature "Edit Profile" do
     fill_in "Bio", with: "Handsome Programmery"
     choose "Weekly"
     click_on "Update"
-    expect(page).to have_content("Others Rants")
+    expect(page).to have_content("Latest Rants")
     expect(page).to have_link("Sethy Geyery")
   end
 

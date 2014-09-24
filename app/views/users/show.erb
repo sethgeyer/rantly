@@ -35,7 +35,7 @@
 
           <div class="rant">
             <div class="rant-topic"><%= rant.topic %></div>
-            <div><%= rant.details %></div>
+            <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
           </div>
           <br/>
 

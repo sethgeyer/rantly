@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    render :new, layout: "/layouts/not_logged_in_user"
+    # render :new, layout: "/layouts/not_logged_in_user"
   end
 
   def create
@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Thank you for registering #{@user.username}!"
-      redirect_to user_dashboard_path
+      redirect_to root_path
     else
-      render :new, layout: "/layouts/not_logged_in_user"
+      render :new #, layout: "/layouts/not_logged_in_user"
     end
   end
 

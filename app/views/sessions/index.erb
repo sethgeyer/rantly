@@ -1,8 +1,12 @@
 <div id="home">
 
-  <%= flash[:notice] if flash[:notice] %>
 
   <div class="splash-top">
+
+    <% if flash[:notice] %>
+      <br/><br/>
+      <%= flash[:notice]%>
+    <%end%>
     <h1>Rantly</h1>
 
     <h3>Let It All Out</h3>
