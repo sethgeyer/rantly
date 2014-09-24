@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy", as: "logout"
   get "/login", to: "sessions#new", as: "login"
 
-  resources :users, only: [:show] do
-  end
+  resources :profiles, only: [:show]
 
   get "/rants/search/new", to: "rants#search", as: "new_rants_search"
 
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
   resource :user, only: [:new, :create, :edit, :update] do
     resources :interesting_ranters, only: [:index, :create, :destroy]
     resource :dashboard, only: [:show]
-    resource :profile, only: [:edit]
     resources :rants, only: [:create, :destroy]
     resources :favorites
 

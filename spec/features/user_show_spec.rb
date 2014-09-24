@@ -1,4 +1,4 @@
-feature "User Show Page" do
+feature "User Profile Page" do
   before(:each) do
     @user1 = create_user({first_name: "Adam", username: "adam"})
     @rant1 = create_rant(1, {user_id: @user1.id})
@@ -11,14 +11,13 @@ feature "User Show Page" do
   end
 
   scenario "As a user I can visit another user's show page" do
-    visit "/users/#{@user1.id}"
+    visit profile_path(@user1.id)
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")
   end
 
-
   scenario "A user's show page should include all of their individual rants in addition to their bio" do
-    visit "/users/#{@user1.id}"
+    visit profile_path(@user1.id)
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")
     expect(page).to have_content("#{'d' * 141}1")
@@ -26,7 +25,7 @@ feature "User Show Page" do
   end
 
   scenario "A user can choose to follow an interesting ranter from the interesting ranter's profile page." do
-    visit "/users/#{@user1.id}"
+    visit profile_path(@user1.id)
     expect(page).to have_content("Adam")
     expect(page).to have_link "Follow"
     click_on "Follow"
@@ -37,12 +36,12 @@ feature "User Show Page" do
 
   scenario "A user can see another user's rant, organized by most favorited" do
     create_favorite_rant(@user2.id, @rant3.id)
-    visit user_path(@user1.id)
+    visit profile_path(@user1.id)
     expect(first(".rant")).to have_content("My Pants #3")
   end
 
   scenario "As a user, I can click on another user's rants to see the show page for the rant" do
-    visit "/users/#{@user1.id}"
+    visit profile_path(@user1.id)
     first(".rant-link").click
     expect(page).to have_css(".rants")
     expect(page).to have_content("My Pants")

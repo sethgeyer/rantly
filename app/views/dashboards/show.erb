@@ -7,7 +7,7 @@
         <div class="flex-container others-rants">
 
           <div class="fifteen-wide other-details">
-            <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %> <br/>
+            <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %> <br/>
             <img class="ranter-image" src=<%= rant.user.image %>>
             <br/>
             <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first %>
@@ -44,7 +44,7 @@
       <% @my_rants.each do |rant| %>
         <div class="flex-container my-rants">
           <div class="fifteen-wide">
-            <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %><br/>
+            <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %><br/>
             <img class="ranter-image" src=<%= kenny_loggins.image %>>
           </div>
           <div class="eighty-five-wide">
@@ -75,7 +75,7 @@
             <div class="flex-container my-rants">
 
               <div class="fifteen-wide">
-                <%= link_to "#{rant.user.first_name}", user_path(rant.user), class: "profile-link" %><br/>
+                <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %><br/>
                 <img class="ranter-image" src=<%= rant.user.image %>><br/>
                 <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: rant.user_id).first %>
                 <% if interesting_ranter %>
