@@ -14,13 +14,13 @@
         <hr/>
 
 
-      <div class="shown-rant" style="display: inline-block; float:left; margin-right: 20px;">
+      <div class="shown-rant">
         <%= link_to "#{@shown_rant.user.first_name}", user_path(@shown_rant.user), class: "profile-link" %><br/>
       <img class="med-image" src=<%= @shown_rant.user.image %>>
       </div>
 
 
-        <div style="display: inline"><%= @shown_rant.details %></div>
+        <div style="margin-top: 30px;"><%= @shown_rant.details %></div>
 
 
 
