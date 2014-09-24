@@ -9,7 +9,12 @@
           <% else %>
             <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST, class:"right-floater" %>
           <% end %>
-        <br/> <br/>
+
+      <!--< %= InterestingRanter.build_follow_or_unfollow_link(kenny_loggins, @user.rants.first).html_safe%>-->
+
+
+
+      <br/> <br/>
         </div>
         <hr/>
       </div>
