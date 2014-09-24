@@ -1,9 +1,7 @@
 
     <section class="three-qtr-wide rants">
-      <div style="text-align: center">
-        <h1>Search</h1>
+        <div class="content-header">Search</div>
         <hr/>
-      </div>
 
       <%= form_tag rants_path, method: :get, class: "flex-container horizontal-form" do %>
         <%= text_field_tag :search, nil, class: "horizontal-form-input" %>
@@ -29,8 +27,15 @@
               <% end %>
             </div>
             <div class="eighty-five-wide">
-              <%= rant.topic %> </b><br/>
+              <div class="rant-topic"><%= rant.topic %> </div>
               <%= rant.details %>
+              <% favorite = Favorite.where(rant_id: rant.id, user_id: kenny_loggins.id).first %>
+              <% if !favorite %>
+                <%= link_to "Favorite", user_favorites_path(rant_id: rant.id), method: :POST, class:"right-floater"%>
+              <% else %>
+                <%= link_to "Unfavorite", user_favorite_path(favorite.id), method: :DELETE, class:"right-floater" %>
+              <% end %>
+
             </div>
           </div>
           <br/>

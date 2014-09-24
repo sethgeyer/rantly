@@ -1,29 +1,28 @@
 
     <section class="three-qtr-wide rants">
-      <div style="text-align: center">
-        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <div class="content-header" style="margin-bottom: -20px"><%= @user.first_name %> <%= @user.last_name %></div>
 
-        <div>
+
           <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
           <% if interesting_ranter %>
-            <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+            <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE, class:"right-floater" %>
           <% else %>
-            <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST %>
+            <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST, class:"right-floater" %>
           <% end %>
+        <br/> <br/>
         </div>
         <hr/>
       </div>
       <div>
-        <div class=flex-container style="border: 1px solid red">
-          <img class="ranter-image" style="width:30%" src=<%= @user.image %>>
+        <div class=bio-box>
+          <img class="profile-image" src=<%= @user.image %>>
 
-          <div style="width:70%; text-align: center; padding-top: 25px;">Yo</div>
+          <div class="profile-frequency-box"><%=@user.rant_frequency%></div>
         </div>
       </div>
 
-      <br/>
 
-      <div>
+      <div class="bio-box" style="border:1px solid red">
         <%= @user.bio %>
       </div>
 
@@ -35,7 +34,7 @@
         <% Rant.sort_by_most_favorited(user_rants).each do |rant| %>
 
           <div class="rant">
-            <div><%= rant.topic %></div>
+            <div class="rant-topic"><%= rant.topic %></div>
             <div><%= rant.details %></div>
           </div>
           <br/>

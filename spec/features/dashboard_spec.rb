@@ -11,7 +11,7 @@ feature "Dashboard Page" do
   scenario "As a user, I can link to edit my profile" do
     expect(page).to have_content "Seth Geyer"
     click_on "Seth Geyer"
-    expect(page).to have_css("#edit-profile")
+    expect(page).to have_content("Edit Profile")
   end
 
   scenario "As a user, I can post my rants" do

@@ -12,6 +12,12 @@ feature "search rants" do
     visit rants_path
   end
 
+
+  scenario "As a user, when I visit the search page no rants should be shown until I've searched for something" do
+    visit rants_path
+    expect(page).not_to have_content("Steve")
+  end
+
   scenario "As a user, I should be able to search rants by the user's last name" do
     fill_in "search", with: "Smith"
     within(".horizontal-form") { click_on "Search" }

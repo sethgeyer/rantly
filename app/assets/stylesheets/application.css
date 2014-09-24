@@ -59,13 +59,13 @@ margin: 0%
 /*checked*/
 .three-qtr-wide {
     width: 73%;
+    min-height: 100vh;
     padding-left: 1%;
     padding-right: 1%;
     background-color: white;
     position: relative;
     top: 54px;
     left: 25%;
-
 }
 
 .nav-divider {
@@ -177,14 +177,27 @@ font-size: 15px;
     padding: 0%;
 }
 
-.input-box {
-border:1px solid black;
-background-color: white;
-width: 70%;
-margin: auto;
-padding: 0px 20px 20px 20px;
+.bio-area {
+    width: 100%;
+    height: 120px;
+    font-size: 15px;
+    margin: 0%;
+    padding: 0%;
 }
 
+
+/*checked*/
+.input-box {
+    border: 1px solid black;
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    padding: 0px 20px 20px 20px;
+    position: relative;
+    top: 70px;
+}
+
+/*checked*/
 .wide-input {
 width: 100%;
 height: 20px;
@@ -195,16 +208,20 @@ font-size: 15px;
 
 .horizontal-form {
 height: 30px;
+    margin-right: 5%;
 }
 
+/*checked*/
 .horizontal-form-input {
 width: 80%;
 margin:0px;
+font-size: 20px;
 }
 
+/*checked*/
 .horizontal-form-button {
-min-width: 40px;
 width: 20%;
+min-width: 120px;
 border: 1px solid darkgreen;
 background-color: darkgreen;
 font-size: 20px;
@@ -213,7 +230,7 @@ margin: 0px;
 }
 
 
-
+/*checked*/
 .wide-button {
 width: 100%;
 background-color: darkgreen;
@@ -224,27 +241,31 @@ padding: 0%;
 
 }
 
+/*checked*/
 .spacer-border {
 border-top:1px solid black;
 margin: 20px -20px 20px -20px;
 }
 
+/*checked*/
 .mini-spacer-border {
 border-top:1px solid black;
 width: 24%;
 margin: auto
 }
 
-
-.flex-item {
-    width: 33%;
-    text-align: center;
+/*checked*/
+.rant-topic {
+    font-size: 21px;
+    color: darkgreen;
 }
+
 
 /*checked*/
 .content-header {
     font-size: 30px;
     margin-top: 10px;
+    text-align: center;
 }
 
 /*checked*/
@@ -253,67 +274,83 @@ margin: auto
     float:right
 }
 
-
+/*checked*/
 .fifteen-wide {
     width: 15%;
     text-align: center;
     min-width: 150px;
 }
 
+.shown-rant {
+    text-align: center
+}
 
-
-
+/*checked*/
 .eighty-five-wide {
     width: 85%;
-    padding-top: 10px;
+    padding-top: 4px;
     padding-left: 15px;
 }
 
+/*checked*/
 .rant-link {
     text-decoration: none;
     color: black;
 }
 
+/*checked*/
 .photo-name {
-
     text-align: center;
-
 }
 
-.photo-name a {
-    font-size: 25px;
-    text-decoration: none;
-    color: black;
-}
-
+/*checked*/
 .photo-name img {
     width: 90%;
     max-width: 180px;
     height: auto;
     max-height: 180px;
-
 }
 
-
+/*checked*/
 .profile-link {
-    /*display: inline;*/
     font-size: 25px;
     text-decoration: none;
     color: black;
-    width: 100%;
 }
 
-/*.ranter-image {*/
-    /*height: 80px;*/
-    /*width: 80px;*/
-/*}*/
-
-
+/*checked*/
 img {
     height: 80px;
     width: 80px;
 }
 
+.bio-box {
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    vertical-align: middle;
+    text-aling: center
+}
+
+.profile-image {
+    height: 200px;
+    max-width: 30%;
+    width: auto;
+    min-width: 30px;
+    vertical-align: middle;
+}
+
+.profile-frequency-box {
+    width: 70%;
+    text-align: center;
+    font-size: 35px;
+    padding: 90px;
+}
+
+.med-image {
+    width: 180px;
+    height: auto;
+}
 
 .follow-block {
     display:inline-block;

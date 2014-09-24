@@ -19,20 +19,19 @@ class RantsController < ApplicationController
 
   def show
     @shown_rant = Rant.find(params[:id])
-    @rant = Rant.new
   end
 
 
   def index
+
+      if params[:search]
       user_searches = Rant.joins(:user).where(users: {last_name: params[:search]}) + Rant.joins(:user).where(users: {first_name: params[:search]}) + Rant.joins(:user).where(users: {username: params[:search]})
-
-
       search_text = params[:search]
       rant_searches = (Rant.where("topic ilike ?", "%#{search_text}%") + Rant.where("details ilike ?", "%#{search_text}%"))
-
-
       @rants = user_searches.uniq + rant_searches.uniq
-      @rant = Rant.new
+      else
+        @rants = nil
+      end
   end
 
 

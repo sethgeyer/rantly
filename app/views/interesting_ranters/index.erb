@@ -1,15 +1,13 @@
 
     <section class="three-qtr-wide rants">
-      <div style="text-align: center">
-        <h1>Following</h1>
+        <div class="content-header">Following</div>
         <hr/>
-      </div>
 
 
       <% @interesting_ranters.each do |interesting_ranter| %>
         <% person = User.find(interesting_ranter.person_id) %>
         <div class="follow-block">
-          <div><%= person.first_name %></div>
+          <div class="profile-link"><%= person.first_name %> <%= person.last_name %></div>
           <%= image_tag person.image %>
           <br/>
           <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
