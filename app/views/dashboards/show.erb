@@ -51,6 +51,12 @@
             <div class="rant-topic"><%= rant.topic %></div>
             <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
             <%= link_to "Delete", user_rant_path(rant), method: :delete, class:"right-floater" %>
+            <% favorite = Favorite.where(rant_id: rant.id, user_id: kenny_loggins.id).first %>
+            <% if !favorite %>
+              <%= link_to "Favorite", user_favorites_path(rant_id: rant.id), method: :POST, class:"right-floater"%>
+            <% else %>
+              <%= link_to "Unfavorite", user_favorite_path(favorite.id), method: :DELETE, class:"right-floater" %>
+            <% end %>
           </div>
         </div>
         <br/>

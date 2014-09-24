@@ -28,7 +28,7 @@ class RantsController < ApplicationController
       user_searches = Rant.joins(:user).where(users: {last_name: params[:search]}) + Rant.joins(:user).where(users: {first_name: params[:search]}) + Rant.joins(:user).where(users: {username: params[:search]})
       search_text = params[:search]
       rant_searches = (Rant.where("topic ilike ?", "%#{search_text}%") + Rant.where("details ilike ?", "%#{search_text}%"))
-      @rants = user_searches.uniq + rant_searches.uniq
+      @rants = (user_searches + rant_searches).uniq
       else
         @rants = nil
       end
