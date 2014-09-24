@@ -1,7 +1,7 @@
 
 feature "user registration" do
   before(:each) do
-    visit "/users/new"
+    visit new_user_path
   end
   scenario "As a visitor that fills in the registration page completely, I can successfully register" do
     fill_in "First name", with: "Seth"

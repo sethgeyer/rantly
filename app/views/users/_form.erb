@@ -13,7 +13,7 @@
     <br/><br/>
 <% end%>
 
-<%=form_for @user do |f|%>
+<%=form_for @user, url: "/user" do |f|%>
 
     <div class="inline-block with-margin">
       <%=f.label :username%><br/>

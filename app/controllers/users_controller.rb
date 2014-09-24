@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by(username: kenny_loggins.username)
+  end
+
+
   def show
     @user = User.find(params[:id])
     @rant = Rant.new
