@@ -18,16 +18,11 @@
 font-family: arial, sans-serif;
 }
 
-
-
 body {
 background-color: lightgrey;
 padding: 0%;
 margin: 0%
-
 }
-
-
 
 .flex-container {
     display: -webkit-flex;
@@ -41,7 +36,7 @@ margin: 0%
     padding-left: 1%;
     padding-right: 1%;
     position: fixed;
-    top: 70px;
+    top: 85px;
 }
 
 /*checked*/
@@ -52,7 +47,7 @@ margin: 0%
     padding-right: 1%;
     background-color: white;
     position: relative;
-    top: 54px;
+    top: 85px;
     left: 25%;
 }
 
@@ -62,13 +57,21 @@ margin: 0%
     background-color: #31332F;
     display: -webkit-flex;
     display: flex;
+    align-items: center;
     width: 100%;
-    min-height: 50px;
+    min-height: 80px;
     text-align: center;
     font-size: 18px;
     font-family: arial, sans-serif;
     position: fixed;
     z-index: 2;
+}
+
+.brand {
+    width: 13%;
+    margin-right: 12%;
+    min-width: 65px;
+    border-right: thin solid darkgreen;
 }
 
 .nav-divider {
@@ -85,14 +88,6 @@ margin: 0%
     color:darkgreen;
 }
 
-.brand {
-    width: 13%;
-    margin-right: 15%;
-    min-width: 65px;
-    padding-top: 12px;
-    border-right: thin solid darkgreen;
-}
-
 .navbar-middle {
     width: 55%;
 }
@@ -100,8 +95,6 @@ margin: 0%
 .navbar-middle div {
     display:inline-block;
     margin-right: 10px;
-    margin-top: 12px;
-    margin-bottom: 12px;
     float: left;
 }
 
@@ -114,8 +107,6 @@ margin: 0%
 .navbar-right div {
 display:inline-block;
 margin-right: 10px;
-margin-top: 12px;
-margin-bottom: 12px
 }
 
 .nav-button {
@@ -345,16 +336,15 @@ img {
     display: -webkit-flex;
     display: flex;
     width: 100%;
-    vertical-align: middle;
+    align-items: center;
     text-aling: center
 }
 
 /*checked/*/
 .profile-image {
-    height: 200px;
-    max-width: 30%;
-    width: auto;
-    min-width: 30px;
+    width: 150px;
+    height: auto;
+    min-width: 120px;
     vertical-align: middle;
 }
 
@@ -363,7 +353,6 @@ img {
     width: 70%;
     text-align: center;
     font-size: 35px;
-    padding: 90px;
 }
 
 /*checked*/
