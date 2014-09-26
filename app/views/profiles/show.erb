@@ -3,6 +3,7 @@
         <div class="content-header" style="margin-bottom: -20px"><%= @user.first_name %> <%= @user.last_name %></div>
 
 
+
           <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
           <% if interesting_ranter %>
             <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE, class:"right-floater" %>
@@ -42,6 +43,9 @@
             <div class="rant-topic"><%= rant.topic %></div>
             <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
           </div>
+
+          <% @rant_to_fave = rant %>
+          <%= render "/favorites/links_to_fav_unfav" %>
           <br/>
 
         <% end %>

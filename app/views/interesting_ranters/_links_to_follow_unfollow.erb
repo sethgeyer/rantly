@@ -1,0 +1,8 @@
+
+
+<% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @interesting_ranter.id).first %>
+<% if interesting_ranter %>
+  <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE%>
+<% else %>
+  <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @interesting_ranter.id), method: :POST%>
+<% end %>

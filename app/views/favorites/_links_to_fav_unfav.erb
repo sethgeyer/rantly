@@ -1,0 +1,6 @@
+<% favorite = Favorite.where(rant_id: @rant_to_fave.id, user_id: kenny_loggins.id).first %>
+<% if !favorite %>
+  <%= link_to "Favorite", user_favorites_path(rant_id: @rant_to_fave.id), method: :POST, class: "right-floater" %>
+<% else %>
+  <%= link_to "Unfavorite", user_favorite_path(favorite.id), method: :DELETE, class: "right-floater" %>
+<% end %>
