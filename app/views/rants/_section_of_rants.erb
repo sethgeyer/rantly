@@ -1,6 +1,6 @@
 <% @rants_to_loop_through.each do |rant| %>
-  <div class="flex-container others-rants">
-    <div class="fifteen-wide other-details">
+  <div class="flex-container">
+    <div class="fifteen-wide">
       <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %>
       <br/>
       <img class="ranter-image" src=<%= rant.user.image %>>

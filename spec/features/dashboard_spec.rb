@@ -34,7 +34,7 @@ feature "Dashboard Page" do
 
   scenario "As a user, I can click on another user to follow them or 'unfollow' them" do
     expect(page.find(".others-rants")).to have_content("Adam")
-    first('.other-details').click_link("Follow")
+    first('.fifteen-wide').click_link("Follow")
     expect(page.find(".others-rants")).to have_link("Unfollow")
     click_link("Unfollow")
     expect(page.find(".others-rants")).to have_link("Follow")
@@ -48,7 +48,7 @@ feature "Dashboard Page" do
   end
 
   scenario "As a user, I can click on another user's name to see their profile" do
-    find(".other-details > .profile-link").click
+    first(".fifteen-wide > .profile-link").click
     expect(page).to have_css(".rants")
     expect(page).to have_content("Adam")
     expect(page).to have_content("Handsome Programmer")

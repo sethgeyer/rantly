@@ -2,8 +2,10 @@
   <div class="content-header">Latest Rants</div>
   <hr/>
 
-  <% @rants_to_loop_through = @others_rants %>
-  <%= render "/rants/section_of_rants" %>
+  <div class="others-rants">
+    <% @rants_to_loop_through = @others_rants %>
+    <%= render "/rants/section_of_rants" %>
+  </div>
 
   <div class="content-header">My Rants</div>
   <hr/>
