@@ -1,4 +1,5 @@
 class RantsController < ApplicationController
+
   def create
     @rant = Rant.new(allowed_params.merge(user_id: kenny_loggins.id))
     if @rant.save
@@ -8,12 +9,10 @@ class RantsController < ApplicationController
       @others_rants = Rant.where('user_id != ?', kenny_loggins.id)
       render 'dashboards/show'
     end
-
   end
 
   def destroy
-    @rant = Rant.where(id: params[:id]).first
-    @rant.destroy
+    Rant.where(id: params[:id]).first.destroy
     redirect_to user_dashboard_path
   end
 
@@ -21,19 +20,9 @@ class RantsController < ApplicationController
     @shown_rant = Rant.find(params[:id])
   end
 
-
   def index
-
-      if params[:search]
-      user_searches = Rant.joins(:user).where(users: {last_name: params[:search]}) + Rant.joins(:user).where(users: {first_name: params[:search]}) + Rant.joins(:user).where(users: {username: params[:search]})
-      search_text = params[:search]
-      rant_searches = (Rant.where("topic ilike ?", "%#{search_text}%") + Rant.where("details ilike ?", "%#{search_text}%"))
-      @rants = (user_searches + rant_searches).uniq
-      else
-        @rants = nil
-      end
+    @rants = Rant.return_results_for_search(params[:search])
   end
-
 
 private
   def allowed_params

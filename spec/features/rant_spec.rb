@@ -11,7 +11,7 @@ feature "rant" do
     fill_in "Rant", with: "#{'d' * 141}"
     click_on "Rant"
     expect(page).to have_content("Latest Rants")
-    expect(page.find(".my-rants")).to have_content("#{'d' * 141}")
+    expect(page.first(".my-rants")).to have_content("#{'d' * 141}")
   end
 
   scenario "As a user, I can not create a rant without complete information" do
@@ -29,7 +29,7 @@ feature "rant" do
   scenario "As a user, I can delete a rant" do
     create_rant(1, {user_id: @user.id})
     click_on "Dashboard"
-    expect(page.find(".my-rants")).to have_content("#{'d' * 141}1")
+    expect(page.first(".my-rants")).to have_content("#{'d' * 141}1")
     click_on "Delete"
     expect(page).to have_content("Latest Rants")
     expect(page).not_to have_content("#{'d' * 141}1")

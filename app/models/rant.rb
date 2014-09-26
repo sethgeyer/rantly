@@ -17,5 +17,14 @@ class Rant < ActiveRecord::Base
     (text.gsub("\n", "<br/>")).html_safe
   end
 
+  def self.return_results_for_search(search_term)
+    if search_term != nil && search_term != ""
+      user_searches = Rant.joins(:user).where(users: {last_name: search_term}) + Rant.joins(:user).where(users: {first_name: search_term}) + Rant.joins(:user).where(users: {username: search_term})
+      rant_searches = Rant.where("topic ilike ?", "%#{search_term}%") + Rant.where("details ilike ?", "%#{search_term}%")
+      (user_searches + rant_searches).uniq
+    else
+      nil
+    end
+  end
 
 end

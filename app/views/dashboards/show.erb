@@ -1,7 +1,7 @@
 <section class="three-qtr-wide rants">
+
   <div class="content-header">Latest Rants</div>
   <hr/>
-
   <div class="others-rants">
     <% @rants_to_loop_through = @others_rants %>
     <%= render "/rants/section_of_rants" %>
@@ -9,41 +9,22 @@
 
   <div class="content-header">My Rants</div>
   <hr/>
-
-  <% @my_rants.each do |rant| %>
-    <div class="flex-container my-rants">
-      <div class="fifteen-wide">
-        <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %>
-        <br/>
-        <img class="ranter-image" src=<%= kenny_loggins.image %>>
-      </div>
-      <div class="eighty-five-wide">
-        <div class="rant-topic"><%= rant.topic %></div>
-        <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
-        <%= link_to "Delete", user_rant_path(rant), method: :delete, class: "right-floater" %>
-
-        <% @rant_to_fave = rant %>
-        <%= render "/favorites/links_to_fav_unfav" %>
-
-      </div>
-    </div>
-    <br/>
-    <% if (@my_rants.count - 1) != @my_rants.index(rant) %>
-      <div class="mini-spacer-border"></div>
-    <% end %>
-    <br/>
-  <% end %>
+  <div class="my-rants">
+    <% @rants_to_loop_through = @my_rants %>
+    <%= render "/rants/section_of_rants" %>
+  </div>
 
   <div class="mentioned-rants">
     <% if @mentioned_rants != [] && @mentioned_rants != nil %>
       <div class="content-header">Mentioned Rants</div>
       <hr/>
-
-      <% @rants_to_loop_through = @mentioned_rants %>
-      <%= render "/rants/section_of_rants" %>
-
+      <div class="mentioned-rants">
+        <% @rants_to_loop_through = @mentioned_rants %>
+        <%= render "/rants/section_of_rants" %>
+      </div>
     <% end %>
   </div>
+
 </section>
 
 

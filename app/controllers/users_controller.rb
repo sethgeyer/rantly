@@ -3,27 +3,21 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # render :new, layout: "/layouts/not_logged_in_user"
   end
 
   def create
     @user = User.new(allowed_params)
-
     if @user.save
       flash[:notice] = "Thank you for registering #{@user.username}!"
       redirect_to root_path
     else
-      render :new #, layout: "/layouts/not_logged_in_user"
+      render :new
     end
   end
 
   def edit
     @user = User.find_by(username: kenny_loggins.username)
   end
-
-
-
-
 
   def update
     @user = User.find_by(username: kenny_loggins.username)

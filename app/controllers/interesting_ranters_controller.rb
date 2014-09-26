@@ -1,4 +1,5 @@
 class InterestingRantersController < ApplicationController
+
   def create
     interesting_ranter = InterestingRanter.new
     interesting_ranter.user_id = kenny_loggins.id
@@ -12,8 +13,8 @@ class InterestingRantersController < ApplicationController
   end
 
   def destroy
-    interesting_ranter = InterestingRanter.find(params[:id])
-    interesting_ranter.destroy
+    InterestingRanter.find(params[:id]).destroy
     redirect_to :back
   end
+
 end

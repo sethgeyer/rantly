@@ -19,7 +19,6 @@ describe Rant do
       expect(rant.errors[:topic].any?).to eq(false)
     end
 
-
     it "requires a body (aka: details)" do
       rant = Rant.new(details: "")
       rant.valid?
@@ -40,19 +39,40 @@ describe Rant do
     end
   end
 
-  describe "#sort_by_most_favorited" do
+  context "Collecting and Organizing Rants" do
+    before(:each) do
+      @logged_in_user = create_user(username: "seth")
+      @other_user = create_user(username: "adam", first_name: "Adam")
+      bad_rant = create_rant(1, {topic: "rant1", user_id: @other_user.id})
+      @good_rant = create_rant(2, {topic: "rant2", user_id: @other_user.id})
+      favorited_item = create_favorite_rant(@logged_in_user.id, @good_rant.id )
+    end
+
+    describe "#sort_by_most_favorited" do
     it "sorts the users rants by most favorited" do
-      logged_in_user = create_user(username: "seth")
-      other_user = create_user(username: "adam", first_name: "Adam")
-      bad_rant = create_rant(1, {topic: "rant1", user_id: other_user.id})
-      good_rant = create_rant(2, {topic: "rant2", user_id: other_user.id})
-      favorited_item = create_favorite_rant(logged_in_user.id, good_rant.id )
-      unsorted_rants = Rant.where(user_id: other_user.id)
+      unsorted_rants = Rant.where(user_id: @other_user.id)
       sorted_rants = Rant.sort_by_most_favorited(unsorted_rants)
       expect(sorted_rants.first.topic).to eq("rant2")
     end
   end
 
+  describe "#return results for search" do
+    it "returns a list of search results if a search term was submitted" do
+      returned_rants = Rant.return_results_for_search("d")
+      expect(returned_rants.count).to eq(2)
+    end
 
+    it "returns an empty array if no values found" do
+      returned_rants = Rant.return_results_for_search("z")
+      expect(returned_rants.count).to eq(0)
+    end
 
+    it "returns nil if no search value provided" do
+      returned_rants = Rant.return_results_for_search(nil)
+      expect(returned_rants).to eq(nil)
+    end
+
+  end
+
+  end
 end
