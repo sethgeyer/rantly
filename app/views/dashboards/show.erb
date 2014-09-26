@@ -2,36 +2,8 @@
   <div class="content-header">Latest Rants</div>
   <hr/>
 
-  <% @others_rants.each do |rant| %>
-    <div class="flex-container others-rants">
-      <div class="fifteen-wide other-details">
-        <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %> <br/>
-        <img class="ranter-image" src=<%= rant.user.image %>>
-        <br/>
-
-        <% @interesting_ranter = rant.user %>
-        <%= render "interesting_ranters/links_to_follow_unfollow"%>
-
-      </div>
-
-      <div class="eighty-five-wide">
-        <div class="rant-topic"><%= rant.topic %></div>
-        <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
-
-        <% @rant_to_fave = rant %>
-        <%= render "/favorites/links_to_fav_unfav" %>
-
-      </div>
-    </div>
-
-
-    <br/>
-    <% if (@others_rants.count - 1) != @others_rants.index(rant) %>
-      <div class="mini-spacer-border"></div>
-    <% end %>
-    <br/>
-  <% end %>
-
+  <% @rants_to_loop_through = @others_rants %>
+  <%= render "/rants/section_of_rants" %>
 
   <div class="content-header">My Rants</div>
   <hr/>
@@ -65,37 +37,25 @@
       <div class="content-header">Mentioned Rants</div>
       <hr/>
 
-      <% @mentioned_rants.each do |rant| %>
-        <div class="flex-container my-rants">
+      <% @rants_to_loop_through = @mentioned_rants %>
+      <%= render "/rants/section_of_rants" %>
 
-          <div class="fifteen-wide">
-            <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %>
-            <br/>
-            <img class="ranter-image" src=<%= rant.user.image %>><br/>
-            <% @interesting_ranter = rant.user %>
-            <%= render "interesting_ranters/links_to_follow_unfollow"%>
-
-          </div>
-
-          <div class="eighty-five-wide">
-            <div class="rant-topic"><%= rant.topic %></div>
-            <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
-
-            <%= link_to "Delete", user_rant_path(rant), method: :delete, class: "right-floater" %>
-            <% @rant_to_fave = rant %>
-            <%= render "/favorites/links_to_fav_unfav" %>
-
-          </div>
-
-        </div>
-
-        <br/>
-        <% if (@mentioned_rants.count - 1) != @mentioned_rants.index(rant) %>
-
-          <div class="mini-spacer-border"></div>
-        <% end %>
-        <br/>
-      <% end %>
     <% end %>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

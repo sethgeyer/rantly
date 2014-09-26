@@ -1,0 +1,25 @@
+<% @rants_to_loop_through.each do |rant| %>
+  <div class="flex-container others-rants">
+    <div class="fifteen-wide other-details">
+      <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %>
+      <br/>
+      <img class="ranter-image" src=<%= rant.user.image %>>
+      <br/>
+      <% @interesting_ranter = rant.user %>
+      <%= render "interesting_ranters/links_to_follow_unfollow"%>
+    </div>
+
+    <div class="eighty-five-wide">
+      <div class="rant-topic"><%= rant.topic %></div>
+      <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
+      <% @rant_to_fave = rant %>
+      <%= render "/favorites/links_to_fav_unfav" %>
+    </div>
+  </div>
+
+  <br/>
+  <% if (@rants_to_loop_through.count - 1) != @rants_to_loop_through.index(rant) %>
+    <div class="mini-spacer-border"></div>
+  <% end %>
+  <br/>
+<% end %>
