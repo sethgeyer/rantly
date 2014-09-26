@@ -8,9 +8,8 @@ class FavoritesController < ApplicationController
     redirect_to :back
   end
 
-
   def index
-    @favorites = kenny_loggins.favorites
+    @favorite_rants = Rant.joins("LEFT OUTER JOIN favorites ON favorites.rant_id = rants.id where favorites.user_id = #{kenny_loggins.id}")
   end
 
   def destroy

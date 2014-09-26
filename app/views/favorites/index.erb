@@ -2,30 +2,9 @@
   <div class="content-header">Favorites</div>
   <hr/>
 
-  <% @favorites.each do |favorite| %>
-    <div class="flex-container">
+  <% @rants_to_loop_through = @favorite_rants %>
+  <%= render "rants/section_of_rants"%>
 
-      <div class="fifteen-wide">
-        <%= link_to "#{favorite.rant.user.first_name}", profile_path(favorite.rant.user), class: "profile-link" %> <br/>
-        <img src=<%= favorite.rant.user.image %>>
-        <br/>
-        <% @interesting_ranter = favorite.rant.user %>
-        <%= render "interesting_ranters/links_to_follow_unfollow"%>
-
-      </div>
-      <div class="eighty-five-wide">
-        <div class="rant-topic"><%= favorite.rant.topic %></div>
-        <%= link_to favorite.rant.insert_paragraph_breaks(favorite.rant.details), rant_path(favorite.rant), class: "rant-link" %>
-
-
-        <% @rant_to_fave = favorite.rant %>
-        <%= render "/favorites/links_to_fav_unfav" %>
-
-        <br/>
-      </div>
-    </div>
-    <br/>
-  <% end %>
 
 </section>
 

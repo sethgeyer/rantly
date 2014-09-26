@@ -11,30 +11,13 @@
       <br/>
       <br/>
 
+
       <% if @rants %>
-        <% @rants.each do |rant| %>
-          <div class="flex-container">
 
-            <div class="fifteen-wide">
-              <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %> <br/>
-              <img class="ranter-image" src=<%= rant.user.image %>>
-              <br/>
+        <% @rants_to_loop_through = @rants %>
+        <%= render "/rants/section_of_rants"%>
 
-              <% @interesting_ranter = rant.user %>
-              <%= render "interesting_ranters/links_to_follow_unfollow"%>
 
-            </div>
-            <div class="eighty-five-wide">
-              <div class="rant-topic"><%= rant.topic %> </div>
-              <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
-
-              <% @rant_to_fave = rant %>
-              <%= render "/favorites/links_to_fav_unfav" %>
-
-            </div>
-          </div>
-          <br/>
-        <% end %>
 
 
       <% end %>
