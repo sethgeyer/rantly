@@ -3,10 +3,9 @@ class RantsController < ApplicationController
   def create
     @rant = Rant.new(allowed_params.merge(user_id: kenny_loggins.id))
     if @rant.save
-      redirect_to user_dashboard_path
+      redirect_to :back
     else
-      @my_rants = kenny_loggins.rants
-      @others_rants = Rant.where('user_id != ?', kenny_loggins.id)
+      @dashboard = Dashboard.new
       render 'dashboards/show'
     end
   end

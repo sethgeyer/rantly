@@ -24,8 +24,6 @@ feature "rant" do
 
 
 
-
-
   scenario "As a user, I can delete a rant" do
     create_rant(1, {user_id: @user.id})
     click_on "Dashboard"

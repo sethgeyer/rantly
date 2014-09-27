@@ -3,23 +3,24 @@
   <div class="content-header">Latest Rants</div>
   <hr/>
   <div class="others-rants">
-    <% @rants_to_loop_through = @others_rants %>
+    <% @rants_to_loop_through = @dashboard.find_all_but_current_user(kenny_loggins) %>
     <%= render "/rants/section_of_rants" %>
   </div>
 
   <div class="content-header">My Rants</div>
   <hr/>
   <div class="my-rants">
-    <% @rants_to_loop_through = @my_rants %>
+    <% @rants_to_loop_through = @dashboard.find_by_current_user(kenny_loggins) %>
     <%= render "/rants/section_of_rants" %>
   </div>
 
   <div class="mentioned-rants">
-    <% if @mentioned_rants != [] && @mentioned_rants != nil %>
+    <% @rants_to_loop_through = @dashboard.find_mentions(kenny_loggins) %>
+
+    <% if @rants_to_loop_through != [] && @rants_to_loop_through != nil %>
       <div class="content-header">Mentioned Rants</div>
       <hr/>
       <div class="mentioned-rants">
-        <% @rants_to_loop_through = @mentioned_rants %>
         <%= render "/rants/section_of_rants" %>
       </div>
     <% end %>
