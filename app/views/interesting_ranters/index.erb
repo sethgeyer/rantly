@@ -1,16 +1,16 @@
+<section class="three-qtr-wide rants">
 
-    <section class="three-qtr-wide rants">
-        <div class="content-header">Following</div>
-        <hr/>
+  <div class="content-header">Following</div>
+  <hr/>
 
+  <% @interesting_ranters.each do |interesting_ranter| %>
+    <% person = User.find(interesting_ranter.person_id) %>
+    <div class="follow-block">
+      <div class="profile-link"><%= person.first_name %> <%= person.last_name %></div>
+      <%= image_tag person.image %>
+      <br/>
+      <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+    </div>
+  <% end %>
 
-      <% @interesting_ranters.each do |interesting_ranter| %>
-        <% person = User.find(interesting_ranter.person_id) %>
-        <div class="follow-block">
-          <div class="profile-link"><%= person.first_name %> <%= person.last_name %></div>
-          <%= image_tag person.image %>
-          <br/>
-          <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
-        </div>
-      <% end %>
-    </section>
+</section>

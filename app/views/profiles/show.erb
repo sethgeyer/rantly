@@ -1,55 +1,47 @@
+<section class="three-qtr-wide rants">
+  <div class="content-header" style="margin-bottom: -20px"><%= @user.first_name %> <%= @user.last_name %></div>
 
-    <section class="three-qtr-wide rants">
-        <div class="content-header" style="margin-bottom: -20px"><%= @user.first_name %> <%= @user.last_name %></div>
+  <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
+  <% if interesting_ranter %>
+    <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE, class: "right-floater" %>
+  <% else %>
+    <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST, class: "right-floater" %>
+  <% end %>
 
+  </div>
+  <br/><br/>
+  <hr/>
+  <div>
+    <div class=bio-box>
+      <img class="profile-image" src=<%= @user.image %>>
 
+      <div class="profile-frequency-box"><%= @user.rant_frequency %></div>
+    </div>
+  </div>
+  <br/>
 
-          <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
-          <% if interesting_ranter %>
-            <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE, class:"right-floater" %>
-          <% else %>
-            <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST, class:"right-floater" %>
-          <% end %>
+  <div class="bio-box">
+    <%= @user.bio %>
+  </div>
 
-      <!--< %= InterestingRanter.build_follow_or_unfollow_link(kenny_loggins, @user.rants.first).html_safe%>-->
+  <br/>
 
+  <div class="rants-list">
 
+    <% user_rants = @user.rants %>
+    <% Rant.sort_by_most_favorited(user_rants).each do |rant| %>
 
-      <br/> <br/>
-        </div>
-        <hr/>
+      <div class="rant">
+        <div class="rant-topic"><%= rant.topic %></div>
+        <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
       </div>
-      <div>
-        <div class=bio-box>
-          <img class="profile-image" src=<%= @user.image %>>
 
-          <div class="profile-frequency-box"><%=@user.rant_frequency%></div>
-        </div>
-      </div>
+      <% @rant_to_fave = rant %>
+      <%= render "/favorites/links_to_fav_unfav" %>
       <br/>
 
-      <div class="bio-box">
-        <%= @user.bio %>
-      </div>
+    <% end %>
 
-      <br/>
+  </div>
 
-      <div class="rants-list">
-
-        <% user_rants = @user.rants %>
-        <% Rant.sort_by_most_favorited(user_rants).each do |rant| %>
-
-          <div class="rant">
-            <div class="rant-topic"><%= rant.topic %></div>
-            <%= link_to rant.insert_paragraph_breaks(rant.details), rant_path(rant), class: "rant-link" %>
-          </div>
-
-          <% @rant_to_fave = rant %>
-          <%= render "/favorites/links_to_fav_unfav" %>
-          <br/>
-
-        <% end %>
-
-      </div>
-
-    </section>
+</section>

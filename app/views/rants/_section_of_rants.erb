@@ -1,4 +1,5 @@
 <% @rants_to_loop_through.each do |rant| %>
+
   <div class="flex-container">
 
     <div class="fifteen-wide">
@@ -19,11 +20,15 @@
         <%= render "/favorites/links_to_fav_unfav" %>
       </div>
     </div>
+
   </div>
 
   <br/>
+
   <% if (@rants_to_loop_through.count - 1) != @rants_to_loop_through.index(rant) %>
     <div class="mini-spacer-border"></div>
   <% end %>
+
   <br/>
+
 <% end %>

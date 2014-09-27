@@ -1,24 +1,19 @@
+<section class="three-qtr-wide rants">
 
+  <div class="content-header" style="margin-bottom: -20px"><%= @shown_rant.topic %></div>
+  <% @rant_to_fave = @shown_rant %>
+  <%= render "/favorites/links_to_fav_unfav" %>
+  <br/><br/>
 
-    <section class="three-qtr-wide rants">
+  <hr/>
 
+  <div class="shown-rant">
+    <%= link_to "#{@shown_rant.user.first_name}", profile_path(@shown_rant.user), class: "profile-link" %>
+    <br/>
+    <img class="med-image" src=<%= @shown_rant.user.image %>>
+  </div>
 
-        <div class="content-header" style="margin-bottom: -20px"><%= @shown_rant.topic %></div>
-      <% @rant_to_fave = @shown_rant %>
-      <%= render "/favorites/links_to_fav_unfav" %>
-      <br/><br/>
-        <hr/>
+  <div style="margin-top: 30px;"><%= @shown_rant.insert_paragraph_breaks(@shown_rant.details) %></div>
 
-
-      <div class="shown-rant">
-        <%= link_to "#{@shown_rant.user.first_name}", profile_path(@shown_rant.user), class: "profile-link" %><br/>
-      <img class="med-image" src=<%= @shown_rant.user.image %>>
-      </div>
-
-
-        <div style="margin-top: 30px;"><%= @shown_rant.insert_paragraph_breaks(@shown_rant.details) %></div>
-
-
-
-    </section>
+</section>
 

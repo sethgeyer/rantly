@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    # render :new, layout: "/layouts/not_logged_in_user"
+
   end
 
   def create
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       redirect_to user_dashboard_path
     else
       flash.now[:notice] = "Login failed"
-      render :new # , layout: "/layouts/not_logged_in_user"
+      render :new
     end
   end
 

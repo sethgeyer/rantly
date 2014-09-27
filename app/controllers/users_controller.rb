@@ -22,8 +22,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(username: kenny_loggins.username)
     @user.update(allowed_params)
-    @user.save!
-    redirect_to user_dashboard_path
+    if @user.save
+      redirect_to user_dashboard_path
+    else
+      render :edit
+    end
   end
 
   private
