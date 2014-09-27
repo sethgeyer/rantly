@@ -34,8 +34,8 @@ feature "rant" do
   end
 
   scenario "As a user, if I'm viewing a specific rant, I can click on the user's name to view their profile" do
-    @user2 = create_user({first_name: "Adam", username: "adam"})
-    @rant = create_rant(2, {user_id: @user2.id})
+    @seth = create_user({first_name: "Adam", username: "adam"})
+    @rant = create_rant(2, {user_id: @seth.id})
     visit rant_path(@rant.id)
     find(".shown-rant .profile-link").click
     expect(page).to have_css(".rants")
@@ -45,8 +45,8 @@ feature "rant" do
 
 
   scenario "As a user, if I'm viewing a specific rant, I can make a rant a 'favorite" do
-    @user2 = create_user({first_name: "Adam", username: "adam"})
-    @rant = create_rant(2, {user_id: @user2.id})
+    @seth = create_user({first_name: "Adam", username: "adam"})
+    @rant = create_rant(2, {user_id: @seth.id})
     visit rant_path(@rant.id)
     within(".rants") { click_on "Favorite" }
     expect(page).to have_css(".rants")

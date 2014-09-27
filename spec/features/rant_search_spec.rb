@@ -1,12 +1,12 @@
 feature "search rants" do
   before(:each) do
-    @user1 = create_user({first_name: "Steve", username: "steve", last_name: "Smith"})
-    @rant1 = create_rant(1, {user_id: @user1.id})
-    @rant3 = create_rant(3, {user_id: @user1.id})
-    @user3 = create_user({first_name: "Steve", username: "ssteve", last_name: "Steve"})
-    @rant4 = create_rant(4, {user_id: @user3.id})
-    @user2 = create_user
-    create_rant(2, {user_id: @user2.id})
+    @adam = create_user({first_name: "Steve", username: "steve", last_name: "Smith"})
+    @adam_rant1 = create_rant(1, {user_id: @adam.id})
+    @adam_rant3 = create_rant(3, {user_id: @adam.id})
+    @steve = create_user({first_name: "Steve", username: "ssteve", last_name: "Steve"})
+    @steve_rant4 = create_rant(4, {user_id: @steve.id})
+    @seth = create_user
+    create_rant(2, {user_id: @seth.id})
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}
     visit rants_path

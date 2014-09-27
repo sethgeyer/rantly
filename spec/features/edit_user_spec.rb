@@ -1,7 +1,7 @@
 
-feature "Edit Profile" do
+feature "Edit User Details" do
 
-  scenario "As a user, I can edit my profile" do
+  scenario "As a user, I can edit my user details" do
     create_user
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}

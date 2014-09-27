@@ -1,5 +1,5 @@
-
 feature "Home Page" do
+
   before(:each) do
     visit "/"
   end
@@ -39,12 +39,6 @@ feature "Home Page" do
       expect(page).to have_link "Dashboard"
     end
 
-
-
-
-
   end
-
-
 
 end
