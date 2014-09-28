@@ -56,13 +56,11 @@
   <%else%>
     <div class="navbar-right" style="width:80%">
 
-      <div>
-        <%= link_to "Login", login_path %>
-      </div>
 
-      <div class="nav-button">
-        <%= link_to "Join", new_user_path %>
-      </div>
+        <%= link_to "Login", login_path %>
+
+      <%= link_to "Join", new_user_path, class:"nav-button" %>
+
 
     </div>
 
