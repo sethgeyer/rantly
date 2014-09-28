@@ -1,22 +1,22 @@
-feature "Home Page" do
+feature "Navbar" do
 
   before(:each) do
     visit "/"
   end
 
-  scenario "A a visitor, the homepage includes a splash page and links/buttons to login/join" do
+  scenario "A a visitor, the homepage includes a splash page and navbarlinks/buttons to login/join" do
     expect(page).to have_css("#home")
     expect(page).to have_content("Let It All Out")
     expect(page).to have_link("Login")
     expect(page).to have_link("Join")
   end
 
-  scenario "As a visitor, I can access the regsitration page, via the link" do
+  scenario "As a visitor, I can access the regsitration page, via the navbar link" do
     click_on("Join")
     expect(page).to have_css("#new-users")
   end
 
-  scenario "As a visitor, I can access the login page, via the link" do
+  scenario "As a visitor, I can access the login page, via the navbar link" do
     click_on "Login"
     expect(page).to have_css("#new-sessions")
   end

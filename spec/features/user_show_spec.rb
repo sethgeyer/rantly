@@ -3,17 +3,10 @@ feature "User Profile Page" do
     @adam = create_user({first_name: "Adam", username: "adam"})
     @adam_rant1 = create_rant(1, {user_id: @adam.id})
     @adam_rant3 = create_rant(3, {user_id: @adam.id})
-
     @seth = create_user
     create_rant(2, {user_id: @seth.id})
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}
-  end
-
-  scenario "As a user I can visit another user's show page" do
-    visit profile_path(@adam.id)
-    expect(page).to have_content("Adam")
-    expect(page).to have_content("Handsome Programmer")
   end
 
   scenario "A user's show page should include all of their individual rants in addition to their bio" do
