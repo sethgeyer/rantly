@@ -45,9 +45,9 @@
 
     <div class="navbar-right">
 
-      <div class="nav-button">
-        <%= link_to "Logout", logout_path %>
-      </div>
+        <%= form_for :session, url: session_path(kenny_loggins), method: :delete do |f| %>
+        <%f.submit "Logout", class:"nav-button"%>
+        <% end %>
 
     </div>
 
@@ -69,7 +69,7 @@
       </div>
 
       <div class="nav-button">
-        <%= link_to "Join", new_user_path %>
+        <%= link_to "    Join    ", new_user_path %>
       </div>
 
     </div>

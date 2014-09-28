@@ -32,7 +32,7 @@ feature "Home Page" do
     scenario "I can logout" do
       expect(page).not_to have_link("Login")
       expect(page).not_to have_link("Join")
-      expect(page).to have_link("Logout")
+      expect(page).to have_button("Logout")
     end
 
     scenario "I can see a dashboard link" do
