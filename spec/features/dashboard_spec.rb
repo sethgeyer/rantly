@@ -67,6 +67,17 @@ feature "Dashboard Page" do
     expect(page).not_to have_content("Adam")
   end
 
+
+  scenario "As a user, I can see how many people have favorited a rant" do
+    within(".others-rants") { click_on "Favorite" }
+    within(".others-rants") { click_on "1-Unfavorite" }
+    expect(page).to have_content("Favorite")
+
+  end
+
+
+
+
   scenario "As a user, I can link to the search form" do
     click_on "Search"
     expect(page).to have_css(".horizontal-form-input")

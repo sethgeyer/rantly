@@ -12,6 +12,7 @@ feature "Favorites Page" do
   scenario "As a user, I can link to my favorites from the hoempage" do
     click_on "Favorites"
     expect(page).to have_content("Favorites")
+
   end
 
   scenario "As a user, I can unfavorite a rant on the favorite page" do
