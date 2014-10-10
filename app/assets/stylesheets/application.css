@@ -298,6 +298,20 @@ margin: auto
     float:right
 }
 
+.comment-button {
+    margin-top:12px;
+    margin-right:-2px;
+    float:right;
+    border:1px black solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color: darkgreen;
+    color: white;
+    font-size: 18px;
+}
+
 /*checked*/
 .fifteen-wide {
     width: 15%;

@@ -7,6 +7,7 @@
 
   <hr/>
 
+
   <div class="shown-rant">
     <%= link_to "#{@shown_rant.user.first_name}", profile_path(@shown_rant.user), class: "profile-link" %>
     <br/>
@@ -15,5 +16,29 @@
 
   <div style="margin-top: 30px;"><%= markdown(@shown_rant.details).html_safe %></div>
 
+  <div class="mini-spacer-border"></div>
+
+  <% @shown_rant.comments.each do |comment| %>
+    <div class="flex-container">
+
+      <div class="fifteen-wide">
+        <img class="ranter-image" src=<%= comment.user.image %>>
+      </div>
+
+      <div class="eighty-five-wide">
+        <%= comment.body %>
+      </div>
+    </div>
+    <br/>
+    <div class="mini-spacer-border"></div>
+    <br/>
+<% end %>
+
+
+
+  <%= form_for [@shown_rant, @shown_rant.comments.new], id: "#new_comment" do |f| %>
+    <%= f.text_field :body, placeholder: "Enter your comments here...", class: "wide-input" %><br/>
+    <%= f.submit "Rant Back", class:"comment-button" %>
+  <% end %>
 </section>
 
