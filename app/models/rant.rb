@@ -13,10 +13,6 @@ class Rant < ActiveRecord::Base
     sorted_list
   end
 
-  def insert_paragraph_breaks(text)
-    (text.gsub("\n", "<br/>")).html_safe
-  end
-
   def self.return_results_for_search(search_term)
     if search_term != nil && search_term != ""
       user_searches = Rant.joins(:user).where(users: {last_name: search_term}) + Rant.joins(:user).where(users: {first_name: search_term}) + Rant.joins(:user).where(users: {username: search_term})

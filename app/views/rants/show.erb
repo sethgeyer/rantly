@@ -13,7 +13,7 @@
     <img class="med-image" src=<%= @shown_rant.user.image %>>
   </div>
 
-  <div style="margin-top: 30px;"><%= @shown_rant.insert_paragraph_breaks(@shown_rant.details) %></div>
+  <div style="margin-top: 30px;"><%= markdown(@shown_rant.details).html_safe %></div>
 
 </section>
 

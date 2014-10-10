@@ -3,7 +3,7 @@ class RantsController < ApplicationController
   def create
     @rant = Rant.new(allowed_params.merge(user_id: kenny_loggins.id))
     if @rant.save
-      redirect_to :back
+      redirect_to user_dashboard_path
     else
       @dashboard = Dashboard.new
       render 'dashboards/show'
