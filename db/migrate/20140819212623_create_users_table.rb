@@ -7,6 +7,7 @@ class CreateUsersTable < ActiveRecord::Migration
       t.string :last_name
       t.string :bio
       t.string :rant_frequency
+      t.timestamps
     end
   end
 end

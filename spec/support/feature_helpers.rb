@@ -15,6 +15,24 @@ def create_user(modified_attributes ={})
 end
 
 
+def create_admin_user(modified_attributes = {})
+  default_attributes = {
+  username: "admin",
+  password: "password",
+  first_name: "Ad",
+  last_name: "Min",
+  bio: "My bio",
+  rant_frequency: "Daily",
+  image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",
+  is_admin: true}
+
+  attributes = default_attributes.merge(modified_attributes)
+
+  User.create!(attributes)
+
+end
+
+
 
 def create_rant(number = 1, modified_attributes ={})
   default_attributes = {

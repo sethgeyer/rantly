@@ -23,7 +23,7 @@
 
       <% if kenny_loggins.is_admin?%>
         <div><%= link_to "Dashboard", ""%></div>
-        <div><%= link_to "Rants", ""%></div>
+        <div><%= link_to "Rants", admin_rants_path%></div>
         <div><%= link_to "Users", ""%></div>
 
       <% else %>
@@ -49,7 +49,7 @@
 
     <article class="flex-container">
 
-      <%= render "/rants/form" %>
+      <%= render "/rants/form" if !kenny_loggins.is_admin? %>
 
       <%= yield %>
 

@@ -3,6 +3,7 @@ class AddInterestingRanters < ActiveRecord::Migration
     create_table :interesting_ranters do |t|
       t.integer :user_id
       t.integer :person_id
+      t.timestamps
     end
   end
 end

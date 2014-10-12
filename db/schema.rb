@@ -17,36 +17,46 @@ ActiveRecord::Schema.define(version: 20141012173408) do
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
-    t.text    "body"
-    t.integer "user_id"
-    t.integer "rant_id"
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "rant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "favorites", force: true do |t|
-    t.integer "user_id"
-    t.integer "rant_id"
+    t.integer  "user_id"
+    t.integer  "rant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "interesting_ranters", force: true do |t|
-    t.integer "user_id"
-    t.integer "person_id"
+    t.integer  "user_id"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rants", force: true do |t|
-    t.string  "topic"
-    t.text    "details"
-    t.integer "user_id"
+    t.string   "topic"
+    t.text     "details"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string  "username"
-    t.string  "password_digest"
-    t.string  "first_name"
-    t.string  "last_name"
-    t.text    "bio"
-    t.string  "rant_frequency"
-    t.string  "image"
-    t.boolean "is_admin",        default: false
+    t.string   "username"
+    t.string   "password_digest"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "bio"
+    t.string   "rant_frequency"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+    t.boolean  "is_admin",        default: false
   end
 
 end

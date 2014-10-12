@@ -1,7 +1,7 @@
 feature "Admin Navbar" do
 
   before(:each) do
-    create_user({username: "admin", password: "password", first_name: "Ad", last_name: "Min", is_admin: true})
+   create_admin_user
     visit_login_page_and_fill_in_form("admin", "password")
     within("#new-sessions") {click_on "Login"}
   end

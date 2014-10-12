@@ -1,0 +1,35 @@
+
+
+<section class="full-wide rants">
+
+
+  <div class="content-header">Rants</div>
+
+
+  <table style="width: 100%">
+    <thead>
+      <tr >
+        <th>Name</th>
+        <th>Email</th>
+        <th>Title</th>
+        <th >Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @rants.each do |rant| %>
+    <tr >
+      <td ><%=rant.user.full_name%></td>
+      <td ><%=rant.user.username%></td>
+      <td ><%=rant.topic%></td>
+      <td ></td>
+
+      </tr>
+        <% end %>
+        </tbody>
+        </table>
+
+
+</section>
+
+
+

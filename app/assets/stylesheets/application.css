@@ -52,6 +52,38 @@ margin: 0%
 }
 
 
+.full-wide {
+
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 1%;
+    padding-right: 1%;
+    background-color: white;
+    position: relative;
+    top: 85px;
+    border: 1px solid red
+}
+
+table {
+    border-collapse: collapse;
+}
+table td {
+    text-align: left;
+    border: 1px solid black;
+    padding-left: 10px;
+
+}
+
+table th {
+    text-align: left;
+    background-color: grey;
+    border: 1px solid black;
+    padding-left: 10px;
+
+}
+
+
+
 /*checked*/
 .navbar {
     background-color: #31332F;
