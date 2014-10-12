@@ -24,4 +24,13 @@ class Rant < ActiveRecord::Base
     end
   end
 
+  def shorten_it(length = 300)
+    full_rant_as_an_array = self.details.split(" ")
+    if full_rant_as_an_array.length > 300
+      full_rant_as_an_array[0..length-1].join(" ") + "..."
+    else
+      self.details
+    end
+  end
+
 end

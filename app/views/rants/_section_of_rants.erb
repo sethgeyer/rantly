@@ -15,11 +15,11 @@
       <div class="rant-topic"><%= rant.topic %></div>
 
 
+    <% shortened_rant = rant.shorten_it %>
 
 
 
-
-      <%= link_to markdown(rant.details).html_safe, rant_path(rant), class: "rant-link" %>
+      <%= link_to markdown(shortened_rant).html_safe, rant_path(rant), class: "rant-link" %>
       <div>
         <%= link_to "Delete", user_rant_path(rant), method: :delete, class: "right-floater" if rant.user == kenny_loggins %>
 
