@@ -15,19 +15,20 @@ feature "Favorites Page" do
 
   end
 
-  scenario "As a user, I can unfavorite a rant on the favorite page" do
-    within(".others-rants") { click_on "Favorite" }
+  scenario "As a user, I can unfavorite a rant on the favorite page", js: true do
+    first(".favoriter").click
+
     expect(page).to have_content("Latest Rants")
     click_on "Favorites"
     expect(page).to have_content("Favorites")
     expect(page).to have_content("Adam")
-    expect(page).to have_link("Unfavorite")
-    click_on "Unfavorite"
+    expect(page).to have_css(".unfavoriter")
+    first(".unfavoriter").click
     expect(page).not_to have_content("Adam")
   end
 
-  scenario "As a user, I can click on another user's rants from the favorites page to see the show page for the rant" do
-    within(".others-rants") { click_on "Favorite" }
+  scenario "As a user, I can click on another user's rants from the favorites page to see the show page for the rant", js: true do
+    first(".favoriter").click
     click_on "Favorites"
     first(".rant-link").click
     expect(page).to have_css(".rants")

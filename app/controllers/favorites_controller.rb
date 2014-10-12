@@ -5,7 +5,8 @@ class FavoritesController < ApplicationController
     favorite.user_id = kenny_loggins.id
     favorite.rant_id = params[:rant_id]
     favorite.save!
-    redirect_to :back
+    # redirect_to :back
+    render :status => :created, :json => favorite
   end
 
   def index
@@ -14,7 +15,8 @@ class FavoritesController < ApplicationController
 
   def destroy
     Favorite.where(id: params[:id], user_id: kenny_loggins.id).first.destroy
-    redirect_to :back
+    render nothing: true
+    # redirect_to :back
   end
 
 end

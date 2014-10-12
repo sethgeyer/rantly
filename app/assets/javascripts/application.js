@@ -17,24 +17,58 @@
 
 $(document).ready( function() {
 
+//  Highlight rant body when you mouse over it
   var rantLink = $(".rant-link")
 
   rantLink.on("mouseover", function() {
     $(this).toggleClass('mouseover-color')
   })
 
+
   rantLink.on("mouseleave", function() {
     $(this).toggleClass('mouseover-color')
   })
 
+//--------------------------------------------
 
 
-  var navButton = $(".navbar a")
+  $(".favoriter").on('click', function() {
+    console.log("favoriter was called")
+    var favoriteLink = $(this)
+    var rantID = favoriteLink.attr('data-rant-id')
+    var postFavoritePromise = $.post("/user/favorites", {rant_id: rantID})
 
-  navButton.on("click", function() {
-    console.log($(this))
+    postFavoritePromise.success( function(favorite) {
 
-    })
+      favoriteLink.html("Unfavorite")
+      favoriteLink.attr('data-favorite-id', favorite.id)
+      favoriteLink.removeClass("favoriter")
+      favoriteLink.addClass("unfavoriter")
+    });
+  });
+
+  $(".unfavoriter").on('click', function() {
+    console.log("unfavoriter was called")
+    var unfavoriteLink = $(this)
+    var unfavoriteID = unfavoriteLink.attr('data-favorite-id')
+    var deleteUnfavoritePromise = $.ajax({url: "/user/favorites/" + unfavoriteID, type:"DELETE"})
+
+    deleteUnfavoritePromise.success( function() {
+      unfavoriteLink.html("Favorite")
+      unfavoriteLink.attr('data-favorite-id', "")
+      unfavoriteLink.removeClass("unfavoriter")
+      unfavoriteLink.addClass('favoriter')
+
+    });
+
+  });
+
+
+
+
+
+
+
 
 
 });

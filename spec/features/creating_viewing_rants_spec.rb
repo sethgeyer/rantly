@@ -1,6 +1,9 @@
 feature "create and view rants" do
 
   before(:each) do
+    # User.destroy_all
+    # Rant.destroy_all
+    # Favorite.destroy_all
     @user = create_user
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}
@@ -32,7 +35,7 @@ feature "create and view rants" do
   end
 
 
-  context "As a user viewing a specific rant"  do
+  context "As a user viewing a specific rant" do
     before(:each) do
       @adam = create_user({first_name: "Adam", username: "adam"})
       @rant = create_rant(2, {user_id: @adam.id})
@@ -46,14 +49,16 @@ feature "create and view rants" do
       expect(page).to have_content("Handsome Programmer")
     end
 
-    scenario "As a user, if I'm viewing a specific rant, I can make a rant a 'favorite" do
-      within(".rants") { click_on "Favorite" }
+    scenario "As a user, if I'm viewing a specific rant, I can make a rant a 'favorite", js: true  do
+
+      # within(".rants") { click_on "Favorite" }
+      find(".favoriter").click
       expect(page).to have_css(".rants")
       click_on "Favorites"
       expect(page).to have_content("Favorites")
       expect(page).to have_content("Adam")
       visit rant_path(@rant.id)
-      within(".rants") { click_on "Unfavorite" }
+      find(".unfavoriter").click
       expect(page).to have_css(".rants")
       click_on "Favorites"
       expect(page).to have_content("Favorites")

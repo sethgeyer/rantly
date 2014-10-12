@@ -53,14 +53,15 @@ feature "Dashboard Page" do
     expect(page).to have_content("Favorites")
   end
 
-  scenario "As a user, I can make a rant a 'favorite" do
-    within(".others-rants") { click_on "Favorite" }
+  scenario "As a user, I can make a rant a 'favorite", js: true do
+    first(".favoriter").click
     expect(page).to have_content("Latest Rants")
     click_on "Favorites"
     expect(page).to have_content("Favorites")
     expect(page).to have_content("Adam")
     click_on "Dashboard"
-    within(".others-rants") { click_on "Unfavorite" }
+    first(".unfavoriter").click
+
     expect(page).to have_content("Latest Rants")
     click_on "Favorites"
     expect(page).to have_content("Favorites")
@@ -68,10 +69,10 @@ feature "Dashboard Page" do
   end
 
 
-  scenario "As a user, I can see how many people have favorited a rant" do
-    within(".others-rants") { click_on "Favorite" }
-    within(".others-rants") { click_on "1-Unfavorite" }
-    expect(page).to have_content("Favorite")
+  scenario "As a user, I can see how many people have favorited a rant", js: true do
+    first(".favoriter").click
+    find(".unfavoriter").click
+     expect(page).to have_content("Favorite")
 
   end
 
