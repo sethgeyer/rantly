@@ -24,7 +24,7 @@
       <% if kenny_loggins.is_admin?%>
         <div><%= link_to "Dashboard", ""%></div>
         <div><%= link_to "Rants", admin_rants_path%></div>
-        <div><%= link_to "Users", ""%></div>
+        <div><%= link_to "Users", admin_users_path%></div>
 
       <% else %>
         <div><%= link_to "Dashboard", user_dashboard_path %></div>

@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless kenny_loggins
   end
 
+  def ensure_current_user_is_admin
+    redirect_to root_path unless kenny_loggins.is_admin?
+  end
 
   def kenny_loggins
     @current_user ||= User.find_by(id: session[:user_id])

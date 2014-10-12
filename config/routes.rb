@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :admin_rants, only: [:index]
-
+  resources :admin_users, only: [:index]
 
 end

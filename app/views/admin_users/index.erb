@@ -1,0 +1,30 @@
+<section class="full-wide">
+
+  <div class="content-header">Users</div>
+
+  <table style="width: 100%">
+    <thead>
+    <tr >
+      <th>Name</th>
+      <th>Email</th>
+      <th>Number of Rants</th>
+      <th>Disabled</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td ><%=user.full_name%></td>
+        <td></td>
+        <td><%=user.rants.count%></td>
+        <td>Actions</td>
+        <td></td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+
+</section>
