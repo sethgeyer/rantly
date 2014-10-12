@@ -6,4 +6,12 @@ class AdminUsersController < ApplicationController
     @users = User.all
   end
 
+
+  def update
+    @user = User.find(params[:id])
+    @user.is_disabled = true
+    @user.save!
+    redirect_to admin_users_path
+  end
+
 end

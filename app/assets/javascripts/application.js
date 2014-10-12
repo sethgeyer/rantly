@@ -62,10 +62,14 @@ $(document).ready( function() {
     });
 
   });
-
-
-
-
+//
+////  Sort by the number of rants
+//
+//  $('#rant-count').on('click', function() {
+//    console.log("i clicked on the rant sorter")
+//
+//
+//  })
 
 
 

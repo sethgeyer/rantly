@@ -1,10 +1,10 @@
 feature "Admin Rights" do
 
   before(:each) do
-    user = create_user({first_name: "Seth", last_name: "Geyer"})
-    @first_rant = create_rant(3, {topic: "first_rant_created", user_id: user.id})
-    @second_rant = create_rant(1, {topic: "second_rant_created", user_id: user.id})
-    @third_rant = create_rant(2, {topic: "third_rant_created", user_id: user.id})
+    @user = create_user({first_name: "Seth", last_name: "Geyer"})
+    @first_rant = create_rant(3, {topic: "first_rant_created", user_id: @user.id})
+    @second_rant = create_rant(1, {topic: "second_rant_created", user_id: @user.id})
+    @third_rant = create_rant(2, {topic: "third_rant_created", user_id: @user.id})
   end
 
 
@@ -41,8 +41,21 @@ feature "Admin Rights" do
       expect(page).to have_content("Seth Geyer")
       expect(page).to have_content("3")
       expect(page).to have_content("Ad Min")
+    end
+
+    scenario "Aa an admin, I can disable a user from being able to login" do
+      click_on "Users"
+      first(".disable-link").click
+      expect(User.find(@user.id).is_disabled).to eq(true)
+      click_on "Logout"
+      visit_login_page_and_fill_in_form("seth", "password")
+      within("#new-sessions") {click_on "Login"}
+      expect(page).to have_content("Your account has been disabled")
 
     end
+
+
+
 
   end
 
