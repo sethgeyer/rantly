@@ -9,7 +9,8 @@
       <div class="profile-link"><%= person.first_name %> <%= person.last_name %></div>
       <%= image_tag person.image %>
       <br/>
-      <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+      <div class="unfollower" data-interesting-ranter-id="<%=interesting_ranter.id%>" data-ranter-id="><%=person.id%>">Unfollow</div>
+
     </div>
   <% end %>
 

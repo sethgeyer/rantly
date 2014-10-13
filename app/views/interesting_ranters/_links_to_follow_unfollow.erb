@@ -1,6 +1,10 @@
 <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @person_to_follow.id).first %>
 <% if interesting_ranter %>
-  <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE %>
+  <div class="unfollower" data-interesting-ranter-id="<%=interesting_ranter.id%>" data-ranter-id="><%=@person_to_follow.id%>">Unfollow</div>
+
 <% else %>
-  <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @person_to_follow.id), method: :POST %>
+  <div class="follower" data-interesting-ranter-id="" data-ranter-id="<%=@person_to_follow.id%>">Follow</div>
+
+
 <% end %>
+

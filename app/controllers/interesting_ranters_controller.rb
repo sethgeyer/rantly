@@ -5,7 +5,7 @@ class InterestingRantersController < ApplicationController
     interesting_ranter.user_id = kenny_loggins.id
     interesting_ranter.person_id = params[:interesting_ranter_id]
     interesting_ranter.save!
-    redirect_to :back
+    render :status => :created, :json => interesting_ranter
   end
 
   def index
@@ -14,7 +14,7 @@ class InterestingRantersController < ApplicationController
 
   def destroy
     InterestingRanter.find(params[:id]).destroy
-    redirect_to :back
+    render :nothing => true
   end
 
 end

@@ -11,9 +11,9 @@ feature "followers_page" do
     click_on "Following"
   end
 
-  scenario "A user can see the ranters they're following and won't see the ranters they're not following" do
+  scenario "A user can see the ranters they're following and won't see the ranters they're not following", js: true do
     expect(page).to have_content("Adam")
-    click_on "Unfollow"
+    find(".unfollower").click
     expect(page).not_to have_content("Adam")
   end
 

@@ -17,7 +17,7 @@ describe Favorite do
 
     it "does not create additional text if other people have not favorited the account" do
       fave_count = Favorite.create_favorite_count(@non_favorited_rant)
-      expect(fave_count).to eq(nil)
+      expect(fave_count).to eq("")
     end
 
 

@@ -1,11 +1,12 @@
 <section class="three-qtr-wide rants">
   <div class="content-header" style="margin-bottom: -20px"><%= @user.first_name %> <%= @user.last_name %></div>
 
+
   <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
   <% if interesting_ranter %>
-    <%= link_to "Unfollow", user_interesting_ranter_path(interesting_ranter), method: :DELETE, class: "right-floater" %>
+    <div class="unfollower right-floater" data-interesting-ranter-id="<%= interesting_ranter.id %>" data-ranter-id="><%= @user.id %>">Unfollow</div>
   <% else %>
-    <%= link_to "Follow", user_interesting_ranters_path(interesting_ranter_id: @user.id), method: :POST, class: "right-floater" %>
+    <div class="follower right-floater" data-interesting-ranter-id="" data-ranter-id="<%= @user.id %>">Follow</div>
   <% end %>
 
   </div>

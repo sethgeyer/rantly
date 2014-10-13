@@ -17,14 +17,13 @@ feature "User Profile Page" do
     expect(page).to have_content("#{'d' * 141}3")
   end
 
-  scenario "A user can choose to follow an interesting ranter from the interesting ranter's profile page." do
+  scenario "A user can choose to follow an interesting ranter from the interesting ranter's profile page.", js: true do
     visit profile_path(@adam.id)
     expect(page).to have_content("Adam")
-    expect(page).to have_link "Follow"
-    click_on "Follow"
-    expect(page).to have_link "Unfollow"
-    click_on "Unfollow"
-    expect(page).to have_link "Follow"
+    find(".follower").click
+    # expect(page).to have_link "Unfollow"
+    find(".unfollower").click
+    expect(page).to have_css(".follower")
   end
 
   scenario "A user can see another user's rant, organized by most favorited" do

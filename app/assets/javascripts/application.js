@@ -31,6 +31,7 @@ $(document).ready( function() {
 
 //--------------------------------------------
 
+//  FAVORITE-UNFAVORITE A RANT
 
   $("body").on('click', ".favoriter", function(event) {
     console.log("favoriter was called")
@@ -63,14 +64,40 @@ $(document).ready( function() {
     });
 
   });
-//
-////  Sort by the number of rants
-//
-//  $('#rant-count').on('click', function() {
-//    console.log("i clicked on the rant sorter")
-//
-//
-//  })
+
+//--------------------------------------------
+
+//  FOLLOW-UNFOLLOW A PERSON
+
+  $("body").on('click', ".follower", function(event) {
+    var followerLink = $(event.target)
+    var ranterID = followerLink.attr('data-ranter-id')
+    var postInterestingRanterPromise = $.post("/user/interesting_ranters/", {interesting_ranter_id: ranterID})
+
+    postInterestingRanterPromise.success( function(interestingRanter) {
+      followerLink.html("Unfollow")
+      followerLink.attr('data-interesting-ranter-id', interestingRanter.id )
+      followerLink.removeClass("follower")
+      followerLink.addClass("unfollower")
+    })
+  })
+
+  $("body").on('click', ".unfollower", function(event) {
+    var unfollowerLink = $(event.target)
+    var interestingRanterID = unfollowerLink.attr('data-interesting-ranter-id')
+    var deleteInterestingRanterPromise = $.ajax({url: "/user/interesting_ranters/" + interestingRanterID, type: "DELETE"})
+
+    deleteInterestingRanterPromise.success( function() {
+      unfollowerLink.html("Follow")
+      unfollowerLink.attr('data-interesting-ranter-id', "" )
+      unfollowerLink.removeClass("unfollower")
+      unfollowerLink.addClass("follower")
+    })
+  })
+
+
+
+
 
 
 

@@ -27,12 +27,11 @@ feature "Dashboard Page" do
     expect(page.find(".others-rants")).not_to have_content("#{'d' * 141}2")
   end
 
-  scenario "As a user, I can chose to 'follow' or 'unfollow' another user" do
+  scenario "As a user, I can chose to 'follow' or 'unfollow' another user", js: true do
     expect(page.find(".others-rants")).to have_content("Adam")
-    first('.fifteen-wide').click_link("Follow")
-    expect(page.find(".others-rants")).to have_link("Unfollow")
-    click_link("Unfollow")
-    expect(page.find(".others-rants")).to have_link("Follow")
+    first('.fifteen-wide .follower').click
+    first('.fifteen-wide .unfollower').click
+    expect(page.find(".others-rants")).to have_css(".follower")
   end
 
   scenario "As a user, I can click on another user's rants to see the show page for the rant" do
