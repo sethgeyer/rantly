@@ -5,8 +5,11 @@ class FavoritesController < ApplicationController
     favorite.user_id = kenny_loggins.id
     favorite.rant_id = params[:rant_id]
     favorite.save!
+    times_favorited = Favorite.create_favorite_count(params[:rant_id])
+
+    favorite_values = [favorite, times_favorited]
     # redirect_to :back
-    render :status => :created, :json => favorite
+    render :status => :created, :json => favorite_values
   end
 
   def index
@@ -14,9 +17,11 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    Favorite.where(id: params[:id], user_id: kenny_loggins.id).first.destroy
-    render nothing: true
-    # redirect_to :back
+    favorite = kenny_loggins.favorites.find(params[:id])
+    rant = favorite.rant
+    favorite.destroy
+    times_favorited =  Favorite.create_favorite_count(rant.id)
+    render :json => {times_favorited: times_favorited}
   end
 
 end

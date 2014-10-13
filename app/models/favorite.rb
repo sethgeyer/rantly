@@ -7,7 +7,7 @@ class Favorite < ActiveRecord::Base
   def self.create_favorite_count(rant_id)
     count  = Favorite.where(rant_id: rant_id).count
     if count == 0
-      nil
+      ""
     else
       "#{count}-"
     end

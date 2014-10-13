@@ -32,29 +32,30 @@ $(document).ready( function() {
 //--------------------------------------------
 
 
-  $(".favoriter").on('click', function() {
+  $("body").on('click', ".favoriter", function(event) {
     console.log("favoriter was called")
-    var favoriteLink = $(this)
+    var favoriteLink = $(event.target)
     var rantID = favoriteLink.attr('data-rant-id')
     var postFavoritePromise = $.post("/user/favorites", {rant_id: rantID})
 
-    postFavoritePromise.success( function(favorite) {
-
-      favoriteLink.html("Unfavorite")
-      favoriteLink.attr('data-favorite-id', favorite.id)
+    postFavoritePromise.success( function(favoriteValues) {
+      favoriteLink.html(favoriteValues[1] + "Unfavorite")
+      favoriteLink.attr('data-favorite-id', favoriteValues[0].id)
       favoriteLink.removeClass("favoriter")
       favoriteLink.addClass("unfavoriter")
     });
   });
 
-  $(".unfavoriter").on('click', function() {
+  $('body').on('click',".unfavoriter", function(event) {
     console.log("unfavoriter was called")
-    var unfavoriteLink = $(this)
+    var unfavoriteLink = $(event.target)
     var unfavoriteID = unfavoriteLink.attr('data-favorite-id')
     var deleteUnfavoritePromise = $.ajax({url: "/user/favorites/" + unfavoriteID, type:"DELETE"})
 
-    deleteUnfavoritePromise.success( function() {
-      unfavoriteLink.html("Favorite")
+    deleteUnfavoritePromise.success( function(timesFavorited) {
+      console.log("unfavoriter was SUCCESSFUL")
+      unfavoriteLink.html(timesFavorited["times_favorited"] + "Favorite")
+
       unfavoriteLink.attr('data-favorite-id', "")
       unfavoriteLink.removeClass("unfavoriter")
       unfavoriteLink.addClass('favoriter')

@@ -2,6 +2,7 @@ class Rant < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
+  has_many :favorites
 
   validates :topic, :details, presence: true
   validates :topic, length: {maximum: 49, message: "must be less than 50 characters"}
