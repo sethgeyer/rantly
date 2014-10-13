@@ -48,13 +48,11 @@ $(document).ready( function() {
   });
 
   $('body').on('click',".unfavoriter", function(event) {
-    console.log("unfavoriter was called")
     var unfavoriteLink = $(event.target)
     var unfavoriteID = unfavoriteLink.attr('data-favorite-id')
     var deleteUnfavoritePromise = $.ajax({url: "/user/favorites/" + unfavoriteID, type:"DELETE"})
 
     deleteUnfavoritePromise.success( function(timesFavorited) {
-      console.log("unfavoriter was SUCCESSFUL")
       unfavoriteLink.html(timesFavorited["times_favorited"] + "Favorite")
 
       unfavoriteLink.attr('data-favorite-id', "")
