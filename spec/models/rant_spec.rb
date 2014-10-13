@@ -19,16 +19,6 @@ describe Rant do
       expect(rant.errors[:topic].any?).to eq(false)
     end
 
-    it "requires a body (aka: details)" do
-      rant = Rant.new(details: "")
-      rant.valid?
-      expect(rant.errors[:details]).to include("can't be blank")
-      rant.details = "f" * 141
-      rant.valid?
-      expect(rant.errors[:details].any?).to eq(false)
-    end
-
-
     it "requires a body (aka: details) to be at least 140 characters" do
       rant = Rant.new(details: "#{'d' * 140 }")
       rant.valid?

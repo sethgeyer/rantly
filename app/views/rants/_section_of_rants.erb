@@ -1,6 +1,6 @@
 <% @rants_to_loop_through.each do |rant| %>
 
-  <div class="flex-container">
+  <div class="flex-container favorites-block">
 
     <div class="fifteen-wide">
       <%= link_to "#{rant.user.first_name}", profile_path(rant.user), class: "profile-link" %>

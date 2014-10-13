@@ -60,6 +60,9 @@ $(document).ready( function() {
       unfavoriteLink.attr('data-favorite-id', "")
       unfavoriteLink.removeClass("unfavoriter")
       unfavoriteLink.addClass('favoriter')
+      if (location.pathname == "/user/favorites" ) {
+        unfavoriteLink.parents(".favorites-block").hide()
+      }
 
     });
 
@@ -70,6 +73,7 @@ $(document).ready( function() {
 //  FOLLOW-UNFOLLOW A PERSON
 
   $("body").on('click', ".follower", function(event) {
+
     var followerLink = $(event.target)
     var ranterID = followerLink.attr('data-ranter-id')
     var postInterestingRanterPromise = $.post("/user/interesting_ranters/", {interesting_ranter_id: ranterID})
@@ -92,10 +96,36 @@ $(document).ready( function() {
       unfollowerLink.attr('data-interesting-ranter-id', "" )
       unfollowerLink.removeClass("unfollower")
       unfollowerLink.addClass("follower")
+
+      if (location.pathname == "/user/interesting_ranters" ) {
+        unfollowerLink.parents(".follow-block").hide()
+      }
     })
   })
 
 
+//--------------------------------------------
+
+//  SUBMIT A RANT
+
+    $(".rant-form").on('click', ".rant-submitter", function(event) {
+      event.preventDefault();
+      $(".topic-errors").html("")
+      $(".detail-errors").html("")
+
+      var postRantPromise = $.post("/user/rants", {rant_topic: rant_topic.value, rant_details: rant_details.value})
+      postRantPromise.success( function(validationErrorMessages) {
+
+        if (validationErrorMessages.errors) {
+          $(".topic-errors").html(validationErrorMessages.errors.topic)
+          $(".detail-errors").html(validationErrorMessages.errors.details)
+        }
+        else {
+          location.reload();
+        }
+
+        })
+    })
 
 
 

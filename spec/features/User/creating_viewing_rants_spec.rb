@@ -9,7 +9,7 @@ feature "create and view rants" do
     within("#new-sessions") {click_on "Login"}
   end
 
-  scenario "As a user, I can create a rant" do
+  scenario "As a user, I can create a rant", js: true do
     fill_in "A rant about", with: "My Pants"
     fill_in "Rant", with: "#{'d' * 141}"
     click_on "Rant"
@@ -17,7 +17,7 @@ feature "create and view rants" do
     expect(page.first(".my-rants")).to have_content("#{'d' * 141}")
   end
 
-  scenario "As a user, I can not create a rant without complete information" do
+  scenario "As a user, I can not create a rant without complete information", js:true do
     fill_in "A rant about", with: ""
     fill_in "Rant", with: "I've got rants in my pants."
     click_on "Rant"

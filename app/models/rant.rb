@@ -4,7 +4,7 @@ class Rant < ActiveRecord::Base
   has_many :comments
   has_many :favorites
 
-  validates :topic, :details, presence: true
+  validates :topic, presence: true
   validates :topic, length: {maximum: 49, message: "must be less than 50 characters"}
   validates :details, length: {minimum: 141, message: "must be more than 140 characters"}
 
