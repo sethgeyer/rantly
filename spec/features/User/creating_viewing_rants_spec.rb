@@ -42,16 +42,15 @@ feature "create and view rants" do
       visit rant_path(@rant.id)
     end
 
-    scenario "As a user, if I'm viewing a specific rant, I can click on the user's name to view their profile" do
+    scenario "I can click on the user's name to view their profile" do
       find(".shown-rant .profile-link").click
       expect(page).to have_css(".rants")
       expect(page).to have_content("Adam")
       expect(page).to have_content("Handsome Programmer")
     end
 
-    scenario "As a user, if I'm viewing a specific rant, I can make a rant a 'favorite", js: true  do
+    scenario "I can make a rant a 'favorite", js: true  do
 
-      # within(".rants") { click_on "Favorite" }
       find(".favoriter").click
       expect(page).to have_css(".rants")
       click_on "Favorites"
@@ -64,6 +63,14 @@ feature "create and view rants" do
       expect(page).to have_content("Favorites")
       expect(page).not_to have_content("Adam")
     end
+
+    scenario "I can identify a rant as being 'spam'" do
+      click_on "Spam"
+      expect(page).to have_content("Latest Rants")
+      expect(page).not_to have_content("#{'d' * 141}2")
+    end
+
+
   end
 
 end

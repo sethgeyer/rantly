@@ -17,6 +17,15 @@ class RantsController < ApplicationController
     end
   end
 
+
+  def update
+    @rant = Rant.find(params[:id])
+    @rant.shown = false
+    @rant.save!
+    redirect_to user_dashboard_path
+
+  end
+
   def destroy
     Rant.where(id: params[:id]).first.destroy
     redirect_to user_dashboard_path

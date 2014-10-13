@@ -207,6 +207,10 @@ padding-bottom: 40px;
 
 /*-------------------------*/
 
+.inliner {
+    display:inline-block;
+}
+
 .inline-block {
 display:inline-block;
 width: 47%;

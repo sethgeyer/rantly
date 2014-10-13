@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :index, :destroy]
   resources :profiles, only: [:show]
-  resources :rants, only: [:show, :index] do
+  resources :rants, only: [:show, :index, :update] do
     resources :comments, only: [:new, :create, :index]
   end
 
