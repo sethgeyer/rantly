@@ -2,24 +2,36 @@
 
   <div class="content-header">Users</div>
 
+  <% @sorter ||= "desc" %>
+  <% asc_image = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672416-triangle-up-128.png" %>
+  <% desc_image = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-128.png" %>
+
+
+  <% sort_image = if @sorter == "asc" %>
+    <% asc_image %>
+  <% else %>
+    <% desc_image %>
+  <% end %>
+
   <table style="width: 100%">
     <thead>
-    <tr >
+    <tr>
       <th>Name</th>
       <th>Email</th>
-      <th id="rant-count">Number of Rants</th>
+      <th>Number of
+        Rants <%= link_to image_tag("#{sort_image}", class:"small-img"), admin_users_path(sort_order: @sorter), class: 'sorter' %></th>
       <th>Disabled</th>
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <% @users.each do |user| %>
-      <tr>
-        <td ><%=user.full_name%></td>
+      <tr class="ranters-row">
+        <td><%= user.full_name %></td>
         <td></td>
-        <td><%=user.rants.count%></td>
-        <td><%=user.is_disabled if user.is_disabled?%></td>
-        <td><%=link_to "Disable", admin_user_path(user), method: :PUT ,class: "disable-link"%></td>
+        <td><%= user.rants.count %></td>
+        <td><%= user.is_disabled if user.is_disabled? %></td>
+        <td><%= link_to "Disable", admin_user_path(user), method: :PUT, class: "disable-link" %></td>
 
       </tr>
     <% end %>
@@ -28,3 +40,4 @@
 
 
 </section>
+

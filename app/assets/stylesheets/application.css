@@ -257,7 +257,11 @@ font-size: 15px;
     /*top: 90px;*/
 }
 
-
+.small-img {
+    width: 10px;
+    height: 10px;
+    border: 1px solid black
+}
 
 
 .naked-form {
