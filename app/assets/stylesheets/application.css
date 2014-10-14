@@ -209,7 +209,15 @@ padding-bottom: 40px;
 
 .inliner {
     display:inline-block;
+    vertical-align: text-bottom;
+
 }
+
+.spammer {
+    background-color: red;
+    color:navajowhite;
+}
+
 
 .inline-block {
 display:inline-block;

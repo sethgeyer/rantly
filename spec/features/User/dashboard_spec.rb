@@ -30,6 +30,7 @@ feature "Dashboard Page" do
   scenario "As a user, I can chose to 'follow' or 'unfollow' another user", js: true do
     expect(page.find(".others-rants")).to have_content("Adam")
     first('.fifteen-wide .follower').click
+    sleep(0.1)
     first('.fifteen-wide .unfollower').click
     expect(page.find(".others-rants")).to have_css(".follower")
   end

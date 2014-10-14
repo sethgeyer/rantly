@@ -7,9 +7,10 @@
 
   <hr/>
 
+  
   <div class="right-floater">
-    <%= form_for @shown_rant, {class:'inliner'} do |f|%>
-      <%=f.submit "Spam"%>
+    <%= form_for @shown_rant, html: {class:'inliner '} do |f|%>
+      <%=f.submit "Spam", class:'spammer'%>
     <%end%>
 
     <a href="https://twitter.com/share" class="twitter-share-button inliner" data-text=<%=@shown_rant.topic.gsub(" ", "-")%> data-url="http://spewing-thoughts.herokuapp.com/rants/<%=@shown_rant.id%>" data-count="none">Tweet</a>
