@@ -27,4 +27,7 @@ feature "user registration" do
     expect(page).to have_content("First name can't be blank")
   end
 
+
+
+
 end
