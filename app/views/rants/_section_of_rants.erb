@@ -15,7 +15,7 @@
 
     <div class="eighty-five-wide">
       <!--<div class="rant-topic">< %= rant.topic %></div>-->
-      <div class="rant-topic"><%= rant.make_hashtag_searchable %></div>
+      <div class="rant-topic"><%= make_hashtag_searchable(rant.topic) %></div>
     <% shortened_rant = rant.shorten_it %>
       <%= link_to markdown(shortened_rant).html_safe, rant_path(rant), class: "rant-link" %>
       <div>

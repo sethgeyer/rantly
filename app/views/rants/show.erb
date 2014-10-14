@@ -1,6 +1,6 @@
 <section class="three-qtr-wide rants">
 
-  <div class="content-header" style="margin-bottom: -20px"><%= @shown_rant.topic %></div>
+  <div class="content-header" style="margin-bottom: -20px"><%= make_hashtag_searchable(@shown_rant.topic) %></div>
   <% @rant_to_fave = @shown_rant %>
   <%= render "/favorites/links_to_fav_unfav" %>
   <br/><br/>
@@ -29,7 +29,9 @@
     <img class="med-image" src=<%= @shown_rant.user.image %>>
   </div>
 
-  <div style="margin-top: 30px;"><%= markdown(@shown_rant.details).html_safe %></div>
+  <%make_hashtag_searchable(@shown_rant.details)%>
+
+  <div style="margin-top: 30px;"><%= markdown(make_hashtag_searchable(@shown_rant.details)).html_safe %></div>
 
   <div class="mini-spacer-border"></div>
 

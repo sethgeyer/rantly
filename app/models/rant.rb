@@ -18,12 +18,7 @@ class Rant < ActiveRecord::Base
   def self.return_results_for_search(search_term)
     if search_term != nil && search_term != ""
       if search_term[0] == "#"
-
-
-        rants_with_word = Rant.where("topic ilike ?", "%#{search_term} %") + Rant.where(topic: search_term) #+ Rant.where("details ilike ?", "%#{search_term}%")
-
-
-
+        (Rant.where("topic ilike ?", "%#{search_term} %") + Rant.where(topic: search_term) + Rant.where("details ilike ?", "%#{search_term} %")).uniq
       else
         user_searches = Rant.joins(:user).where(users: {last_name: search_term}) + Rant.joins(:user).where(users: {first_name: search_term}) + Rant.joins(:user).where(users: {username: search_term})
         rant_searches = Rant.where("topic ilike ?", "%#{search_term}%") + Rant.where("details ilike ?", "%#{search_term}%")
@@ -44,16 +39,6 @@ class Rant < ActiveRecord::Base
     end
   end
 
-  def make_hashtag_searchable
-    array = self.topic.split(" ")
-    linked_array = array.map do |word|
-      if word[0] == "#"
-        "<a href='/rants?search=%23#{word[1..word.length]}'>#{word}</a>"
-      else
-        word
-      end
-    end
-    linked_array.join(" ").html_safe
-  end
+
 
 end

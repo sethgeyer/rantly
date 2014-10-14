@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :kenny_loggins
 
+
+
+
+
+
 end
