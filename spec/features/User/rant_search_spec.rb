@@ -58,6 +58,13 @@ feature "search rants" do
   end
 
 
+  scenario "As a user, I should be able to search by hashtag when a hashtag exists in the rant description" do
+    hashtagged_rant =  create_rant(3, {user_id: @steve.id, topic: "#seth stinx"})
+    click_on "Dashboard"
+    expect(page).to have_content("#seth")
+    click_on "#seth"
+    expect(page).to have_button("Search")
+  end
 
 
 end

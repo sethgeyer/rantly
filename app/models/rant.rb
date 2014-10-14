@@ -34,4 +34,16 @@ class Rant < ActiveRecord::Base
     end
   end
 
+  def make_hashtag_searchable
+    array = self.topic.split(" ")
+    linked_array = array.map do |word|
+      if word[0] == "#"
+        "<a href='/rants?search=#{word[1..word.length].downcase}'>#{word}</a>"
+      else
+        word
+      end
+    end
+    linked_array.join(" ").html_safe
+  end
+
 end
