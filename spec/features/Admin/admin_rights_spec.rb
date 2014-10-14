@@ -9,7 +9,8 @@ feature "Admin Rights" do
     @fourth_rant = create_rant(4, {topic: "fourth_rant_created", user_id: @second_user.id})
     @third_user = create_user({first_name: "Alex", last_name: "Firoved", username: "alex"})
     @fifth_rant = create_rant(5, {topic: "fifth_rant_created", user_id: @third_user.id})
-    @sixth_rant = create_rant(6, {topic: "fifth_rant_created", user_id: @third_user.id})
+    @sixth_rant = create_rant(6, {topic: "sixth_rant_created", user_id: @third_user.id})
+
 
   end
 
@@ -49,6 +50,15 @@ feature "Admin Rights" do
       expect(page).to have_content("Ad Min")
     end
 
+    scenario "I can click to view an individual rant" do
+      click_on "Rants"
+      first(".viewer").click
+      expect(page).to have_content("Alex Firoved")
+      expect(page).to have_content("#{"d"*141}6")
+    end
+
+
+
     scenario "I can disable a user from being able to login" do
       click_on "Users"
       first(".disable-link").click
@@ -80,6 +90,45 @@ feature "Admin Rights" do
     end
 
 
+    scenario "I can view all rants and view spam rants" do
+      first_spam_rant = create_rant(7, {topic: "first_spam_rant_created", shown: false, user_id: @third_user.id})
+      second_spam_rant = create_rant(8, {topic: "second_spam_rant_created", shown: false, user_id: @third_user.id})
+      click_on "Rants"
+      expect(page).to have_content("first_rant_created")
+      expect(page).to have_content("first_spam_rant_created")
+      expect(page).to have_content("second_spam_rant_created")
+      click_on "All"
+      expect(page).to have_content("first_rant_created")
+      expect(page).to have_content("first_spam_rant_created")
+      expect(page).to have_content("second_spam_rant_created")
+      click_on "Spam"
+      expect(page).not_to have_content("first_rant_created")
+      expect(page).to have_content("first_spam_rant_created")
+      expect(page).to have_content("second_spam_rant_created")
+    end
+
+    scenario "I can delete a rant identified as spam" do
+      first_spam_rant = create_rant(7, {topic: "first_spam_rant_created", shown: false, user_id: @third_user.id})
+      second_spam_rant = create_rant(8, {topic: "second_spam_rant_created", shown: false, user_id: @third_user.id})
+      click_on "Rants"
+      first("a.deleter").click
+      expect(page).to have_content("first_rant_created")
+      expect(page).to have_content("first_spam_rant_created")
+      expect(page).not_to have_content("second_spam_rant_created")
+    end
+
+    scenario "I can reactivate a rant incorrectly identified as spam" do
+      first_spam_rant = create_rant(7, {topic: "first_spam_rant_created", shown: false, user_id: @third_user.id})
+      second_spam_rant = create_rant(8, {topic: "second_spam_rant_created", shown: false, user_id: @third_user.id})
+      click_on "Rants"
+      first("a.reactivator").click
+      expect(page).to have_content("first_rant_created")
+      expect(page).to have_content("first_spam_rant_created")
+      expect(page).to have_content("second_spam_rant_created")
+      click_on "Spam"
+      expect(page).to have_content("first_spam_rant_created")
+      expect(page).not_to have_content("second_spam_rant_created")
+    end
 
 
   end

@@ -5,7 +5,10 @@
 
   <div class="content-header">Rants</div>
 
-
+  <div class="filter-cluster">
+  <%=link_to "All", admin_rants_path, class:"filterer"%>
+  <%=link_to "Spam", admin_rants_path(shown: false), class: "filterer"%>
+  </div>
   <table style="width: 100%">
     <thead>
       <tr >
@@ -17,11 +20,15 @@
     </thead>
     <tbody>
     <% @rants.each do |rant| %>
-    <tr >
+    <tr class="rant-row" >
       <td ><%=rant.user.full_name%></td>
       <td ><%=rant.user.username%></td>
       <td ><%=rant.topic%></td>
-      <td ></td>
+      <td >
+        <%=link_to "View", admin_rant_path(rant), class:"viewer"%>
+        <%=link_to "Delete", admin_rant_path(rant), method: :delete, class:"deleter" if rant.shown == false%>
+        <%=link_to "Not Spam", admin_rant_path(rant), method: :put, class:"reactivator" if rant.shown == false%>
+      </td>
 
       </tr>
         <% end %>

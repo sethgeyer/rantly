@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :favorites
   end
 
-  resources :admin_rants, only: [:index]
+  resources :admin_rants, only: [:index, :destroy, :update, :show]
   resources :admin_users, only: [:index, :update]
 
 end
