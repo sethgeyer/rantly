@@ -39,7 +39,8 @@ class UsersController < ApplicationController
       :last_name,
       :bio,
       :rant_frequency,
-      :image
+      :image,
+      :email
     )
   end
 

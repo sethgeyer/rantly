@@ -4,6 +4,7 @@ def create_user(modified_attributes ={})
     password: 'password',
     first_name: 'Seth',
     last_name: 'Geyer',
+    email: 'seth.geyer@gmail.com',
     bio: 'Handsome Programmer',
     rant_frequency: 'daily',
     image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
@@ -21,6 +22,7 @@ def create_admin_user(modified_attributes = {})
   password: "password",
   first_name: "Ad",
   last_name: "Min",
+  email: "seth.geyer@gmail.com",
   bio: "My bio",
   rant_frequency: "Daily",
   image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",

@@ -1,6 +1,16 @@
 describe User do
   context "Validations" do
 
+    it "requires a user's email" do
+      user = User.new(email: "")
+      user.valid?
+      expect(user.errors[:email]).to include("can't be blank")
+      user.email = "seth.geyer@gmail.com"
+      user.valid?
+      expect(user.errors[:email].any?).to eq(false)
+    end
+
+
     it "requires a user's first name" do
       user = User.new(first_name: "")
       user.valid?
@@ -34,6 +44,7 @@ describe User do
         last_name: "Geyer",
         username: "seth",
         password: "password",
+        email: "seth.geyer@gmail.com",
         bio: "handsome programmer",
         rant_frequency: "daily",
         image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"

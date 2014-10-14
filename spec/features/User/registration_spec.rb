@@ -8,6 +8,7 @@ feature "user registration" do
     fill_in "Username", with: "seth"
     fill_in "Password", with: "password"
     fill_in "Bio", with: "Handsome Programmer"
+    fill_in "Email", with: "seth.geyer@gmail.com"
     fill_in "Image", with: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
     within(page.find("#new-users")) { choose "Daily" }
 
