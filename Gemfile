@@ -39,7 +39,10 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "launchy"
+  gem 'dotenv-rails'
 end
+
+gem "keen"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
