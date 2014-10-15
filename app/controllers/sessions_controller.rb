@@ -12,17 +12,23 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: params[:session][:username])
-    if user && user.authenticate(params[:session][:password])
-      if user.is_disabled?
-        flash.now[:notice] = "Your account has been disabled"
-        render :new
+    if user.email_is_confirmed?
+
+      if user && user.authenticate(params[:session][:password])
+        if user.is_disabled?
+          flash.now[:notice] = "Your account has been disabled"
+          render :new
+        else
+          session[:user_id] = user.id
+          flash[:notice] = "Welcome #{user.first_name}"
+          redirect_to user_dashboard_path
+        end
       else
-        session[:user_id] = user.id
-        flash[:notice] = "Welcome #{user.first_name}"
-        redirect_to user_dashboard_path
+        flash.now[:notice] = "Login failed"
+        render :new
       end
     else
-      flash.now[:notice] = "Login failed"
+      flash.now[:notice] = "You must confirm your email prior to logging in.  Please see your confirmation email and follow the instructions."
       render :new
     end
   end

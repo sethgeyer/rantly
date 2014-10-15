@@ -8,6 +8,10 @@ class UserMailer < ActionMailer::Base
 
   end
 
-
+  def confirmation_email(user, url)
+    @user = user
+    @confirmation_url = url
+    mail(to: @user.email, subject: "Please confirm your email")
+  end
 
 end
