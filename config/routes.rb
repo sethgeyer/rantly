@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :admin_rants, only: [:index, :destroy, :update, :show]
   resources :admin_users, only: [:index, :update]
+  resource :admin_dashboards, only: [:show]
 
   get "/confirm_email/:confirmation_token", to: "email_confirmers#destroy", as: "email_confirmation"
 

@@ -30,6 +30,16 @@ margin: 0%
     width: 100%;
 }
 
+
+.admin-flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    position: relative;
+    top: 85px;
+    border: 1px solid red
+}
+
 /*checked*/
 .qtr-wide {
     width: 23%;
@@ -53,7 +63,6 @@ margin: 0%
 
 
 .full-wide {
-
     width: 100%;
     min-height: 100vh;
     padding-left: 1%;
