@@ -1,9 +1,9 @@
 feature "User Profile Page" do
   before(:each) do
-    @adam = create_user({first_name: "Adam", username: "adam"})
+    @adam = create_user_with_a_confirmed_email({first_name: "Adam", username: "adam"})
     @adam_rant1 = create_rant(1, {user_id: @adam.id})
     @adam_rant3 = create_rant(3, {user_id: @adam.id})
-    @seth = create_user
+    @seth = create_user_with_a_confirmed_email
     create_rant(2, {user_id: @seth.id})
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}

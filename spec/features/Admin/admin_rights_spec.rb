@@ -1,13 +1,13 @@
 feature "Admin Rights" do
 
   before(:each) do
-    @user = create_user({first_name: "Seth", last_name: "Geyer"})
+    @user = create_user_with_a_confirmed_email({first_name: "Seth", last_name: "Geyer"})
     @first_rant = create_rant(3, {topic: "first_rant_created", user_id: @user.id})
     @second_rant = create_rant(1, {topic: "second_rant_created", user_id: @user.id})
     @third_rant = create_rant(2, {topic: "third_rant_created", user_id: @user.id})
-    @second_user = create_user({first_name: "Steve", last_name: "Smith", username: "steve"})
+    @second_user = create_user_with_a_confirmed_email({first_name: "Steve", last_name: "Smith", username: "steve"})
     @fourth_rant = create_rant(4, {topic: "fourth_rant_created", user_id: @second_user.id})
-    @third_user = create_user({first_name: "Alex", last_name: "Firoved", username: "alex"})
+    @third_user = create_user_with_a_confirmed_email({first_name: "Alex", last_name: "Firoved", username: "alex"})
     @fifth_rant = create_rant(5, {topic: "fifth_rant_created", user_id: @third_user.id})
     @sixth_rant = create_rant(6, {topic: "sixth_rant_created", user_id: @third_user.id})
 

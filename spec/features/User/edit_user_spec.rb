@@ -2,7 +2,7 @@
 feature "Edit User Details" do
 
   scenario "As a user, I can edit my user details" do
-    create_user
+    create_user_with_a_confirmed_email
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}
     visit edit_user_path

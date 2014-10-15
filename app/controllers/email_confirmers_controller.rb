@@ -8,10 +8,11 @@ class EmailConfirmersController < ApplicationController
       flash[:notice] = "email you confirmed is not valid."
       redirect_to root_path
     else
-      user = User.find(email_confirmer.user_id).email_is_confirmed = true
+      user = User.find(email_confirmer.user_id)
+      user.email_is_confirmed = true
       if user.save!
         email_confirmer.destroy
-        flash[:notice] = "Thanks for confirming your email.  Please login."
+        flash[:notice] = "Thanks for confirming your email.  Please login"
         redirect_to login_path
       end
 

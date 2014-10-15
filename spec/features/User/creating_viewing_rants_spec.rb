@@ -4,7 +4,7 @@ feature "create and view rants" do
     # User.destroy_all
     # Rant.destroy_all
     # Favorite.destroy_all
-    @user = create_user
+    @user = create_user_with_a_confirmed_email
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}
   end
@@ -37,7 +37,7 @@ feature "create and view rants" do
 
   context "As a user viewing a specific rant" do
     before(:each) do
-      @adam = create_user({first_name: "Adam", username: "adam"})
+      @adam = create_user_with_a_confirmed_email({first_name: "Adam", username: "adam"})
       @rant = create_rant(2, {user_id: @adam.id})
       visit rant_path(@rant.id)
     end

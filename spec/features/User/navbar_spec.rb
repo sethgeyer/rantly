@@ -24,7 +24,7 @@ feature "Navbar" do
   context "As a successfully logged in user" do
 
     before(:each) do
-      create_user
+      create_user_with_a_confirmed_email
       visit_login_page_and_fill_in_form("seth", "password")
       within("#new-sessions") {click_on "Login"}
     end

@@ -1,4 +1,4 @@
-def create_user(modified_attributes ={})
+def create_user_with_a_confirmed_email(modified_attributes ={})
   default_attributes = {
     username: 'seth',
     password: 'password',
@@ -7,6 +7,7 @@ def create_user(modified_attributes ={})
     email: 'seth.geyer@gmail.com',
     bio: 'Handsome Programmer',
     rant_frequency: 'daily',
+    email_is_confirmed: true,
     image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
   }
 
@@ -25,6 +26,7 @@ def create_admin_user(modified_attributes = {})
   email: "seth.geyer@gmail.com",
   bio: "My bio",
   rant_frequency: "Daily",
+  email_is_confirmed: true,
   image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",
   is_admin: true}
 

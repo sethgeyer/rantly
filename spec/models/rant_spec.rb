@@ -31,8 +31,8 @@ describe Rant do
 
   context "Collecting and Organizing Rants" do
     before(:each) do
-      @logged_in_user = create_user(username: "seth")
-      @other_user = create_user(username: "adam", first_name: "Adam")
+      @logged_in_user = create_user_with_a_confirmed_email(username: "seth")
+      @other_user = create_user_with_a_confirmed_email(username: "adam", first_name: "Adam")
       bad_rant = create_rant(1, {topic: "rant1", user_id: @other_user.id})
       @good_rant = create_rant(2, {topic: "rant2", user_id: @other_user.id})
       favorited_item = create_favorite_rant(@logged_in_user.id, @good_rant.id)

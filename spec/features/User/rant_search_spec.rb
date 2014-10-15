@@ -1,11 +1,11 @@
 feature "search rants" do
   before(:each) do
-    @steve = create_user({first_name: "Steve", username: "steve", last_name: "Smith"})
+    @steve = create_user_with_a_confirmed_email({first_name: "Steve", username: "steve", last_name: "Smith"})
     @steve_rant1 = create_rant(1, {user_id: @steve.id})
     @steve_rant3 = create_rant(3, {user_id: @steve.id})
-    @stevey = create_user({first_name: "Steve", username: "stevey", last_name: "Geyer"})
+    @stevey = create_user_with_a_confirmed_email({first_name: "Steve", username: "stevey", last_name: "Geyer"})
     @stevey_rant4 = create_rant(4, {user_id: @stevey.id})
-    @seth = create_user
+    @seth = create_user_with_a_confirmed_email
     @seth_rant2 = create_rant(2, {user_id: @seth.id})
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}

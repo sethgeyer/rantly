@@ -1,8 +1,8 @@
 feature "Dashboard Page" do
   before(:each) do
-    @adam = create_user({first_name: "Adam", username: "adam"})
+    @adam = create_user_with_a_confirmed_email({first_name: "Adam", username: "adam"})
     create_rant(1, {user_id: @adam.id})
-    @seth = create_user({username: "seth"})
+    @seth = create_user_with_a_confirmed_email({username: "seth"})
     create_rant(2, {user_id: @seth.id})
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}
