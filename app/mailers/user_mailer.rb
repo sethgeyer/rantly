@@ -14,4 +14,13 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Please confirm your email")
   end
 
+  def rant_email_to_followers(users, rant)
+    @users = users
+    @ranter_username = rant.user.username
+    @rant_url = rant_url(rant.id)
+    mail(to: @users, subject: "New Rant from #{@ranter_username}")
+
+  end
+
+
 end

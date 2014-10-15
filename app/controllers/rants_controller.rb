@@ -6,14 +6,13 @@ class RantsController < ApplicationController
     @rant.details = params[:rant_details]
     @rant.user_id = kenny_loggins.id
     if @rant.save
+      followers = InterestingRanter.find_followers_to_receive_email(@rant)
+      UserMailer.rant_email_to_followers(followers, @rant).deliver unless !followers
+
       render :nothing => true
-      # binding.pry
-      # redirect_to user_dashboard_path
     else
       errors = @rant.errors.messages
       render :json => {errors: errors}
-      # @dashboard = Dashboard.new
-      # render 'dashboards/show'
     end
   end
 
