@@ -20,6 +20,9 @@ class SessionsController < ApplicationController
           render :new
         else
           session[:user_id] = user.id
+
+          Keen.publish(:logins, {username: user.username, login_date: DateTime.now()})
+
           flash[:notice] = "Welcome #{user.first_name}"
           redirect_to user_dashboard_path
         end
