@@ -5,9 +5,42 @@
 
   <div class="content-header">Rants</div>
 
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+    $(function() {
+      $( ".datepicker" ).datepicker();
+    });
+  </script>
+
+  <div class="filter-row">
+    <div class="all-spam-block">
+      <%=link_to "All", admin_rants_path, class:"filterer"%>
+      <%=link_to "Spam", admin_rants_path(shown: false), class: "filterer"%>
+    </div>
+
+    <div class="date-range-block">
+      <%= form_tag admin_rants_path, method: :get do %>
+        <%= text_field_tag :begin_date, nil, class: "datepicker" %>
+        To
+        <%= text_field_tag :end_date, nil, class: "datepicker" %>
+    </div>
+
+    <div class="button-block">
+      <%= submit_tag "Filter", class: "date-picker-button" %>
+      <% end %>
+    </div>
+
+  </div>
+
+
   <div class="filter-cluster">
-  <%=link_to "All", admin_rants_path, class:"filterer"%>
-  <%=link_to "Spam", admin_rants_path(shown: false), class: "filterer"%>
+
+
+
+
+
   </div>
   <table style="width: 100%">
     <thead>

@@ -23,7 +23,9 @@
 
       <% if kenny_loggins.is_admin?%>
         <div><%= link_to "Dashboard", admin_dashboards_path%></div>
+        <div class="nav-divider">|</div>
         <div><%= link_to "Rants", admin_rants_path%></div>
+        <div class="nav-divider">|</div>
         <div><%= link_to "Users", admin_users_path%></div>
 
       <% else %>

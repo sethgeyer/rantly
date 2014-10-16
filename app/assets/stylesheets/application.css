@@ -24,6 +24,7 @@ padding: 0%;
 margin: 0%
 }
 
+
 .flex-container {
     display: -webkit-flex;
     display: flex;
@@ -258,12 +259,65 @@ font-size: 15px;
     padding: 0%;
 }
 
-.filter-cluster {
-    margin-bottom: 10px;
+
+.filter-row {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+}
+
+.all-spam-block {
+    width: 25%;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+
+.date-range-block {
+    width: 50%;
+    text-align: center;
+}
+
+.datepicker {
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    background-color: lightgray;
+}
+
+.ui-datepicker {
+    background: darkgreen;
+    border: 1px solid #555;
+    color: #EEE;
+}
+
+.ui-datepicker a {
+    color: white;
+    text-decoration: none;
+}
+
+.button-block {
+    width:25%;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.date-picker-button {
+    width: 100px;
+    height: 33px;
+    border: 1px solid black;
+    background-color: blue;
+    font-size: 20px;
+    color: white;
+    margin-left: 30px;
 }
 
 .filterer {
+
     border: 1px solid black;
+    padding-top: 10px;
     background-color: grey;
     text-decoration:none;
     padding-top: 5px;
@@ -273,6 +327,7 @@ font-size: 15px;
     color: black;
     font-size: 18px;
 }
+
 
 
 /*checked*/
@@ -318,6 +373,8 @@ width: 80%;
 margin:0px;
 font-size: 20px;
 }
+
+
 
 /*checked*/
 .horizontal-form-button {
