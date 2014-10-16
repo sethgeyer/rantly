@@ -5,7 +5,6 @@
 
 
 
-
 <div class="full-wide">
 
   <div class="admin-flex-container">
@@ -22,7 +21,7 @@
 
     <div style="width: 33%; border:1px solid black">
       <div class="content-header">Logins per Hour</div>
-      <%= pie_chart Rant.group(:topic).count %>
+      <%= column_chart KeenMetric.find_logins_per_hour %>
     </div>
   </div>
 </div>
