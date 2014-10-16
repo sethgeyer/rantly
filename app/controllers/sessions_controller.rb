@@ -3,6 +3,12 @@ class SessionsController < ApplicationController
   skip_before_action :ensure_current_user, only: [:index, :new, :create]
 
   def index
+
+    if cookies[:visitor]
+      flash[:notice] = "welcome back stranger"
+    else
+      cookies[:visitor] = "visitor"
+    end
     render :index, layout: "/layouts/homepage"
   end
 
