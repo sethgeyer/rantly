@@ -49,6 +49,10 @@ margin: 0%
     top: 85px;
 }
 
+.wrap-it {
+    word-wrap:break-word;
+}
+
 /*checked*/
 .three-qtr-wide {
     width: 73%;

@@ -34,7 +34,7 @@
 
       <div class="rant">
         <div class="rant-topic"><%= rant.topic %></div>
-        <%= link_to markdown(rant.details).html_safe, rant_path(rant), class: "rant-link" %>
+        <div class="wrap-it"><%= link_to markdown(rant.details).html_safe, rant_path(rant), class: "rant-link" %></div>
       </div>
 
       <% @rant_to_fave = rant %>
