@@ -3,15 +3,12 @@
   <div class="content-header">Users</div>
 
   <% @sorter ||= "desc" %>
-  <% asc_image = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672416-triangle-up-128.png" %>
-  <% desc_image = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-128.png" %>
 
-
-  <% sort_image = if @sorter == "asc" %>
-    <% asc_image %>
-  <% else %>
-    <% desc_image %>
-  <% end %>
+  <% sort_image = if @sorter == "desc" %>
+    <% "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-128.png" %>
+<% else %>
+    <% "https://cdn4.iconfinder.com/data/icons/geomicons/32/672416-triangle-up-128.png" %>
+<% end %>
 
   <table style="width: 100%">
     <thead>
