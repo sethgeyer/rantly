@@ -12,15 +12,12 @@
     </div>
 
 
-
     <div class="eighty-five-wide">
-      <!--<div class="rant-topic">< %= rant.topic %></div>-->
       <div class="rant-topic"><%= make_hashtag_searchable(rant.topic) %></div>
-    <% shortened_rant = rant.shorten_it %>
+      <% shortened_rant = rant.shorten_it %>
       <div class="wrap-it"><%= link_to markdown(shortened_rant).html_safe, rant_path(rant), class: "rant-link" %></div>
       <div>
         <%= link_to "Delete", user_rant_path(rant), method: :delete, class: "right-floater" if rant.user == kenny_loggins %>
-
 
         <% @rant_to_fave = rant %>
         <%= render "/favorites/links_to_fav_unfav" %>

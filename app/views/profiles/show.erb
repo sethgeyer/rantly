@@ -1,7 +1,6 @@
 <section class="three-qtr-wide rants">
   <div class="content-header" style="margin-bottom: -20px"><%= @user.first_name %> <%= @user.last_name %></div>
 
-
   <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
   <% if interesting_ranter %>
     <div class="unfollower right-floater" data-interesting-ranter-id="<%= interesting_ranter.id %>" data-ranter-id="><%= @user.id %>">Unfollow</div>
@@ -15,7 +14,6 @@
   <div>
     <div class=bio-box>
       <img class="profile-image" src=<%= @user.image %>>
-
       <div class="profile-frequency-box"><%= @user.rant_frequency %></div>
     </div>
   </div>
@@ -24,9 +22,7 @@
   <div class="bio-box">
     <%= @user.bio %>
   </div>
-
   <br/>
-
   <div class="rants-list">
 
     <% user_rants = @user.rants %>

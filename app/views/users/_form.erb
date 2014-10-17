@@ -1,4 +1,3 @@
-
 <% if @user.errors.full_messages.any? %>
   <% @user.errors.full_messages.each do |message| %>
     <div><%= message %></div>
@@ -74,12 +73,11 @@
 
   <% button_name = if @user.id %>
                     <% "Update" %>
-                   <% else %>
+                  <% else %>
                     <% "Register" %>
-                   <% end %>
+                  <% end %>
 
   <%= f.submit "#{button_name}", class: "wide-button" %>
 <% end %>
-
 
 </div>

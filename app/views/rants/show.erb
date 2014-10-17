@@ -9,16 +9,21 @@
 
 
   <div class="right-floater">
-    <%= form_for @shown_rant, html: {class:'inliner '} do |f|%>
-      <%=f.submit "Spam", class:'spammer'%>
-    <%end%>
+    <%= form_for @shown_rant, html: {class: 'inliner '} do |f| %>
+      <%= f.submit "Spam", class: 'spammer' %>
+    <% end %>
 
-    <a href="https://twitter.com/share" class="twitter-share-button inliner" data-text=<%=@shown_rant.topic.gsub(" ", "-")%> data-url="http://spewing-thoughts.herokuapp.com/rants/<%=@shown_rant.id%>" data-count="none">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <a href="https://twitter.com/share" class="twitter-share-button inliner" data-text=<%= @shown_rant.topic.gsub(" ", "-") %> data-url="http://spewing-thoughts.herokuapp.com/rants/<%= @shown_rant.id %>" data-count="none">Tweet</a>
+    <script>!function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, 'script', 'twitter-wjs');</script>
   </div>
-
-
-
 
 
   <br/>
@@ -29,7 +34,7 @@
     <img class="med-image" src=<%= @shown_rant.user.image %>>
   </div>
 
-  <%make_hashtag_searchable(@shown_rant.details)%>
+  <% make_hashtag_searchable(@shown_rant.details) %>
 
   <div class="wrap-it" style="margin-top: 30px;"><%= markdown(make_hashtag_searchable(@shown_rant.details)).html_safe %></div>
 
@@ -47,15 +52,15 @@
       </div>
     </div>
     <br/>
+
     <div class="mini-spacer-border"></div>
     <br/>
-<% end %>
-
-
+  <% end %>
 
   <%= form_for [@shown_rant, @shown_rant.comments.new], id: "#new_comment" do |f| %>
-    <%= f.text_field :body, placeholder: "Enter your comments here...", class: "wide-input" %><br/>
-    <%= f.submit "Rant Back", class:"comment-button" %>
+    <%= f.text_field :body, placeholder: "Enter your comments here...", class: "wide-input" %>
+    <br/>
+    <%= f.submit "Rant Back", class: "comment-button" %>
   <% end %>
 </section>
 

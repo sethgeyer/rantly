@@ -6,17 +6,16 @@
 
   <% sort_image = if @sorter == "desc" %>
     <% "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-128.png" %>
-<% else %>
+  <% else %>
     <% "https://cdn4.iconfinder.com/data/icons/geomicons/32/672416-triangle-up-128.png" %>
-<% end %>
+  <% end %>
 
   <table style="width: 100%">
     <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Number of
-        Rants <%= link_to image_tag("#{sort_image}", class:"small-img"), admin_users_path(sort_order: @sorter), class: 'sorter' %></th>
+      <th>Number of Rants <%= link_to image_tag("#{sort_image}", class: "small-img"), admin_users_path(sort_order: @sorter), class: 'sorter' %></th>
       <th>Disabled</th>
       <th>Actions</th>
     </tr>
@@ -25,16 +24,14 @@
     <% @users.each do |user| %>
       <tr class="ranters-row">
         <td><%= user.full_name %></td>
-        <td></td>
+        <td><%= user.email %></td>
         <td><%= user.rants.count %></td>
         <td><%= user.is_disabled if user.is_disabled? %></td>
         <td><%= link_to "Disable", admin_user_path(user), method: :PUT, class: "disable-link" %></td>
-
       </tr>
     <% end %>
     </tbody>
   </table>
-
 
 </section>
 

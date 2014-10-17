@@ -1,7 +1,4 @@
-
-
 <section class="full-wide">
-
 
   <div class="content-header">Rants</div>
 
@@ -9,71 +6,57 @@
   <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script>
-    $(function() {
-      $( ".datepicker" ).datepicker();
+    $(function () {
+      $(".datepicker").datepicker();
     });
   </script>
 
   <div class="filter-row">
-    <div class="all-spam-block" data-shown="<%=@search_value%>">
-      <%=link_to "All", admin_rants_path, id: "all-filter", class:"unselected filterer"%>
-      <%=link_to "Spam", admin_rants_path(shown: false), id: "spam-filter", class: "unselected filterer"%>
+    <div class="all-spam-block" data-shown="<%= @search_value %>">
+      <%= link_to "All", admin_rants_path, id: "all-filter", class: "unselected filterer" %>
+      <%= link_to "Spam", admin_rants_path(shown: false), id: "spam-filter", class: "unselected filterer" %>
     </div>
 
     <div class="date-range-block">
       <%= form_tag admin_rants_path, method: :get do %>
         <%= text_field_tag :begin_date, nil, class: "datepicker" %>
-        <%= hidden_field_tag :shown, @search_value%>
+        <%= hidden_field_tag :shown, @search_value %>
         To
         <%= text_field_tag :end_date, nil, class: "datepicker" %>
 
         <%= submit_tag "Filter", class: "date-picker-button" %>
       <% end %>
-        </div>
-
-    <div class="button-block">
-
     </div>
-
   </div>
 
-
-  <div class="filter-cluster">
-
-
-
-
-
-  </div>
   <table style="width: 100%">
     <thead>
-      <tr >
-        <th>Name</th>
-        <th>Email</th>
-        <th>Title</th>
-        <th>Date</th>
-        <th >Actions</th>
-      </tr>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
     <% @rants.each do |rant| %>
-    <tr class="rant-row" >
-      <td ><%=rant.user.full_name%></td>
-      <td ><%=rant.user.username%></td>
-      <td ><%=rant.topic%></td>
-      <td ><%=rant.created_at%></td>
-
-      <td >
-        <%=link_to "View", admin_rant_path(rant), class:"viewer"%>
-        <%=link_to "Delete", admin_rant_path(rant), method: :delete, class:"deleter" if rant.shown == false%>
-        <%=link_to "Not Spam", admin_rant_path(rant), method: :put, class:"reactivator" if rant.shown == false%>
-      </td>
-
+      <tr class="rant-row">
+        <td><%= rant.user.full_name %></td>
+        <td><%= rant.user.username %></td>
+        <td><%= rant.topic %></td>
+        <td><%= rant.created_at %></td>
+        <td>
+          <%= link_to "View", admin_rant_path(rant), class: "viewer" %>
+          <% if rant.shown == false %>
+            <%= link_to "Delete", admin_rant_path(rant), method: :delete, class: "deleter" %>
+            <%= link_to "Not Spam", admin_rant_path(rant), method: :put, class: "reactivator" %>
+          <% end %>
+        </td>
       </tr>
-        <% end %>
-        </tbody>
-        </table>
-
+    <% end %>
+    </tbody>
+  </table>
 
 </section>
 
