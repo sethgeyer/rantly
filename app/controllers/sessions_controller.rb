@@ -3,9 +3,8 @@ class SessionsController < ApplicationController
   skip_before_action :ensure_current_user, only: [:index, :new, :create]
 
   def index
-
     if cookies[:visitor]
-      flash.now[:notice] = "welcome back stranger"
+      flash.now[:notice] = "Welcome Back Stranger!"
     else
       cookies[:visitor] = "visitor"
     end
@@ -48,3 +47,4 @@ class SessionsController < ApplicationController
   end
 
 end
+

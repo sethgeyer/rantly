@@ -111,7 +111,7 @@ $(document).ready( function() {
       $(".topic-errors").html("")
       $(".detail-errors").html("")
 
-      var postRantPromise = $.post("/user/rants", {rant_topic: rant_topic.value, rant_details: rant_details.value})
+      var postRantPromise = $.post("/user/rants", {rant: {topic: rant_topic.value, details: rant_details.value}})
       postRantPromise.success( function(validationErrorMessages) {
 
         if (validationErrorMessages.errors) {
