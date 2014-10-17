@@ -23,13 +23,16 @@
     <div class="date-range-block">
       <%= form_tag admin_rants_path, method: :get do %>
         <%= text_field_tag :begin_date, nil, class: "datepicker" %>
+        <%= hidden_field_tag :shown, @search_value%>
         To
         <%= text_field_tag :end_date, nil, class: "datepicker" %>
-    </div>
+
+        <%= submit_tag "Filter", class: "date-picker-button" %>
+      <% end %>
+        </div>
 
     <div class="button-block">
-      <%= submit_tag "Filter", class: "date-picker-button" %>
-      <% end %>
+
     </div>
 
   </div>
@@ -48,6 +51,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Title</th>
+        <th>Date</th>
         <th >Actions</th>
       </tr>
     </thead>
@@ -57,6 +61,8 @@
       <td ><%=rant.user.full_name%></td>
       <td ><%=rant.user.username%></td>
       <td ><%=rant.topic%></td>
+      <td ><%=rant.created_at%></td>
+
       <td >
         <%=link_to "View", admin_rant_path(rant), class:"viewer"%>
         <%=link_to "Delete", admin_rant_path(rant), method: :delete, class:"deleter" if rant.shown == false%>

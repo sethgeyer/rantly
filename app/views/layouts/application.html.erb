@@ -27,6 +27,8 @@
         <div><%= link_to "Rants", admin_rants_path%></div>
         <div class="nav-divider">|</div>
         <div><%= link_to "Users", admin_users_path%></div>
+        <div class="nav-divider">|</div>
+        <div><%= link_to "Impersonate", login_impersonator_path%></div>
 
       <% else %>
         <div><%= link_to "Dashboard", user_dashboard_path %></div>
@@ -41,9 +43,20 @@
 
     <div class="navbar-right">
 
-        <%= form_for :session, url: session_path(kenny_loggins), method: :delete do |f| %>
-        <%f.submit "Logout", class:"nav-button"%>
+      <% if session[:impersonator] %>
+        <%= form_for :session, url: admin_session_path(kenny_loggins), method: :delete do |f| %>
+          <%f.submit "Logout as Impersonator", class:"nav-button"%>
         <% end %>
+
+      <%else%>
+        <%= form_for :session, url: session_path(kenny_loggins), method: :delete do |f| %>
+          <%f.submit "Logout", class:"nav-button"%>
+        <% end %>
+
+      <%end%>
+
+
+
 
     </div>
 

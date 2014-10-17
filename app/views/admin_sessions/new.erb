@@ -1,0 +1,22 @@
+<div id="new-sessions" class="naked-form">
+
+  <div class="input-box">
+    <h1>Login</h1>
+    <br/>
+
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+      <br/></br/>
+    <% end %>
+
+    <%= form_for :admin_session, url: admin_sessions_path do |f| %>
+      <%= f.label :username %><br/>
+      <%= f.text_field :username, class: "wide-input" %>
+      <br/>
+      <br/>
+      <div class="spacer-border"></div>
+      <%= f.submit "Login", class: "wide-button" %>
+    <% end %>
+  </div>
+
+</div>

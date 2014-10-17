@@ -15,16 +15,40 @@ class AdminRantsController < ApplicationController
   end
 
   def index
-    if params[:shown]
-      @rants = Rant.where(shown: params[:shown]).order("created_at DESC")
+
+    beginning_date = switch_to_date(params[:begin_date])
+    end_date = switch_to_date(params[:end_date])
+    if beginning_date && end_date
+      ranged_rants = Rant.where(created_at: beginning_date.beginning_of_day .. end_date.end_of_day)
+    elsif beginning_date && !end_date
+      ranged_rants = Rant.where(['created_at > ?', beginning_date.beginning_of_day])
+    elsif end_date && !beginning_date
+      ranged_rants = Rant.where(['created_at < ?', end_date.end_of_day])
     else
-      @rants = Rant.all.order("created_at DESC")
+      ranged_rants = Rant.all
+    end
+
+    if params[:shown] == "false"
+      @rants = ranged_rants.where(shown: params[:shown]).order("created_at DESC")
+      @search_value = "false"
+    else
+      @rants = ranged_rants.order("created_at DESC")
+      @search_value = "true"
     end
   end
 
   def destroy
     deleted_rant = Rant.find(params[:id]).destroy
   redirect_to :back
+  end
+
+
+  def switch_to_date(date_string)
+    if date_string == "" || date_string == nil
+      nil
+    else
+      Date.strptime(date_string, '%m/%d/%Y')
+    end
   end
 
 

@@ -1,11 +1,11 @@
-class SessionsController < ApplicationController
+class AdminSessionsController < ApplicationController
 
   skip_before_action :ensure_current_user, only: [:index, :new, :create]
 
   def index
 
     if cookies[:visitor]
-      flash.now[:notice] = "welcome back stranger"
+      flash[:notice] = "welcome back stranger"
     else
       cookies[:visitor] = "visitor"
     end
@@ -17,15 +17,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:session][:username])
+    user = User.find_by(username: params[:admin_session][:username])
 
-    if user && user.authenticate(params[:session][:password])
+    if user
+
       if user.email_is_confirmed?
         if user.is_disabled?
           flash.now[:notice] = "Your account has been disabled"
           render :new
         else
           session[:user_id] = user.id
+          session[:impersonator] = true
 
           Keen.publish(:logins, {username: user.username, login_date: DateTime.now()})
 
@@ -48,3 +50,4 @@ class SessionsController < ApplicationController
   end
 
 end
+

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :admin_users, only: [:index, :update]
   resource :admin_dashboards, only: [:show]
 
-  get "/confirm_email/:confirmation_token", to: "email_confirmers#destroy", as: "email_confirmation"
+  resources :admin_sessions, only: [:create, :index, :destroy]
 
+  get "/confirm_email/:confirmation_token", to: "email_confirmers#destroy", as: "email_confirmation"
+  get "/login_impersonator", to: "admin_sessions#new", as: "login_impersonator"
 end
