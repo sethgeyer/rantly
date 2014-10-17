@@ -34,6 +34,18 @@ class Rant < ActiveRecord::Base
     Rant.joins("LEFT OUTER JOIN favorites ON favorites.rant_id = rants.id where favorites.user_id = #{user_id}")
   end
 
+  def self.find_by_date_range(beginning_date, end_date)
+    if beginning_date && end_date
+      ranged_rants = Rant.where(created_at: beginning_date.beginning_of_day .. end_date.end_of_day)
+    elsif beginning_date && !end_date
+      ranged_rants = Rant.where(['created_at > ?', beginning_date.beginning_of_day])
+    elsif end_date && !beginning_date
+      ranged_rants = Rant.where(['created_at < ?', end_date.end_of_day])
+    else
+      ranged_rants = Rant.all
+    end
+  end
+
 
 
   def shorten_it(length = 300)
