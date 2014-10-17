@@ -128,7 +128,6 @@ $(document).ready( function() {
 
 //  COLOR THE SELECTED SPAM/ALL BUTTON ON CLICK
   var search_value = $(".all-spam-block").attr('data-shown')
-  console.log(search_value)
   var allButton = $("#all-filter")
   var spamButton = $("#spam-filter")
 
@@ -141,6 +140,6 @@ $(document).ready( function() {
 //-----------------------------------------
 
 
-  
+
 
 });
