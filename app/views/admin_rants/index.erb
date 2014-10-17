@@ -15,9 +15,9 @@
   </script>
 
   <div class="filter-row">
-    <div class="all-spam-block">
-      <%=link_to "All", admin_rants_path, class:"filterer"%>
-      <%=link_to "Spam", admin_rants_path(shown: false), class: "filterer"%>
+    <div class="all-spam-block" data-shown="<%=@search_value%>">
+      <%=link_to "All", admin_rants_path, id: "all-filter", class:"unselected filterer"%>
+      <%=link_to "Spam", admin_rants_path(shown: false), id: "spam-filter", class: "unselected filterer"%>
     </div>
 
     <div class="date-range-block">
