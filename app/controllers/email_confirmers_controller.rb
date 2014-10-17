@@ -15,10 +15,7 @@ class EmailConfirmersController < ApplicationController
         flash[:notice] = "Thanks for confirming your email.  Please login"
         redirect_to login_path
       end
-
     end
   end
-
-
 
 end
