@@ -2,7 +2,6 @@ class AdminRantsController < ApplicationController
 
   before_action :ensure_current_user_is_admin
 
-
   def update
     @rant = Rant.find(params[:id])
     @rant.shown = true
@@ -15,7 +14,6 @@ class AdminRantsController < ApplicationController
   end
 
   def index
-
     beginning_date = switch_to_date(params[:begin_date])
     end_date = switch_to_date(params[:end_date])
     if beginning_date && end_date

@@ -10,11 +10,8 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "Thank you for registering #{@user.username}!"
       UserMailer.welcome_email(@user, login_url).deliver
-
       confirmation_token = EmailConfirmer.set_confirmation_token(@user)
-
       UserMailer.confirmation_email(@user, email_confirmation_url(confirmation_token)).deliver
-
       redirect_to root_path
     else
       render :new
@@ -22,11 +19,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(username: kenny_loggins.username)
+    @user = kenny_loggins
   end
 
   def update
-    @user = User.find_by(username: kenny_loggins.username)
+    @user = kenny_loggins
     @user.update(allowed_params)
     if @user.save
       redirect_to user_dashboard_path
