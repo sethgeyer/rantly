@@ -11,7 +11,8 @@ class Favorite < ActiveRecord::Base
     else
       "#{count}-"
     end
-
   end
+
+
 
 end

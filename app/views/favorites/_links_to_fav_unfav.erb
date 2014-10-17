@@ -1,8 +1,8 @@
-<% favorite = Favorite.where(rant_id: @rant_to_fave.id, user_id: kenny_loggins.id).first %>
+<% favorited_rant = kenny_loggins.favorites.where(rant_id: @rant_to_fave.id).first%>
 <% fave_count_for_link = Favorite.create_favorite_count(@rant_to_fave.id) %>
 
-<% if favorite %>
-  <div class="right-floater unfavoriter" data-favorite-id="<%=favorite.id%>" data-rant-id="<%=@rant_to_fave.id%>">
+<% if favorited_rant %>
+  <div class="right-floater unfavoriter" data-favorite-id="<%=favorited_rant.id%>" data-rant-id="<%=@rant_to_fave.id%>">
     <%="#{fave_count_for_link}" + "Unfavorite"%>
   </div>
 

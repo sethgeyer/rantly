@@ -30,6 +30,9 @@ class Rant < ActiveRecord::Base
     end
   end
 
+  def self.find_users_favorite_rants(user_id)
+    Rant.joins("LEFT OUTER JOIN favorites ON favorites.rant_id = rants.id where favorites.user_id = #{user_id}")
+  end
 
 
 
