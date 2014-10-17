@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       if user.email_is_confirmed?
+
         if user.is_disabled?
           flash.now[:notice] = "Your account has been disabled"
           render :new
@@ -44,7 +45,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private
+
 
 end
 
