@@ -1,7 +1,11 @@
 <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @person_to_follow.id).first %>
 <% if interesting_ranter %>
-  <div class="unfollower" data-interesting-ranter-id="<%= interesting_ranter.id %>" data-ranter-id="><%= @person_to_follow.id %>">Unfollow</div>
+  <!--<div class="unfollower" data-interesting-ranter-id="<%= interesting_ranter.id %>" data-ranter-id="><%= @person_to_follow.id %>">Unfollow</div>-->
+  <%=link_to "Unfollow", "", class:"unfollower", 'data-interesting-ranter-id'=> interesting_ranter.id, 'data-ranter-id'=> @person_to_follow.id %>
 <% else %>
-  <div class="follower" data-interesting-ranter-id="" data-ranter-id="<%= @person_to_follow.id %>">Follow</div>
+  <!--<div class="follower" data-interesting-ranter-id="" data-ranter-id="<%= @person_to_follow.id %>">Follow</div>-->
+  <%=link_to "Follow", "", class:"follower", 'data-interesting-ranter-id'=> "", 'data-ranter-id'=> @person_to_follow.id %>
+
+
 <% end %>
 
