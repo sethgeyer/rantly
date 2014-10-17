@@ -34,13 +34,22 @@ $(document).ready( function() {
 //  FAVORITE-UNFAVORITE A RANT
 
   $("body").on('click', ".favoriter", function(event) {
-    console.log("favoriter was called")
+    event.preventDefault();
     var favoriteLink = $(event.target)
     var rantID = favoriteLink.attr('data-rant-id')
     var postFavoritePromise = $.post("/user/favorites", {rant_id: rantID})
 
     postFavoritePromise.success( function(favoriteValues) {
-      favoriteLink.html(favoriteValues[1] + "Unfavorite")
+      debugger
+
+        if (favoriteValues[1] == 0) {
+          var faveValue = ""
+        }
+        else {
+          var faveValue = favoriteValues[1] + "-"
+        }
+
+      favoriteLink.html(faveValue + "Unfavorite")
       favoriteLink.attr('data-favorite-id', favoriteValues[0].id)
       favoriteLink.removeClass("favoriter")
       favoriteLink.addClass("unfavoriter")
@@ -48,16 +57,27 @@ $(document).ready( function() {
   });
 
   $('body').on('click',".unfavoriter", function(event) {
+    event.preventDefault();
+
     var unfavoriteLink = $(event.target)
     var unfavoriteID = unfavoriteLink.attr('data-favorite-id')
     var deleteUnfavoritePromise = $.ajax({url: "/user/favorites/" + unfavoriteID, type:"DELETE"})
 
     deleteUnfavoritePromise.success( function(timesFavorited) {
-      unfavoriteLink.html(timesFavorited["times_favorited"] + "Favorite")
+      debugger
 
+        if (timesFavorited["times_favorited"] == 0) {
+          var faveText = ""
+        }
+        else {
+          var faveText = timesFavorited["times_favorited"] + "-"
+        }
+
+      unfavoriteLink.html(faveText + "Favorite")
       unfavoriteLink.attr('data-favorite-id', "")
       unfavoriteLink.removeClass("unfavoriter")
       unfavoriteLink.addClass('favoriter')
+
       if (location.pathname == "/user/favorites" ) {
         unfavoriteLink.parents(".favorites-block").hide()
       }

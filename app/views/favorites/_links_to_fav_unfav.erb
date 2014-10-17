@@ -1,19 +1,19 @@
-<% favorited_rant = kenny_loggins.favorites.where(rant_id: @rant_to_fave.id).first%>
-<% fave_count_for_link = Favorite.create_favorite_count(@rant_to_fave.id) %>
+<% favorited_rant = kenny_loggins.favorites.find_by_rant_id(@rant_to_fave.id)%>
 
-<% if favorited_rant %>
-  <div class="right-floater unfavoriter" data-favorite-id="<%=favorited_rant.id%>" data-rant-id="<%=@rant_to_fave.id%>">
-    <%="#{fave_count_for_link}" + "Unfavorite"%>
-  </div>
+  <% if favorited_rant %>
+
+  <% fave_count = favorited_rant.rant.favorites.count%>
+  <% if fave_count == 0%>
+    <%fave_count_for_link = ""%>
+  <% else %>
+    <%fave_count_for_link = "#{fave_count}-"%>
+  <% end %>
 
 
+  <%=link_to "#{fave_count_for_link}" + "Unfavorite", "", class:"right-floater unfavoriter", 'data-favorite-id'=>favorited_rant.id, 'data-rant-id'=> @rant_to_fave.id%>
 
 <% else %>
-
-  <div class="right-floater favoriter" data-rant-id="<%=@rant_to_fave.id%>" data-favorite-id="">
-    <%="#{fave_count_for_link}" + "Favorite"%>
-  </div>
-
+  <%=link_to "#{fave_count_for_link}" + "Favorite", "", class:"right-floater favoriter", 'data-favorite-id'=>"", 'data-rant-id'=> @rant_to_fave.id%>
 
 <% end %>
 
