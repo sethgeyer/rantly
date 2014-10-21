@@ -1,9 +1,9 @@
 <section class="three-qtr-wide rants">
   <div class="content-header" style="margin-bottom: -20px"><%= @user.first_name %> <%= @user.last_name %></div>
 
-  <% interesting_ranter = InterestingRanter.where(user_id: kenny_loggins.id, person_id: @user.id).first %>
+  <% interesting_ranter = kenny_loggins.followed_users.where(id: @user.id).first %>
   <% if interesting_ranter %>
-    <div class="unfollower right-floater" data-interesting-ranter-id="<%= interesting_ranter.id %>" data-ranter-id="><%= @user.id %>">Unfollow</div>
+    <div class="unfollower right-floater" data-interesting-ranter-id="<%= InterestingRanter.where(follower_id: kenny_loggins.id, followed_user_id: interesting_ranter.id).first.id %>" data-ranter-id="><%= @user.id %>">Unfollow</div>
   <% else %>
     <div class="follower right-floater" data-interesting-ranter-id="" data-ranter-id="<%= @user.id %>">Follow</div>
   <% end %>

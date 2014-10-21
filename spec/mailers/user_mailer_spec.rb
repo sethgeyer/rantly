@@ -31,8 +31,8 @@ RSpec.describe UserMailer, :type => :mailer do
       follower1 = create_user_with_a_confirmed_email({username: "seth", email: "seth.geyer@gmail.com"})
       follower2 = create_user_with_a_confirmed_email({username: "seths", email: "seth.smith@gmail.com"})
       ranter = create_user_with_a_confirmed_email({username: "funnyranter", email: "funny.ranter@gmail.com"})
-      interesting_ranter = InterestingRanter.create(user_id: follower1.id, person_id: ranter.id)
-      interesting_ranter = InterestingRanter.create(user_id: follower2.id, person_id: ranter.id)
+      interesting_ranter = InterestingRanter.create(follower_id: follower1.id, followed_user_id: ranter.id)
+      interesting_ranter = InterestingRanter.create(follower_id: follower2.id, followed_user_id: ranter.id)
       rant = Rant.create(user_id: ranter.id, topic: "funny rant", details: "#{'d' * 142}")
 
       email = UserMailer.rant_email_to_followers([follower1.email, follower2.email], rant).deliver

@@ -1,6 +1,6 @@
-<% interesting_ranter = kenny_loggins.interesting_ranters.find_by_person_id(@person_to_follow.id) %>
+<% interesting_ranter = kenny_loggins.followed_users.where(id: @person_to_follow.id).first %>
 <% if interesting_ranter %>
-  <%=link_to "Unfollow", "", class:"unfollower", 'data-interesting-ranter-id'=> interesting_ranter.id, 'data-ranter-id'=> @person_to_follow.id %>
+  <%=link_to "Unfollow", "", class:"unfollower", 'data-interesting-ranter-id'=> InterestingRanter.where(follower_id: kenny_loggins.id, followed_user_id: interesting_ranter.id).first.id, 'data-ranter-id'=> @person_to_follow.id %>
 <% else %>
   <%=link_to "Follow", "", class:"follower", 'data-interesting-ranter-id'=> "", 'data-ranter-id'=> @person_to_follow.id %>
 <% end %>

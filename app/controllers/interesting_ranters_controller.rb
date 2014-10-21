@@ -1,18 +1,17 @@
 class InterestingRantersController < ApplicationController
 
   def index
-    @interesting_ranters = kenny_loggins.interesting_ranters
+    @followed_users = kenny_loggins.followed_users
   end
 
   def create
-    interesting_ranter = kenny_loggins.interesting_ranters.create!(
-      person_id: params[:interesting_ranter_id]
-    )
+    kenny_loggins.followed_users << User.find(params[:interesting_ranter_id])
+    interesting_ranter = InterestingRanter.where(follower_id: kenny_loggins.id, followed_user_id: params[:interesting_ranter_id]).first
     render :status => :created, :json => interesting_ranter
   end
 
   def destroy
-    kenny_loggins.interesting_ranters.find(params[:id]).destroy
+    InterestingRanter.where(id: params[:id], follower_id: kenny_loggins.id).first.destroy
     render :nothing => true
   end
 

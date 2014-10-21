@@ -3,14 +3,13 @@
   <div class="content-header">Following</div>
   <hr/>
 
-  <% @interesting_ranters.each do |interesting_ranter| %>
-    <% person = User.find(interesting_ranter.person_id) %>
+  <% @followed_users.each do |followed_user| %>
     <div class="follow-block">
-      <div class="profile-link"><%= person.first_name %> <%= person.last_name %></div>
-      <%= image_tag person.image %>
+      <div class="profile-link"><%= followed_user.first_name %> <%= followed_user.last_name %></div>
+      <%= image_tag followed_user.image %>
       <br/>
 
-      <%=link_to "Unfollow", "", class:"unfollower", 'data-interesting-ranter-id'=> interesting_ranter.id, 'data-ranter-id'=> person.id %>
+      <%=link_to "Unfollow", "", class:"unfollower", 'data-interesting-ranter-id'=> InterestingRanter.where(follower_id: kenny_loggins.id, followed_user_id: followed_user.id).first.id, 'data-ranter-id'=> followed_user.id %>
 
     </div>
   <% end %>

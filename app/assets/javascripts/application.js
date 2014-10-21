@@ -102,7 +102,7 @@ $(document).ready( function() {
       relatedFollowerLinks.each( function() {
         var link = $(this)
 
-        if (link.attr('data-ranter-id') == interestingRanter.person_id) {
+        if (link.attr('data-ranter-id') == interestingRanter.followed_user_id) {
           link.html("Unfollow")
          link.attr('data-interesting-ranter-id', interestingRanter.id )
          link.removeClass("follower")

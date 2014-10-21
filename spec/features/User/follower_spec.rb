@@ -5,7 +5,7 @@ feature "followers_page" do
     create_rant(1, {user_id: @adam.id})
     @seth = create_user_with_a_confirmed_email
     create_rant(2, {user_id: @seth.id})
-    create_interesting_ranter(user_id: @seth.id, person_id: @adam.id)
+    create_interesting_ranter(follower_id: @seth.id, followed_user_id: @adam.id)
     visit_login_page_and_fill_in_form('seth', 'password')
     within("#new-sessions") {click_on "Login"}
     click_on "Following"
