@@ -18,18 +18,18 @@ class AdminRantsController < ApplicationController
   end
 
   def show
-    @rant = Rant.find(params[:id])
+    @rant = specified_rant
   end
 
   def update
-    @rant = Rant.find(params[:id])
+    @rant = specified_rant
     @rant.shown = true
     @rant.save!
     redirect_to :back
   end
 
   def destroy
-    Rant.find(params[:id]).destroy
+    specified_rant.destroy
   redirect_to :back
   end
 
@@ -41,6 +41,10 @@ class AdminRantsController < ApplicationController
     else
       Date.strptime(date_string, '%m/%d/%Y')
     end
+  end
+
+  def specified_rant
+    Rant.find(params[:id])
   end
 
 

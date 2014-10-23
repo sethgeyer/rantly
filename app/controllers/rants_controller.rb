@@ -11,6 +11,8 @@ class RantsController < ApplicationController
   def create
     @rant = kenny_loggins.rants.new(allowed_params)
     if @rant.save
+      # followers = kenny_loggins.followers.map(&:email)
+
       followers = InterestingRanter.find_followers_to_receive_email(@rant)
       UserMailer.rant_email_to_followers(followers, @rant).deliver unless !followers
       render :nothing => true

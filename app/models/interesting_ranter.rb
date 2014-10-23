@@ -6,7 +6,7 @@ belongs_to :followed_user, class_name: "User"
 
 
 def self.find_followers_to_receive_email(rant)
-  followers = InterestingRanter.where(followed_user_id: rant.user_id).map { |interesting_ranter| interesting_ranter.follower.email }
+  followers = rant.user.followers.map(&:email)
   if followers != []
     followers
   else

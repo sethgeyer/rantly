@@ -11,7 +11,7 @@ class InterestingRantersController < ApplicationController
   end
 
   def destroy
-    InterestingRanter.where(id: params[:id], follower_id: kenny_loggins.id).first.destroy
+    kenny_loggins.followed_users.delete(params[:id])
     render :nothing => true
   end
 

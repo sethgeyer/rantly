@@ -10,7 +10,7 @@ class Rant < ActiveRecord::Base
 
   def self.sort_by_most_favorited(rants)
       sorted_list = rants.sort_by do |rant|
-       -Favorite.where(rant_id: rant.id).count
+       -Favorite.where(rant_id: rant.id).count  #this should be rant.favorites.count
       end
     sorted_list
   end
