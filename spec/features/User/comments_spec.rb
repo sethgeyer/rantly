@@ -10,26 +10,18 @@ feature "create and view comments" do
 
   scenario "As a user visiting a rant show page, I should see a comment form" do
     visit rant_path(@rant_to_visit.id)
-    expect(page).to have_css("#new_comment")
-    fill_in "comment[body]", with: "This post rules"
+    expect(page).to have_css("#new_rant_comment")
+    fill_in "rant_comment[body]", with: "This post rules"
     click_on "Rant Back"
     expect(page).to have_button("Rant Back")
     expect(page).to have_content("This post rules")
   end
 
-  scenario "As a user visiting a rant show page, I should see a comment form" do
-    visit rant_path(@rant_to_visit.id)
-    expect(page).to have_css(".new_comment")
-    fill_in "comment[body]", with: "This post rules"
-    click_on "Rant Back"
-    expect(page).to have_button("Rant Back")
-    expect(page).to have_content("This post rules")
-  end
 
   scenario "As a user visiting a users profile page, I should be able to comment" do
     visit profile_path(@adam)
-    expect(page).to have_css(".new_comment")
-    fill_in "comment[body]", with: "This profile rules"
+    expect(page).to have_css(".new_user_comment")
+    fill_in "user_comment[body]", with: "This profile rules"
     click_on "Rant Back"
     expect(page).to have_button("Rant Back")
     expect(page).to have_content("This profile rules")

@@ -6,6 +6,8 @@ class RantsController < ApplicationController
 
   def show
     @shown_rant = Rant.find(params[:id])
+    @rant_comments = RantComment.where(rant_id: @shown_rant.id)
+
   end
 
   def create

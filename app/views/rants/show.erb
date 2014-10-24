@@ -43,15 +43,15 @@
   <%= render partial: "comments/form" %>
 
 
-  <% @shown_rant.comments.each do |comment| %>
+  <% @rant_comments.each do |rant_comment| %>
     <div class="flex-container">
 
       <div class="fifteen-wide">
-        <img class="ranter-image" src=<%= comment.user.image %>>
+        <img class="ranter-image" src=<%= "" %>>
       </div>
 
       <div class="eighty-five-wide">
-        <%= comment.body %>
+        <%= rant_comment.body %>
       </div>
     </div>
     <br/>

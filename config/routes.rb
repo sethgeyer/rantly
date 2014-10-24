@@ -6,8 +6,14 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :index, :destroy]
   resources :profiles, only: [:show]
   resources :rants, only: [:show, :index, :update] do
-    resources :comments, only: [:new, :create, :index]
+    resources :rant_comments, only: [:create]
   end
+
+
+  resources :users, only: [] do
+    resources :user_comments, only: [:create]
+  end
+
 
 
   resource :user, only: [:new, :create, :edit, :update] do

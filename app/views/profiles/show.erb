@@ -14,6 +14,7 @@
   <div>
     <div class=bio-box>
       <img class="profile-image" src=<%= @user.image %>>
+
       <div class="profile-frequency-box"><%= @user.rant_frequency %></div>
     </div>
   </div>
@@ -23,6 +24,35 @@
     <%= @user.bio %>
   </div>
   <br/>
+
+  <%= form_for [@user, UserComment.new], id: "#new_comment" do |f| %>
+    <%= f.text_field :body, placeholder: "Enter your comments here...", class: "wide-input" %>
+    <br/>
+    <%= f.submit "Rant Back", class: "comment-button" %>
+  <% end %>
+  <br/>
+  <br/>
+
+  <% @user_comments.each do |user_comment| %>
+    <div class="flex-container">
+
+      <div class="fifteen-wide">
+        <img class="ranter-image" src=<%= ""%>>
+      </div>
+
+      <div class="eighty-five-wide">
+        <%= user_comment.body %>
+      </div>
+    </div>
+    <br/>
+
+    <div class="mini-spacer-border"></div>
+    <br/>
+  <% end %>
+
+
+
+
   <div class="rants-list">
 
     <% user_rants = @user.rants %>

@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   has_many :favorites
 
+  has_many :comments
+
   validates :first_name, :last_name, :username, :email, :bio, :rant_frequency, :image, presence: true
   validates :username, :uniqueness => true
   validates :password, length: {minimum: 8, message: "must be 8 characters in length", :allow_blank => true}
