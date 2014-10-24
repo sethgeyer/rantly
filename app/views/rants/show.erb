@@ -40,6 +40,9 @@
 
   <div class="mini-spacer-border"></div>
 
+  <%= render partial: "comments/form" %>
+
+
   <% @shown_rant.comments.each do |comment| %>
     <div class="flex-container">
 
@@ -57,10 +60,6 @@
     <br/>
   <% end %>
 
-  <%= form_for [@shown_rant, @shown_rant.comments.new], id: "#new_comment" do |f| %>
-    <%= f.text_field :body, placeholder: "Enter your comments here...", class: "wide-input" %>
-    <br/>
-    <%= f.submit "Rant Back", class: "comment-button" %>
-  <% end %>
+
 </section>
 

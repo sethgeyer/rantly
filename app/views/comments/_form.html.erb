@@ -1,0 +1,5 @@
+<%= form_for [@shown_rant, Comment.new], id: "#new_comment" do |f| %>
+  <%= f.text_field :body, placeholder: "Enter your comments here...", class: "wide-input" %>
+  <br/>
+  <%= f.submit "Rant Back", class: "comment-button" %>
+<% end %>
