@@ -1,7 +1,7 @@
 # Rantly
 
 
-Heroku:  http://spewing-thoughts.herokuapp.com/
+Heroku:  http://rant-leezy.herokuapp.com/
 
 #### A gSchool Graduation Requirement
 The completion of this individual project is a graduation requirement for the Nov' 2014 gSchool class in Denver, CO.  The completed project is intended to be a reflection of what the students have learned over the past 6 months.  Students were provided user stories and mockups.
