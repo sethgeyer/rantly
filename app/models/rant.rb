@@ -1,7 +1,8 @@
 class Rant < ActiveRecord::Base
 
-  belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
+
+  belongs_to :user
   has_many :favorites, dependent: :destroy
 
   validates :topic, presence: true
