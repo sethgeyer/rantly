@@ -6,7 +6,7 @@ class RantsController < ApplicationController
 
   def show
     @shown_rant = Rant.find(params[:id])
-    @rant_comments = RantComment.where(rant_id: @shown_rant.id)
+    @rant_comments = @shown_rant.comments.all
 
   end
 

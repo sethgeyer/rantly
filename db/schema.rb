@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024195941) do
+ActiveRecord::Schema.define(version: 20141026171038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20141024195941) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content_type"
-    t.integer  "content_id"
+    t.string   "remark_type"
+    t.integer  "remark_id"
+    t.text     "body"
   end
 
   create_table "email_confirmers", force: true do |t|
@@ -43,11 +44,6 @@ ActiveRecord::Schema.define(version: 20141024195941) do
     t.datetime "updated_at"
   end
 
-  create_table "rant_comments", force: true do |t|
-    t.text    "body"
-    t.integer "rant_id"
-  end
-
   create_table "rants", force: true do |t|
     t.string   "topic"
     t.text     "details"
@@ -55,11 +51,6 @@ ActiveRecord::Schema.define(version: 20141024195941) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "shown",      default: true
-  end
-
-  create_table "user_comments", force: true do |t|
-    t.text    "body"
-    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|

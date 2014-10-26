@@ -14,12 +14,39 @@ default_user = User.create!(username: "seth",
                    first_name: "Seth",
                    last_name: "Geyer",
                    bio: "Handsome Programmer",
-                   email: "seth.geyer@gmail.com",
+                   email: "s.geyer@gmail.com",
                    rant_frequency: "Daily",
                    image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",
-                   is_admin: false
+                   is_admin: false,
+                   email_is_confirmed: true
+
 )
 
+second_user = User.create!(username: "adam",
+                            password: "password",
+                            first_name: "Ada,",
+                            last_name: "Geyer",
+                            bio: "Handsome Programmer",
+                            email: "a.geyer@gmail.com",
+                            rant_frequency: "Daily",
+                            image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",
+                            is_admin: false,
+                            email_is_confirmed: true
+
+)
+
+third_user = User.create!(username: "leah",
+                            password: "password",
+                            first_name: "Leah",
+                            last_name: "Geyer",
+                            bio: "Handsome Programmer",
+                            email: "l.geyer@gmail.com",
+                            rant_frequency: "Daily",
+                            image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",
+                            is_admin: false,
+                            email_is_confirmed: true
+
+)
 
 default_admin = User.create!(username: "admin",
                             password: "password",

@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   has_many :favorites
 
-  has_many :comments
+  has_many :comments, as: :remark
 
   validates :first_name, :last_name, :username, :email, :bio, :rant_frequency, :image, presence: true
   validates :username, :uniqueness => true

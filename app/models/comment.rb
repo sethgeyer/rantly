@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
 
-  belongs_to :content, polymorphic: true
+  belongs_to :remark, polymorphic: true
 
 end
