@@ -10,26 +10,23 @@ class Rant < ActiveRecord::Base
   validates :details, length: {minimum: 141, message: "must be more than 140 characters"}
 
   def self.sort_by_most_favorited(rants)
-      sorted_list = rants.sort_by do |rant|
-       -Favorite.where(rant_id: rant.id).count  #this should be rant.favorites.count
-      end
-    sorted_list
+    rants.sort_by { |rant| -rant.favorites.count }
   end
 
   def self.return_results_for_search(search_term)
-    if search_term != nil && search_term != ""
-      if search_term[0] == "#"
-        (Rant.where("topic ilike ?", "%#{search_term} %") + Rant.where(topic: search_term) + Rant.where("details ilike ?", "%#{search_term} %")).uniq
-      else
-        user_searches = Rant.joins(:user).where(users: {last_name: search_term}) + Rant.joins(:user).where(users: {first_name: search_term}) + Rant.joins(:user).where(users: {username: search_term})
-        rant_searches = Rant.where("topic ilike ?", "%#{search_term}%") + Rant.where("details ilike ?", "%#{search_term}%")
-        (user_searches + rant_searches).uniq
-      end
+    return nil if search_term == nil || search_term == ""
 
-    else
-      nil
-    end
+    return hashtag_search_results(search_term) if search_term[0] == "#"
+
+    user_searches = Rant.joins(:user).where(users: {last_name: search_term}) + Rant.joins(:user).where(users: {first_name: search_term}) + Rant.joins(:user).where(users: {username: search_term})
+    rant_searches = Rant.where("topic ilike ?", "%#{search_term}%") + Rant.where("details ilike ?", "%#{search_term}%")
+    (user_searches + rant_searches).uniq
   end
+
+  def self.hashtag_search_results(search_term)
+    (Rant.where("topic ilike ?", "%#{search_term} %") + Rant.where(topic: search_term) + Rant.where("details ilike ?", "%#{search_term} %")).uniq
+  end
+
 
   def self.find_users_favorite_rants(user_id)
     Rant.joins("LEFT OUTER JOIN favorites ON favorites.rant_id = rants.id where favorites.user_id = #{user_id}")
