@@ -42,7 +42,7 @@ third_user = User.create!(username: "leah",
                             bio: "Handsome Programmer",
                             email: "l.geyer@gmail.com",
                             rant_frequency: "Daily",
-                            image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",
+                            image: "http://blogs.wfmt.com/introductions/files/2011/12/jorie-butler-geyer.jpg",
                             is_admin: false,
                             email_is_confirmed: true
 
