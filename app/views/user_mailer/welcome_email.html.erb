@@ -7,8 +7,8 @@
 <body>
 
 <h1>Welcome to Rantly, <%= @user.first_name %>!</h1>
+<p>Please confirm your account to log in: <%= link_to "Here", @confirmation_url %></p>
 
-<p>Thanks for signing up for Rantly! Please log in here: <%= link_to "Here", @login_url %></p>
 
 </body>
 </html>

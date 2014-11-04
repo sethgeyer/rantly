@@ -9,9 +9,11 @@ class UsersController < ApplicationController
     @user = User.new(allowed_params)
     if @user.save
       flash[:notice] = "Thank you for registering #{@user.username}!"
-      UserMailer.welcome_email(@user, login_url).deliver
+      # UserMailer.welcome_email(@user, login_url).deliver
       confirmation_token = EmailConfirmer.set_confirmation_token(@user)
-      UserMailer.confirmation_email(@user, email_confirmation_url(confirmation_token)).deliver
+      UserMailer.welcome_email(@user, email_confirmation_url(confirmation_token)).deliver
+
+
       redirect_to root_path
     else
       render :new
