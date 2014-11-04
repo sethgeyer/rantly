@@ -15,17 +15,6 @@ RSpec.describe UserMailer, :type => :mailer do
     end
   end
 
-  # describe "#confirmation_email" do
-  #   it "sends an email to the newly registered user asking them to confirm their email" do
-  #
-  #     user = create_user_with_a_confirmed_email({first_name: "Seth", email: "seth.geyer@gmail.com"})
-  #
-  #     expect(email.subject).to eq("Please confirm your email")
-  #     expect(email.to.first).to eq("seth.geyer@gmail.com")
-  #
-  #   end
-  # end
-
   describe "#rant_email_to_followers" do
     it "sends an email to any users that are following the ranter any time the ranter creates a new rant" do
       follower1 = create_user_with_a_confirmed_email({username: "seth", email: "seth.geyer@gmail.com"})
