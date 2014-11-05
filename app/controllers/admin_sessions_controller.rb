@@ -26,8 +26,8 @@ class AdminSessionsController < ApplicationController
           flash.now[:notice] = "Your account has been disabled"
           render :new
         else
+          session[:impersonator_id] = kenny_loggins.id
           session[:user_id] = user.id
-          session[:impersonator] = true
 
           Keen.publish(:logins, {username: user.username, login_date: DateTime.now()})
 
@@ -45,8 +45,9 @@ class AdminSessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
-    redirect_to root_path
+    session[:user_id] = session[:impersonator_id]
+    session.delete(:impersonator_id)
+    redirect_to admin_dashboards_path
   end
 
 end

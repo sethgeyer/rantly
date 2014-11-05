@@ -17,7 +17,7 @@ feature "Impersonate" do
     first(".profile-link").click
     expect(page).to have_content("Edit Profile")
     click_on "Logout"
-    expect(page).to have_content("Let It All Out")
+    expect(page).to have_content("Rants per Day")
   end
 
 
