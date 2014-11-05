@@ -21,7 +21,11 @@ class SessionsController < ApplicationController
     if user_session.save
       flash[:notice] = "Welcome #{kenny_loggins.first_name}"
       Keen.publish(:logins, {username: kenny_loggins.username, login_date: DateTime.now()})
-      redirect_to user_dashboard_path
+      if kenny_loggins.is_admin?
+        redirect_to admin_dashboards_path
+      else
+        redirect_to user_dashboard_path
+      end
     else
       flash.now[:notice] = user_session.errors.full_messages.join(", ")
       render :new

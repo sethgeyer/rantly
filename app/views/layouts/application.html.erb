@@ -10,8 +10,14 @@
 
 <article class="navbar">
 
+
   <div class="brand">
-    <%= link_to "Rant.ly", user_dashboard_path%>
+    <% if kenny_loggins%>
+        <%= link_to "Rant.ly", admin_dashboards_path if kenny_loggins.is_admin?%>
+    <% else %>
+      <%= link_to "Rant.ly", user_dashboard_path%>
+    <% end %>
+
   </div>
 
 
