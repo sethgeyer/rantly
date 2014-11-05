@@ -14,6 +14,7 @@ class Rant < ActiveRecord::Base
   end
 
   def self.return_results_for_search(search_term)
+    # binding.pry
     return nil if search_term == nil || search_term == ""
 
     return hashtag_search_results(search_term) if search_term[0] == "#"

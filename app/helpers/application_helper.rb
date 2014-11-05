@@ -9,7 +9,7 @@ module ApplicationHelper
     array = content.split(" ")
     linked_array = array.map do |word|
       if word[0] == "#"
-        "<a href='/rants?search=%23#{word[1..word.length]}'>#{word}</a>"
+        "<a href='/rants?search=#{word.gsub("#", "%23")}'>#{word}</a>"
       else
         word
       end
