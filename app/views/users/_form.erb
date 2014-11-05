@@ -5,7 +5,7 @@
   <br/><br/>
 <% end %>
 
-<%= form_for @user, url: "/user" do |f| %>
+<%= form_for @user, url: "/user", html: {:multipart=> true} do |f| %>
 
   <div class="inline-block with-margin">
     <%= f.label :username %>
@@ -45,9 +45,13 @@
   <br/>
   <%= f.label :bio %><br/>
   <%= f.text_area :bio, class: "bio-area" %>
-  </br><br/>
+  <br/><br/>
   <%= f.label :image, "Profile Image URL" %><br/>
   <%= f.text_field :image, class: "wide-input" %>
+
+  <br/><br/>
+  <%= f.label :avatar%><br/>
+  <%= f.file_field :avatar%>
 
 
   <p> How Often Do You Rant?</p>

@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   has_many :favorites
 
+  mount_uploader :avatar, AvatarUploader
 
   validates :first_name, :last_name, :username, :email, :bio, :rant_frequency, :image, presence: true
   validates :username, :uniqueness => true
