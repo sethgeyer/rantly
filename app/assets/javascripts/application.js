@@ -40,7 +40,6 @@ $(document).ready( function() {
     var postFavoritePromise = $.post("/user/favorites", {rant_id: rantID})
 
     postFavoritePromise.success( function(favoriteValues) {
-      debugger
 
         if (favoriteValues[1] == 0) {
           var faveValue = ""
@@ -64,7 +63,6 @@ $(document).ready( function() {
     var deleteUnfavoritePromise = $.ajax({url: "/user/favorites/" + unfavoriteID, type:"DELETE"})
 
     deleteUnfavoritePromise.success( function(timesFavorited) {
-      debugger
 
         if (timesFavorited["times_favorited"] == 0) {
           var faveText = ""
@@ -114,10 +112,10 @@ $(document).ready( function() {
 
   $("body").on('click', ".unfollower", function(event) {
     event.preventDefault();
-
     var unfollowerLink = $(event.target)
     var interestingRanterID = unfollowerLink.attr('data-interesting-ranter-id')
-    var deleteInterestingRanterPromise = $.ajax({url: "/user/interesting_ranters/" + interestingRanterID, type: "DELETE"})
+    var ranterID = unfollowerLink.attr('data-ranter-id')
+    var deleteInterestingRanterPromise = $.ajax({url: "/user/interesting_ranters/" + ranterID, type: "DELETE"})
 
     deleteInterestingRanterPromise.success(function () {
 
