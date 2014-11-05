@@ -46,7 +46,6 @@ class UsersController < ApplicationController
       :rant_frequency,
       :image,
       :email,
-      :avatar
     )
   end
 

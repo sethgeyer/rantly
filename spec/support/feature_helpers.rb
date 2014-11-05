@@ -8,7 +8,7 @@ def create_user_with_a_confirmed_email(modified_attributes ={})
     bio: 'Handsome Programmer',
     rant_frequency: 'daily',
     email_is_confirmed: true,
-    image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
+    image: "images/profile_photo.JPG"
   }
 
   attributes = default_attributes.merge(modified_attributes)
@@ -27,7 +27,7 @@ def create_admin_user(modified_attributes = {})
   bio: "My bio",
   rant_frequency: "Daily",
   email_is_confirmed: true,
-  image: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg",
+  image: "/profile_photo.JPG",
   is_admin: true}
 
   attributes = default_attributes.merge(modified_attributes)

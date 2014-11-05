@@ -12,7 +12,6 @@ class InterestingRantersController < ApplicationController
 
   def destroy
     kenny_loggins.followed_users.delete(params[:id])
-    puts "fudge"
     render :nothing => true
   end
 

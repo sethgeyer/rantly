@@ -46,13 +46,14 @@
   <%= f.label :bio %><br/>
   <%= f.text_area :bio, class: "bio-area" %>
   <br/><br/>
-  <%= f.label :image, "Profile Image URL" %><br/>
-  <%= f.text_field :image, class: "wide-input" %>
+  <% if @user.image_url %>
+    <p>Replace Profile Image</p>
+  <% else %>
+    <p> Add Profile Image</p>
+  <% end %>
+    <%= image_tag @user.image_url.to_s %>
 
-  <br/><br/>
-  <%= f.label :avatar%><br/>
-  <%= f.file_field :avatar%>
-
+  <%= f.file_field :image, class: "wide-input" %>
 
   <p> How Often Do You Rant?</p>
   <div class="flex-container">
