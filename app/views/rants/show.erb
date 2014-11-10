@@ -13,7 +13,7 @@
       <%= f.submit "Spam", class: 'spammer' %>
     <% end %>
 
-    <a href="https://twitter.com/share" class="twitter-share-button inliner" data-text=<%= @shown_rant.topic.gsub(" ", "-") %> data-url="http://spewing-thoughts.herokuapp.com/rants/<%= @shown_rant.id %>" data-count="none">Tweet</a>
+    <a href="https://twitter.com/share" class="twitter-share-button inliner" data-text=<%= @shown_rant.topic.gsub(" ", "-") %> data-url="http://rant-leezy.herokuapp.com/rants/<%= @shown_rant.id %>" data-count="none">Tweet</a>
     <script>!function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
       if (!d.getElementById(id)) {
