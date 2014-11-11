@@ -4,22 +4,26 @@
 
   <div class="admin-flex-container">
 
-    <div style="width: 33%; border:1px solid black">
-      <div class="content-header">Rants per Day</div>
+    <div style="width: 32%; border:1px solid black">
+      <div class="content-header">Rants / Day</div>
       <%= column_chart Rant.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now, format: "%a-%e").count %>
     </div>
 
-    <div style="width: 33%; border:1px solid black">
-      <div class="content-header">Signups per Day</div>
+    <div style="width: 32%; border:1px solid black">
+      <div class="content-header">Signups / Day</div>
       <%= column_chart User.group_by_day(:created_at, range: 1.week.ago.midnight..Time.now, format: "%a-%e").count %>
     </div>
 
-    <div style="width: 33%; border:1px solid black">
-      <div class="content-header">Logins per Hour</div>
-      <%= column_chart KeenMetric.find_logins_per_hour %>
+    <div style="width: 31%; border:1px solid black">
+      <div class="content-header">Logins / Hour (Last 24 Hours)</div>
+      <%= column_chart @keen_list %>
+       <div style="text-align: center; margin-bottom: 10px;">24 Hour Clock</div>
     </div>
 
+
+
   </div>
+
 
 </div>
 
