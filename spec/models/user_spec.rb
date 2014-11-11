@@ -86,14 +86,14 @@ describe User do
       expect(user.errors[:rant_frequency].any?).to eq(false)
     end
 
-    it "requires a user's image" do
-      user = User.new(image: "")
-      user.valid?
-      expect(user.errors[:image]).to include("can't be blank")
-      user.image = "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
-      user.valid?
-      expect(user.errors[:image].any?).to eq(false)
-    end
+    # it "requires a user's image" do
+    #   user = User.new(image: "")
+    #   user.valid?
+    #   expect(user.errors[:image]).to include("can't be blank")
+    #   user.image = "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
+    #   user.valid?
+    #   expect(user.errors[:image].any?).to eq(false)
+    # end
 
 
 

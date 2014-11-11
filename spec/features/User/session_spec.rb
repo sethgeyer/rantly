@@ -9,7 +9,7 @@ feature "user login and logout" do
     fill_in "Password", with: "password"
     fill_in "Bio", with: "Handsome Programmer"
     fill_in "Email", with: "seth.geyer@gmail.com"
-    fill_in "Image", with: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
+    find("#user_image").click
     within(page.find("#new-users")) { choose "Daily" }
     click_on "Register"
     visit_login_page_and_fill_in_form("seth", "password")
@@ -26,7 +26,7 @@ feature "user login and logout" do
     fill_in "Password", with: "password"
     fill_in "Bio", with: "Handsome Programmer"
     fill_in "Email", with: "seth.geyer@gmail.com"
-    fill_in "Image", with: "http://photos1.meetupstatic.com/photos/member/1/2/e/highres_145320302.jpeg"
+    find("#user_image").click
     within(page.find("#new-users")) { choose "Daily" }
     click_on "Register"
     visit email_confirmation_path(EmailConfirmer.find_by_user_id(User.last.id).confirmation_token)
